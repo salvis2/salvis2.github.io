@@ -2,6 +2,10 @@
  * CSS file for alvisMainPage.html
  * Website at sebastianalvis.com
  */
+header {
+	display: inline-block;
+}
+
 nav {
   background-color: purple;
   position: fixed;
@@ -18,15 +22,7 @@ li {
 }
 
 body {
-  background-color: gray;
-}
-
-.container {
-
-}
-
-.jumbotron {
-
+  background-color: silver;
 }
 
 .container {
@@ -34,17 +30,19 @@ body {
 }
 
 .row {
-
+	padding: 1em;
+  margin: 3em;
 }
 
 table {
-
+  border: 0.5em black solid;
 }
 
 thead {
-
+  border-bottom: 0.2em black solid;
+  background-color: blue;
 }
 
 tbody {
-
+  background-color: orange;
 }
