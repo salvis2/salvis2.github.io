@@ -3,14 +3,29 @@
  * Website at sebastianalvis.com
  */
 header {
-	display: inline-block;
+	background-color: #4b2e83;
+	top: 0px;
+	display: inline;
+  position: fixed;
+  z-index: 9;
+  width: 100%;
+  height: 5rem;
 }
 
 nav {
-  background-color: purple;
-  position: fixed;
-  z-index: 10;
-  width: 100%;
+	padding: 0px;
+}
+
+nav a {
+	color: white;
+	font-size: 1.5em;
+}
+
+#main_img {
+	position: fixed;
+	z-index: 10;
+	top: 0.5em;
+	right: 1em;
 }
 
 ul {
@@ -19,10 +34,12 @@ ul {
 
 li {
   display: inline-block;
+  padding: 1em;
 }
 
 body {
-  background-color: silver;
+  padding-top: 6rem;
+  background-color: #d9d9d9;
 }
 
 .container {
@@ -30,8 +47,14 @@ body {
 }
 
 .row {
-	padding: 1em;
-  margin: 3em;
+}
+
+section {
+  padding-bottom: 8em;
+}
+
+p {
+
 }
 
 table {
@@ -40,9 +63,34 @@ table {
 
 thead {
   border-bottom: 0.2em black solid;
-  background-color: blue;
+  background-color: #13294b;
+  color: white;
+}
+
+th {
+	border: 0.1em black solid;
+  padding: 0 0.3em;
 }
 
 tbody {
-  background-color: orange;
+  background-color: #E84A27;
+}
+
+td {
+	border: 0.1em black solid;
+	padding: 0 0.3em;
+}
+
+footer {
+	background-color: #4b2e83;
+	color: white;
+	width: 100%;
+	margin: auto;
+	display: inline-block;
+	height: 7em;
+	font-size: 1.2em;
+}
+
+p.col-sm-2 {
+	top: 1em;
 }
