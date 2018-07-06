@@ -20,6 +20,8 @@ nav {
 }
 
 nav ul {
+	position: relative;
+	left: -2rem;
 	margin-right: 4rem;
 }
 
@@ -45,6 +47,10 @@ nav a {
   	padding: 0.2rem;
   }
 
+  nav ul {
+  	left: -1rem;
+  }
+
   section {
     padding-top: 2rem;
   }
@@ -58,6 +64,10 @@ nav a {
 
   nav a {
   	padding: 0.3rem 0.1rem;
+  }
+
+  nav ul {
+  	left: -1rem;
   }
 
   section {
@@ -75,6 +85,10 @@ nav a {
   	padding: 0.4rem;
   }
 
+  nav ul {
+  	left: 2rem;
+  }
+
   section {
     padding-top: 2rem;
   }
@@ -84,6 +98,10 @@ nav a {
 @media (min-width: 1200px) {
   nav a {
   	padding: 0.5rem;
+  }
+
+  nav ul {
+  	left: 3rem;
   }
 
   header {
@@ -119,8 +137,8 @@ body {
 }
 
 .container {
-  padding-right: 1rem;
-  padding-left: 1rem;
+	position: relative;
+	left: 1rem;
 }
 
 .row {
@@ -182,4 +200,13 @@ footer ul {
 
 footer li {
 	margin: 0rem 0rem;
+}
+
+/* Formatting for a few elements in the dndTools Page */
+#diceOutput, #statOutput {
+	position: relative;
+	left: 5rem;
+	width: 5rem;
+	height: 3rem;
+	border: 0.1rem black solid;
 }
