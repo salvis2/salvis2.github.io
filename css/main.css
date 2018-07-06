@@ -2,28 +2,107 @@
  * CSS file for alvisMainPage.html
  * Website at sebastianalvis.com/index.html
  */
-header { /* Add code to make text resize to stay on 1 line */
+
+ /* Make mobile-first formatting
+  * Don't have header stick on small screens
+  * Default size is xs, so the formatting should by default be made to work on phone screens
+  */
+header { 
 	background-color: #4b2e83;
 	top: 0px;
-	display: inline;
+	display: inline-block;
   position: fixed;
   z-index: 9;
 }
 
 nav {
-	padding: 0px;
+	padding-top: 1rem;
+}
+
+nav ul {
+	margin-right: 4rem;
+}
+
+nav li {
+	margin: 0rem 1rem;
+	padding: 0rem;
 }
 
 nav a {
 	color: white;
-	font-size: 1.5em;
+	font-size: 1rem;
+	margin: 0rem;
+	padding: 0rem;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+  header {
+  	/*background-color: blue;*/
+  }
+
+  nav a {
+  	padding: 0.2rem;
+  }
+
+  section {
+    padding-top: 2rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  header {
+  	/*background-color: black;*/
+  }
+
+  nav a {
+  	padding: 0.3rem 0.1rem;
+  }
+
+  section {
+    padding-top: 2rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  header {
+  	/*background-color: orange;*/
+  }
+
+  nav a {
+  	padding: 0.4rem;
+  }
+
+  section {
+    padding-top: 2rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  nav a {
+  	padding: 0.5rem;
+  }
+
+  header {
+  	/*background-color: #4b2e83;*/
+  }
+
+  section {
+  	padding-top: 2rem;
+  }
 }
 
 #main_img {
 	position: fixed;
 	z-index: 10;
-	top: 0.5em;
-	right: 1em;
+  float: right;
+  top: 1rem;
+  right: 1rem;
+  padding: 0rem;
+  margin: 0rem;
 }
 
 ul {
@@ -32,23 +111,24 @@ ul {
 
 li {
   display: inline-block;
-  padding: 1em;
+  padding: 0rem 1rem;
 }
 
 body {
-  padding-top: 6rem;
   background-color: #d9d9d9;
 }
 
 .container {
-
+  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 .row {
 }
 
 section {
-  padding-bottom: 8em;
+  padding-top: 7rem;
+  padding-bottom: 2rem;
 }
 
 p {
@@ -89,6 +169,17 @@ footer {
 	font-size: 1.2em;
 }
 
-p.col-sm-2 {
-	top: 1em;
+footer p {
+	position: relative;
+	top: 0.5rem;
+	left: 1rem;
+}
+
+footer ul {
+	width: 100%;
+	display: inline-block;
+}
+
+footer li {
+	margin: 0rem 0rem;
 }
