@@ -17,12 +17,50 @@
 <body>
 
   <header class="container-fluid">
-        <!-- Nice Picture of You -->
-    <div>
-      <img src="img/Seb_dece_pic.jpg" alt="Sebastian Alvis" id="main_img" width="72" height="96"/>
-    </div>
-      	<!-- Navigation Bar -->
+      	<!-- Header -->
     <nav class="navbar-fixed-top">
+      <div class="home-page-button">
+        <a href="http://sebastianalvis.com/">Sebastian Alvis</a>
+      </div>
+
+      <div class="dnd-page-button">
+        <a href="http://sebastianalvis.com/dndTools/index.html">D&amp;D Applications</a>
+      </div>
+
+       <!-- Nice Picture of You -->
+      <div>
+        <img src="img/Seb_dece_pic.jpg" alt="Sebastian Alvis" id="main_img" width="72" height="96"/>
+      </div>
+    </nav>
+
+    <!-- Bootstrap Navbars -->
+    <nav class="navbar-fixed-top hide">
+      <div class="btn-group">
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+          <a href="http://sebastianalvis.com/">Sebastian Alvis</a>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#about_me">About Me</a>
+          <a class="dropdown-item" href="#research_exp">Research Experience</a>
+          <a class="dropdown-item" href="#coding_exp">Coding Experience</a>
+          <a class="dropdown-item" href="#resume_cv">Resume / CV</a>
+          <a class="dropdown-item" href="#dnd_apps">D&amp;D Applications</a>
+        </div>
+
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+          D&amp;D Applications
+        </button>
+        <div class="dropdown-manu">
+          <a class="dropdown-item" href="http://sebastianalvis.com/dndTools/index.html">Dice / Stat Roller</a>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+   
+  <!-- Dropdown Menus --> 
+  <nav class="">
+    <div class="home-page-menu hide">
       <ul>
         <li><a href="#about_me">About Me</a></li>
         <li><a href="#research_exp">Research Experience</a></li>
@@ -30,10 +68,18 @@
         <li><a href="#resume_cv">Resume / CV</a></li>
         <li><a href="#dnd_apps">D&amp;D Applications</a></li>
       </ul>
-    </nav>
+    </div>
+    
+    <div class="dnd-page-menu hide">
+      <ul>
+        <li><a href="dndTools/index.html">Basic Dice Roller</a></li>
+        <li><a href="#">Speed Comparison Tool</a></li>
+        <li><a href="#">Ability Score Generator</a></li>
+        <li><a href="#">Character Creation</a></li>
+      </ul>
+    </div>
+  </nav>
 
-
-  </header>
   <!-- Make Photo Galleries for each section? Click to show/hide? -->
   <!-- Content Sections on the Main Page -->
   <section class="container">
@@ -118,7 +164,7 @@
 
     <div class="row">
       <h4>Code Used to Build This Website</h4>
-      <p>This website presently uses HTML and CSS for the basics, and <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> for the grid, which enables easier control of elements on this page.</p>
+      <p>This website presently uses HTML and CSS for the basics, <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a> for the grid, which enables easier alignment of elements on this page, Javascript, and jQuery, to add dynamic content - especially on the D&amp;D side of things.</p>
     </div>
 
     <div class="row" id="resume_cv">
@@ -148,6 +194,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
 
 </body>
 </html>

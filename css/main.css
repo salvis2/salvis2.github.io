@@ -7,40 +7,100 @@
   * Don't have header stick on small screens
   * Default size is xs, so the formatting should by default be made to work on phone screens
   */
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
 header { 
 	background-color: #4b2e83;
 	top: 0px;
-	display: inline-block;
   position: fixed;
   z-index: 9;
+  height: 5rem;
 }
 
-nav {
-	padding-top: 1rem;
-}
-
-nav ul {
-	position: relative;
-	left: -2rem;
-	margin-right: 4rem;
-}
-
-nav li {
-	margin: 0rem 1rem;
-	padding: 0rem;
-}
-
-nav a {
+header div {
+	display: inline;
 	color: white;
-	font-size: 1rem;
 	margin: 0rem;
 	padding: 0rem;
+
+	position: relative;
+	top: 1rem;
+  left: 1rem;
+}
+
+
+nav {
+	padding-top: 1rem; }
+  nav a {
+    color: white; }
+
+div.nav {
+  display: inline;
+  color: white; 
+  z-index: 9;
+  width: 20rem; }
+
+  div.nav ul {
+    list-style-type: none; 
+    display: block; }
+
+  div.nav li {
+	  margin: 0rem 1rem;
+	  padding: 0rem; }
+
+  div.nav a {
+	  color: white;
+	  font-size: 1rem;
+	  margin: 0rem;
+	  padding: 0rem; }
+
+.home-page-button, .dnd-page-button {
+  width: 15rem;
+  height: 5rem;
+  padding: 1.6rem;
+}
+
+.home-page-button {
+  left: 3.6rem;
+  width: 10rem;
+}
+
+.dnd-page-button {
+  left: 8rem;
+}
+
+.active-button {
+  background-color: #4B0082;
+  /*
+  border: black 0.2rem solid;
+  border-bottom: none;*/
+}
+
+.home-page-menu, .dnd-page-menu {
+  position: fixed;
+  top: 5rem;
+  width: 15rem;
+  background-color: #4B0082;
+  /*
+  border: black 0.2rem solid;
+  display: block;*/
+}
+
+.home-page-menu {
+  left: 4.5rem;
+}
+
+.dnd-page-menu {
+  left: 19rem;
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) { 
   header {
-  	/*background-color: blue;*/
+  	background-color: blue;
   }
 
   nav a {
@@ -113,14 +173,12 @@ nav a {
   }
 }
 
+.hide {
+	display: none;
+}
+
 #main_img {
-	position: fixed;
-	z-index: 10;
   float: right;
-  top: 1rem;
-  right: 1rem;
-  padding: 0rem;
-  margin: 0rem;
 }
 
 ul {
@@ -137,11 +195,11 @@ body {
 }
 
 .container {
-	position: relative;
-	left: 1rem;
 }
 
 .row {
+	padding-left: 1rem;
+	width: 100%;
 }
 
 section {
