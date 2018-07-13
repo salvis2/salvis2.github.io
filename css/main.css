@@ -64,12 +64,12 @@ div.nav {
 }
 
 .home-page-button {
-  left: 3.6rem;
+  left: 0rem;
   width: 10rem;
 }
 
 .dnd-page-button {
-  left: 8rem;
+  left: -1rem;
 }
 
 .active-button {
@@ -80,6 +80,7 @@ div.nav {
 }
 
 .home-page-menu, .dnd-page-menu {
+  z-index: 10;
   position: fixed;
   top: 5rem;
   width: 15rem;
@@ -90,17 +91,59 @@ div.nav {
 }
 
 .home-page-menu {
-  left: 4.5rem;
+  left: 0.9rem;
 }
 
 .dnd-page-menu {
-  left: 19rem;
+  left: 10rem;
+}
+
+@media (min-width: 768px) {
+  .home-page-button, .dnd-page-button {
+    width: 15rem;
+    height: 5rem;
+    padding: 1.6rem;
+  }
+  
+  .home-page-button {
+    left: 3.6rem;
+    width: 10rem;
+  }
+  
+  .dnd-page-button {
+    left: 8rem;
+  }
+  
+  .active-button {
+    background-color: #4B0082;
+    /*
+    border: black 0.2rem solid;
+    border-bottom: none;*/
+  }
+  
+  .home-page-menu, .dnd-page-menu {
+    position: fixed;
+    top: 5rem;
+    width: 15rem;
+    background-color: #4B0082;
+    /*
+    border: black 0.2rem solid;
+    display: block;*/
+  }
+  
+  .home-page-menu {
+    left: 4.5rem;
+  }
+  
+  .dnd-page-menu {
+    left: 19rem;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) { 
   header {
-  	background-color: blue;
+  	/*background-color: blue;*/
   }
 
   nav a {
@@ -260,11 +303,4 @@ footer li {
 	margin: 0rem 0rem;
 }
 
-/* Formatting for a few elements in the dndTools Page */
-#diceOutput, #statOutput {
-	position: relative;
-	left: 5rem;
-	width: 5rem;
-	height: 3rem;
-	border: 0.1rem black solid;
-}
+

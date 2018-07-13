@@ -5,21 +5,34 @@ const $homeMenu = $('.home-page-menu');
 const $dndMenu = $('.dnd-page-menu');
 
 $homeButton.on('mouseenter', () => {
-  $homeMenu.removeClass('hide');
+  /*$homeMenu.removeClass('hide');*/
   $homeButton.addClass('active-button');
 });
 
 $dndButton.on('mouseenter', () => {
-  $dndMenu.removeClass('hide');
+  /*$dndMenu.removeClass('hide');*/
   $dndButton.addClass('active-button');
 });
 
-$homeMenu.on('mouseleave', () => {
-  $homeMenu.addClass('hide');
+$homeButton.on('mouseleave', () => {
+  /*$homeMenu.addClass('hide');*/
   $homeButton.removeClass('active-button');
 });
 
-$dndMenu.on('mouseleave', () => {
-  $dndMenu.addClass('hide');
+$dndButton.on('mouseleave', () => {
+  /*$dndMenu.addClass('hide');*/
   $dndButton.removeClass('active-button');
 });
+
+$homeButton.on('click', () => {
+  $homeMenu.toggleClass('hide');
+  $homeButton.toggleClass('active-button');
+});
+
+$dndButton.on('click', () => {
+  $dndMenu.toggleClass('hide');
+  $dndButton.toggleClass('active-button');
+});
+
+// Fix In-Page Anchor Scrolling Under Navbar
+window.addEventListener("hashchange", function() { scrollBy(0, -80) });

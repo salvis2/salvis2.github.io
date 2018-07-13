@@ -1,0 +1,15 @@
+/* Formatting for a few elements in the dndTools Page */
+#diceOutput, #statOutput {
+	width: 5rem;
+	height: 3rem;
+	border: 0.1rem black solid;
+}
+
+.row.roller {
+	padding: 2rem;
+	display: inline-block;
+}
+
+p, button, input {
+	margin: 0.5rem;
+}

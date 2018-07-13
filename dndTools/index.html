@@ -10,6 +10,7 @@
 
     <title>D&amp;D Tools</title>
     <link rel="stylesheet" href="../css/main.css" type="text/css">
+    <link rel="stylesheet" href="../css/dndTools.css" type="text/css">
 
   </head>
 
@@ -19,11 +20,11 @@
         <!-- Header -->
     <nav class="navbar-fixed-top">
       <div class="home-page-button">
-        <a href="http://sebastianalvis.com/">Sebastian Alvis</a>
+        Sebastian Alvis
       </div>
 
       <div class="dnd-page-button">
-        <a href="http://sebastianalvis.com/dndTools/index.html">D&amp;D Applications</a>
+        D&amp;D Applications
       </div>
 
        <!-- Nice Picture of You -->
@@ -56,14 +57,15 @@
 
     <section class="container">
       <h2>Dice Roller</h2>
-      <div class="row">
-        <input type="number" id="numDice">Number of Dice</div>
-        <input type="number" id="dieSize">Number of Size on the Dice</section>
+      <div class="row roller">
+        <p>Number of Dice</p><input type="number" id="numDice"></input>
+        <p>Number of Sides on the Dice</p><input type="number" id="dieSize"></input>
         <button id="submit">Roll!</button>
         <p id="diceOutput"></p>
       </div>
 
-      <div class="row">
+      <div class="row roller">
+        <p>Type of character</p>
         <button id="rollStats">Roll Ability Score</button>
         <p id="statOutput"></p>
       </div>
