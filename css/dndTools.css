@@ -1,7 +1,7 @@
 /* Formatting for a few elements in the dndTools Page */
 #diceOutput, #statOutput {
-	width: 5rem;
-	height: 3rem;
+	width: 10rem;
+	height: 2rem;
 	border: 0.1rem black solid;
 }
 

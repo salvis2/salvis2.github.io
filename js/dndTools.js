@@ -33,14 +33,31 @@ const dieSize = document.querySelector('#dieSize');
 const submit = document.querySelector('#submit');
 const statButton = document.querySelector('#rollStats');
 
-function displayDiceTotal() {
-	document.getElementById('diceOutput').innerHTML = `${rollDice(dieSize.value,dieNum.value)}`;
+function displayDiceTotal(count) {
+	document.getElementById('diceOutput').innerHTML = ``;
+	for (let i = 0; i < count-1; i++) {
+		document.getElementById('diceOutput').innerHTML += `${rollDice(dieSize.value,dieNum.value)}, `;
+	}
+	document.getElementById('diceOutput').innerHTML += `${rollDice(dieSize.value,dieNum.value)}`;
 }
 
-submit.addEventListener('click',displayDiceTotal);
+submit.addEventListener('click', () => {
+	const count = document.getElementById('numIt').value;
+  displayDiceTotal(count);
+});
 
-function displayStats() {
-	document.getElementById('statOutput').innerHTML = `${rollAbScore(4)}`;
+// Ability Score Roller
+function displayStats(num, count) {
+	document.getElementById('statOutput').innerHTML = ``;
+  for (let i = 0; i < count-1; i++) {
+	  document.getElementById('statOutput').innerHTML += `${rollAbScore(num)}, `;
+  }
+  document.getElementById('statOutput').innerHTML += `${rollAbScore(num)}`;
 }
 
-statButton.addEventListener('click',displayStats)
+statButton.addEventListener('click', () => {
+	const num = document.getElementById('charType').value;
+	const numStats = document.getElementById('numStats').value;
+	displayStats(num, numStats);
+});
+
