@@ -1,36 +1,55 @@
-import { Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Wizard, Character} from "./dndClasses.js";
-import React from "react";
-import ReactDOM from "react-dom";
+//import { Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Wizard, Character} from "./dndClasses.js";
+//import React from 'react';
+//import ReactDOM from 'react-dom';
 
 // Listen for character class, then render new things as options are selected
 // Do I even have character class options?
 
-class CharacterCreationComponent extends React.Component {
+const dndClasses = ['Barbarian','Bard','Cleric','Druid','Fighter','Monk','Paladin','Ranger','Rogue','Sorcerer','Wizard'];
+const dndListItems = dndClasses.map((dndClass) =>
+	React.createElement('button',null,`${dndClass}`)
+	);
+
+const startButton = document.querySelector('#startButton');
+
+const startContent = React.createElement(
+	'p', null, `Select a Character Class`
+	);
+
+startButton.addEventListener('click', () => {
+	ReactDOM.render(
+		startContent,
+		document.getElementById('output-text')
+		);
+
+	ReactDOM.render(
+		dndListItems,
+		document.getElementById('output-classes')
+		);
+});
+
+
+
+/*
+onClick={startCharacterCreation()}
+class CharacterSelection extends React.Component {
 	render() {
-
+		return (
+			<h3>Select a Character Class</h3>
+			<ul>{dndListItems}</ul>
+			);
 	}
-
-
 }
+*/
+/*
+const element = <h1>yeet</h1>;
 
-const characterSelectionContent = (
-	<div>
-	  <h3>Select a Character Class</h3>
-      <ul>
-        <li><button>Barbarian</button></li>
-        <li><button>Bard</button></li>
-        <li><button>Cleric</button></li>
-        <li><button>Druid</button></li>
-        <li><button>Fighter</button></li>
-        <li><button>Monk</button></li>
-        <li><button>Paladin</button></li>
-        <li><button>Ranger</button></li>
-        <li><button>Rogue</button></li>
-        <li><button>Sorcerer</button></li>
-        <li><button>Wizard</button></li>
-      </ul>
-      </div>
-);
+function startCharacterCreation() {
+	ReactDOM.render(
+		element,
+		document.getElementById('character-selection')
+		);
+})*/
 
 // Character class, level, race
 // Roll or input ability scores
