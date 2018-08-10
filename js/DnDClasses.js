@@ -3,19 +3,30 @@
  * babScaling can be 'good', 'avg', or 'poor'
  * fort/ref/willScaling can be 'good', 'poor'
  * skillList is a boolean array
+ * hit die and skill points are integers
+ * classFeaturesMap and classBonusFeatsMap are Maps
  */
 
 class BaseClass {
-	constructor (className, babScaling, fortScaling, refScaling, willScaling, skillList) {
+	constructor (className, hitDie, baseSkillPointsPerLevel, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap) {
 		this._className = className;
+		this._hitDie = hitDie;
+		this._baseSkillPointsPerLevel = baseSkillPointsPerLevel;
 		this._babScaling = babScaling;
 		this._fortScaling = fortScaling;
 		this._refScaling = refScaling;
 		this._willScaling = willScaling;
 		this._skillList = skillList;
+		this._classFeaturesMap = classFeaturesMap;
 	}
 	get className() {
 		return this._className;
+	}
+	get hitDie() {
+		return this._hitDie;
+	}
+	get baseSkillPointsPerLevel() {
+		return this._baseSkillPointsPerLevel;
 	}
 	get babScaling() {
 		return this._babScaling;
@@ -32,12 +43,15 @@ class BaseClass {
 	get skillList() {
 		return this._skillList;
 	}
+	get classFeaturesMap() {
+		return this._classFeaturesMap;
+	}
 
 }
 
 class Spellcaster extends BaseClass {
-  constructor (className, babScaling, fortScaling, refScaling, willScaling, skillList, primarySpellAttribute, spellsPerDay, spellsKnown) {
-  	super(className, babScaling, fortScaling, refScaling, willScaling, skillList);
+  constructor (className, hitDie, baseSkillPointsPerLevel, babScaling, hitDie, baseSkillPointsPerLevel, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap, primarySpellAttribute, spellsPerDay, spellsKnown) {
+  	super(className, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap);
   	this._primarySpellAttribute = primarySpellAttribute;
   	this._spellsPerDay = spellsPerDay;
   	this._spellsKnown = spellsKnown;
@@ -46,15 +60,15 @@ class Spellcaster extends BaseClass {
   get primarySpellAttribute() {
   	return this._primarySpellAttribute;
   }
-	get spellsPerDay() { // All spellcasters have this
-		return this._spellsPerDay;
+	get spellsPerDay(casterLevel, spellLevel) { // All spellcasters have this
+		return this._spellsPerDay[casterLevel - 1][spellLevel];
 	}
-	get spellsKnown() { // Not all spellcasters have this. null should mean that the caster knows all spells that they can cast for their level. 
+	get spellsKnown(casterLevel, spellLevel) { // Not all spellcasters have this. null should mean that the caster knows all spells that they can cast for their level. 
 		if (this._spellsKnown === null) {
 			return null;
 		}
 		else {	
-		  return this._spellsKnown;
+		  return this._spellsKnown[casterLevel - 1][spellLevel];
 		}
 	}
 }
@@ -297,77 +311,448 @@ const rangerPrimarySpellAttribute = 'wis';
 const sorcererPrimarySpellAttribute = 'cha';
 const wizardPrimarySpellAttribute = 'int';
 
-/* Declare Specific DnD Class Objects */
-/* constructor (className, babScaling, fortScaling, refScaling, willScaling, skillList) */
-/* constructor (className, babScaling, fortScaling, refScaling, willScaling, skillList, primarySpellAttribute, spellsPerDay, spellsKnown) */
+/* Declare Class Feature Maps
+ * key is the character level
+ * value is the array of class features they receive at that level
+ * Should I put bonus feats in this? for now...
+ * Put normal feats in this? No. Keep a tally of feats in the active character creation app, and output the total.
+ */
+const barbarianClassFeaturesMap = (
+	[[1, ['Fast Movement','Illiteracy']],
+	 [2, ['Uncanny Dodge']],
+	 [5, ['Improved Uncanny Dodge']],
+	 [14,['Indomitable Will']],
+	 [17,['Tireless Rage']]]
+	 );
 
-class Barbarian extends BaseClass {
+const bardClassFeaturesMap = (
+	[[1, ['Bardic Music','Bardic Knowledge','Countersong','Fascinate']],
+	 [3, ['Inspire Competence']],
+	 [6, ['Suggestion']],
+	 [9, ['Inspire Greatness']],
+	 [12,['Song of Freedom']],
+	 [15,['Inspire Heroics']],
+	 [18,['Mass Suggestion']]]
+	 );
+
+const clericClassFeaturesMap = (
+	[[1, ['Turn or Rebuke Undead']]]
+	);
+
+const druidClassFeaturesMap = (
+	[[1, ['Animal Companion','Nature Sense','Wild Empathy']],
+	 [2, ['Woodland Stride']],
+	 [3, ['Trackless Step']],
+	 [4, ['Resist Nature\'s Lure']],
+	 [9, ['Venom Immunity']],
+	 [13,['A Thousand Faces']],
+	 [15,['Timeless Body']]]
+	 );
+
+const fighterClassFeaturesMap = null;
+
+const monkClassFeaturesMap = (
+	[[1, ['Flurry of Blows','Unarmed Strike']],
+	 [2, ['Evasion']],
+	 [3, ['Still Mind']],
+	 [5, ['Purity of Body']],
+	 [7, ['Wholeness of Body']],
+	 [9, ['Improved Evasion']],
+	 [11,['Diamond Body']],
+	 [12,['Abundant Step']],
+	 [13,['Diamond Soul']],
+	 [15,['Quivering Palm']],
+	 [17,['Timeless Body','Tongue of the Sun and Moon']],
+	 [19,['Empty Body']],
+	 [20,['Perfect Self']]]
+	 );
+
+const paladinClassFeaturesMap = (
+	[[1, ['Aura of Good','Detect Evil']],
+	 [2, ['Divine Grace','Lay on Hands']],
+	 [3, ['Aura of Courage','Divine Health']],
+	 [4, ['Turn Undead']],
+	 [5, ['Special Mount']]]
+	 );
+
+const rangerClassFeaturesMap = (
+	[[1, ['Wild Empathy']],
+	 [4, ['Animal Companion']],
+	 [7, ['Woodland Stride']],
+	 [8, ['Swift Tracker']],
+	 [9, ['Evasion']],
+	 [13,['Camouflage']],
+	 [17,['Hide in Plain Sight']]]
+	 );
+
+const rogueClassFeaturesMap = (
+	[[1, ['Trapfinding']],
+	 [2, ['Evasion']],
+	 [4, ['Uncanny Dodge']],
+	 [8, ['Improved Uncanny Dodge']],
+	 [10,['Special Ability']],
+	 [13,['Special Ability']],
+	 [16,['Special Ability']],
+	 [19,['Special Ability']]]
+	);
+
+const sorcererClassFeaturesMap = (
+	[[1, ['Summon Familiar']]]
+	);
+
+const wizardClassFeaturesMap = (
+	[[1, ['Summon Familiar']]]
+	);
+
+/* Declare Class Bonus Feats Maps
+ * Can hold 'Bonus Feat' or the name of the feat
+ */
+const barbarianBonusFeatMap = null;
+
+const bardBonusFeatMap = null;
+
+const clericBonusFeatMap = null;
+
+const druidBonusFeatMap = null;
+
+const fighterBonusFeatMap = (
+	[[1, ['Bonus Feat']],
+	 [2, ['Bonus Feat']],
+	 [4, ['Bonus Feat']],
+	 [6, ['Bonus Feat']],
+	 [8, ['Bonus Feat']],
+	 [10,['Bonus Feat']],
+	 [12,['Bonus Feat']],
+	 [14,['Bonus Feat']],
+	 [16,['Bonus Feat']],
+	 [18,['Bonus Feat']],
+	 [20,['Bonus Feat']]]
+	);
+
+const monkBonusFeatMap = (
+	[[1, ['Bonus Feat','Improved Unarmed Strike']],
+	 [2, ['Bonus Feat']],
+	 [6, ['Bonus Feat']]]
+	);
+
+const paladinBonusFeatMap = null;
+
+const rangerBonusFeatMap = (
+	[[1, ['Track']],
+	 [2, ['Combat Style']],
+	 [3, ['Endurance']],
+	 [6, ['Improved Combat Style']],
+	 [11,['Combat Style Mastery']]]
+	);
+
+const rogueBonusFeatMap = null;
+
+const sorcererBonusFeatMap = null;
+
+const wizardBonusFeatMap = (
+	[[1, ['Scribe Scroll']],
+	 [5, ['Bonus Feat']],
+	 [10,['Bonus Feat']],
+	 [15,['Bonus Feat']],
+	 [20,['Bonus Feat']]]
+	);
+
+
+/* Declare Specific DnD Class Objects
+ * constructor (className, babScaling, fortScaling, refScaling, willScaling, skillList)
+ * constructor (className, babScaling, fortScaling, refScaling, willScaling, skillList, primarySpellAttribute, spellsPerDay, spellsKnown)
+ * Should base class objects have an array of class features? feats? 
+ * map. key for level, array of strings for value. reduce clutter.
+ * Gonna need a large switch statement to write the character outputs to the pdf
+ */
+
+export class Barbarian extends BaseClass {
 	constructor() {
-		super('Barbarian','good','good','poor','poor',barbarianSkillList);
+		super('Barbarian',12,4,'good','good','poor','poor',barbarianSkillList, barbarianBonusFeatMap);
 	}
-}
-class Bard extends Spellcaster {
-	constructor() {
-		super('Bard','avg','poor','good','good',bardSkillList,bardPrimarySpellAttribute,bardSpellsPerDay,bardSpellsKnown);
+
+	get rageBonuses(level) {
+		// format as ['rageType','strBonus','conBonus','willBonus','acPenalty']
+		let rageBonuses;
+		if (level >= 11 && level < 20) {
+			rageBonuses = ['Greater',6,6,3,-2];
+		}
+		else if (level >= 20) {
+			rageBonuses = ['Mighty',8,8,4,-2];
+		}
+		else { // Barbarian levels 1 - 10
+			rageBonuses = ['Normal',4,4,2,-2];
+		}
+
+		return rageBonuses;
 	}
-}
-class Cleric extends Spellcaster {
-	constructor() {
-		super('Cleric','avg','good','poor','good',clericSkillList,clericPrimarySpellAttribute,clericSpellsPerDay,clericSpellsKnown);
+
+	get ragesPerDay(level) {
+		return 1 + Math.floor(level/4);
 	}
-}
-class Druid extends Spellcaster {
-	constructor() {
-		super('Druid','avg','good','poor','good',druidSkillList,druidPrimarySpellAttribute,druidSpellsPerDay,druidSpellsKnown);
+
+	get trapSenseBonus(level) {
+		return Math.floor(level/3);
 	}
-}
-class Fighter extends BaseClass {
-	constructor() {
-		super('Fighter','good','good','poor','poor',fighterSkillList);
-	}
-}
-class Monk extends BaseClass {
-	constructor() {
-		super('Monk','avg','good','good','good',monkSkillList);
-	}
-}
-class Paladin extends Spellcaster {
-	constructor() {
-		super('Paladin'  ,'good','good','poor','poor',paladinSkillList,paladinPrimarySpellAttribute,paladinSpellsPerDay,paladinSpellsKnown);
-	}
-}
-class Ranger extends Spellcaster {
-	constructor() {
-		super('Ranger','good','good','good','poor',rangerSkillList,rangerPrimarySpellAttribute,rangerSpellsPerDay,rangerSpellsKnown);
-	}
-}
-class Rogue extends BaseClass {
-	constructor() {
-		super('Rogue','avg','poor','good','poor',rogueSkillList);
-	}
-}
-class Sorcerer extends Spellcaster {
-	constructor() {
-		super('Sorcerer','poor','poor','poor','good',sorcererSkillList,sorcererPrimarySpellAttribute,sorcererSpellsPerDay,sorcererSpellsKnown);
-	}
-}
-class Wizard extends Spellcaster {
-	constructor() {
-		super('Wizard','poor','poor','poor','good',wizardSkillList,wizardPrimarySpellAttribute,wizardSpellsPerDay,wizardSpellsKnown);
+
+	get damageReduction(level) {
+		if (level >= 7) {
+			return Math.floor((level - 4)/3);
+		}
+		else {
+			return 0;
+		}
 	}
 }
 
-/***********************************  DO I WANT TO CHANGE THE STRUCTURE SO THAT EACH CLASS IS INSTANTIATED WITH A LEVEL ??? ******************************/
-/* Declare character object */
-class Character {
-  constructor(characterName, characterClass, level, race, str, dex, con, int, wis, cha) {
+export class Bard extends Spellcaster {
+	constructor() {
+		super('Bard',6,6,'avg','poor','good','good',bardSkillList,bardBonusFeatMap,bardPrimarySpellAttribute,bardSpellsPerDay,bardSpellsKnown);
+	}
+	// Get inspire courage +
+	get inspireCourageBonus(level) {
+		if (level < 8) {
+			return 1;
+		}
+		else return 1 + Math.floor((level - 2)/6);
+	}
+}
+
+export class Cleric extends Spellcaster {
+	constructor() {
+		super('Cleric',8,2,'avg','good','poor','good',clericSkillList,clericBonusFeatMap,clericPrimarySpellAttribute,clericSpellsPerDay,clericSpellsKnown);
+	}
+	// Get turn/rebuke undead numbers in app
+}
+
+export class Druid extends Spellcaster {
+	constructor() {
+		super('Druid',8,4,'avg','good','poor','good',druidSkillList,druidBonusFeatMap,druidPrimarySpellAttribute,druidSpellsPerDay,druidSpellsKnown);
+	}
+	// Get wild shape / day, wild shape options
+	get wildShapesPerDay(level) {
+		let total = 0;
+
+		if (level >= 5) {
+			total++;
+		}
+		if (level >= 6) {
+			total++;
+		}
+		if (level >= 7 ) {
+			total++;
+		}
+		if (level >= 10) {
+			total++;
+		}
+		if (level >= 14) {
+			total++;
+		}
+		if (level >= 18) {
+			total++;
+		}
+		return total;
+	}
+
+	get elementalWildShapesPerDay(level) {
+		let total = 0;
+		if (level >= 16) {
+			total++;
+		}
+		if (level >= 18) {
+			total++;
+		}
+		if (level >= 20) {
+			total++;
+		}
+		return total;
+	}
+
+	get wildShapeOptions(level) {
+		let wildShapeOptions = [];
+
+		if (level >= 5) {
+			wildShapeOptions.push('Small Animal');
+			wildShapeOptions.push('Medium Animal');
+		}
+		if (level >= 8) {
+			wildShapeOptions.push('Large Animal');
+		}
+		if (level >= 11) {
+			wildShapeOptions.push('Tiny Animal');
+		}
+		if (level >= 15) {
+			wildShapeOptions.push('Huge Animal');
+		}
+		if (level >= 12) {
+			wildShapeOptions.push('Plant');
+		}
+		if (level >= 16) {
+			wildShapeOptions.push('Small, Medium, or Large Elemental');
+		}
+		if (level >= 20) {
+			wildShapeOptions.push('Huge Elemental');
+		}
+	}
+}
+export class Fighter extends BaseClass {
+	constructor() {
+		super('Fighter',10,2,'good','good','poor','poor',fighterSkillList,fighterBonusFeatMap);
+	}
+}
+export class Monk extends BaseClass {
+	constructor() {
+		super('Monk',8,4,'avg','good','good','good',monkSkillList,monkBonusFeatMap);
+	}
+	// Get speed bonus, ac bonus, unarmed damage, flurry of blows, slow fall
+	get kiStrikeTypes(level) {
+		let kiStrikeTypes = [];
+
+		if (level > 3) {
+			kiStrikeTypes.push('Magic');
+		}
+		if (level > 9) {
+			kiStrikeTypes.push('Lawful');
+		}
+		if (level > 16) {
+			kiStrikeTypes.push('Adamantine');
+		}
+
+		return kiStrikeTypes;
+	}
+
+	get slowFallDistance(level) {
+		if (level < 4) {
+			return 0;
+		}
+		else if (level < 20) {
+			return 10 * Math.floor(level / 2);
+		}
+		else { // level >= 20
+			return Infinity;
+		}
+	}
+
+	get unarmedDamage(level) { 
+		// unarmedDamage[0] is the number of dice, unarmedDamage[1] is the die size
+		let unarmedDamage;
+
+		if (level < 4) {
+			unarmedDamage = [1,6];
+		}
+		else if (level < 8) {
+			unarmedDamage = [1,8];
+		}
+		else if (level < 12) {
+			unarmedDamage = [1,10];
+		}
+		else if (level < 16) {
+			unarmedDamage = [2,6];
+		}
+		else if (level < 20) {
+			unarmedDamage = [2,8];
+		}
+		else {
+			unarmedDamage = [2,10];
+		}
+
+		return unarmedDamage;
+	}
+
+	get monkACBonus(level) {
+		return Math.floor(level / 5);
+	}
+
+	get monkSpeedBonus(level) {
+		return 10 * Math.floor(level / 3);
+	}
+
+	get flurryOfBlowsAdjustments(level) {
+		// Contains the negative offset from base attack bonus [0] and the number of attacks at highest bonus [1]
+		let flurryOfBlowsAdjustments;
+
+		if (level < 5) {
+			flurryOfBlowsAdjustments = [-2,2];
+		}
+		else if (level < 9) {
+			flurryOfBlowsAdjustments = [-1,2];
+		}
+		else {
+			flurryOfBlowsAdjustments = [0,3];
+		}
+
+		return flurryOfBlowsAdjustments;
+	}
+}
+export class Paladin extends Spellcaster {
+	constructor() {
+		super('Paladin',10,2,'good','good','poor','poor',paladinSkillList,paladinBonusFeatMap,paladinPrimarySpellAttribute,paladinSpellsPerDay,paladinSpellsKnown);
+	}
+	// Get smite evil / day, remove disease / day, lay on hands
+	get smiteEvilPerDay(level) {
+		return 1 + Math.floor(level/5);
+	}
+	get removeDiseasePerWeek(level) {
+		if (level < 6) {
+			return 0;
+		}
+		else {
+			return Math.floor((level - 3)/3);
+		}
+	}
+}
+export class Ranger extends Spellcaster {
+	constructor() {
+		super('Ranger',8,6,'good','good','good','poor',rangerSkillList,rangerBonusFeatMap,rangerPrimarySpellAttribute,rangerSpellsPerDay,rangerSpellsKnown);
+	}
+	// Get favored enemies, favored enemies' bonuses, combat style?
+	// Set favored enemies and bonus?
+
+}
+export class Rogue extends BaseClass {
+	constructor() {
+		super('Rogue',6,8,'avg','poor','good','poor',rogueSkillList,rogueBonusFeatMap);
+	}
+	// Get sneak attack, trap sense 
+	get sneakAttackBonus(level) {
+		return Math.floor((level + 1)/2);
+	}
+	get trapSenseBonus(level) {
+		return Math.floor(level/3);
+	}
+}
+export class Sorcerer extends Spellcaster {
+	constructor() {
+		super('Sorcerer',4,2,'poor','poor','poor','good',sorcererSkillList,sorcererBonusFeatMap,sorcererPrimarySpellAttribute,sorcererSpellsPerDay,sorcererSpellsKnown);
+	}
+}
+export class Wizard extends Spellcaster {
+	constructor() {
+		super('Wizard',4,2,'poor','poor','poor','good',wizardSkillList,wizardBonusFeatMap,wizardPrimarySpellAttribute,wizardSpellsPerDay,wizardSpellsKnown);
+	}
+}
+
+/* Declare character object 
+ * Save all of the info for these objects into database
+ * Except the character object, just save the name
+ * How will I work with the races? Race object
+ */
+
+class BaseRace {
+	constructor(raceName ) {
+		this._raceName = raceName;
+	}
+}
+
+export class Character {
+  constructor(characterName, characterClass, level, race, str, dex, con, int0, wis, cha) {
   	this._characterName = characterName;
   	this._level = level;
   	this._race = race;
   	this._str = str;
   	this._dex = dex;
   	this._con = con;
-  	this._int = int;
+  	this._int = int0;
   	this._wis = wis;
   	this._cha = cha;
 
@@ -417,6 +802,9 @@ class Character {
 	get characterClass() {
 		return this._characterClass.className;
 	}
+	get level() {
+		return this._level;
+	}
 
 	// Get Ability Scores
 	get str() {
@@ -428,7 +816,7 @@ class Character {
 	get con() {
 		return this._con;
 	}
-	get int() {
+	get int0() {
 		return this._int;
 	}
 	get wis() {
@@ -439,7 +827,6 @@ class Character {
 	}
 
 	// Get Ability Modifiers
-
 	get strMod() {
 		return Math.floor((this._str - 10)/2);
 	}
@@ -508,6 +895,11 @@ class Character {
   		return this._characterClass.primarySpellAttribute;
   	}
   }
-  // Get Spells Per Day
-  // Get Spells Known
+  // Get Spells Per Day and Spells Known
+  get spellsPerDay(spellLevel) {
+  	return this._characterClass.spellsPerDay(this._level, spellLevel);
+  }
+  get spellsKnown(spellLevel) {
+  	return this._characterClass.spellsKnown(this._level, spellLevel);
+  }
 }
