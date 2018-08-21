@@ -1,20 +1,29 @@
-import { BaseClass } from './dndClasses';
-//import React from 'react';
-//import ReactDOM from 'react-dom';
-
+/*jshint esversion: 6*/
+//import { BaseClassTest } from "./test.js";
+//import { Barbarian } from "./DnDClasses.js";
+//import React from "react";
+//import ReactDOM from "react-dom";
 // Listen for character class, then render new things as options are selected
 // Do I even have character class options?
-
+/*
 var selectedCharacterClass;
 var selectedCharacterLevel;
 var selectedCharacterRace;
+*/
+const dndClasses = ["Barbarian","Bard","Cleric","Druid","Fighter","Monk","Paladin","Ranger","Rogue","Sorcerer","Wizard"];
+/*
+const testThingy = new BaseClassTest();
 
-const dndClasses = ['Barbarian','Bard','Cleric','Druid','Fighter','Monk','Paladin','Ranger','Rogue','Sorcerer','Wizard'];
+ReactDOM.render(
+	React.createElement(
+		"p", null, `${testThingy.name}`),
+	document.getElementById("test")
+);*/
 
 // Character Class Selection
 class classButton extends React.Component {
 	render() {
-		return React.createElement('button',{className: 'character-selection', onClick: this.beginCharacterCreation}, `${this.props.characterClassName}`);
+		return React.createElement("button",{className: "character-selection", onClick: this.beginCharacterCreation}, `${this.props.characterClassName}`);
 	}
 
 	constructor(props) {
@@ -27,59 +36,59 @@ class classButton extends React.Component {
 		// Reset the form?
 		ReactDOM.render(
 			React.createElement(
-				'p', null, `${this.props.characterClassName} Selected. `),
-			document.getElementById('output-text'));
+				"p", null, `${this.props.characterClassName} Selected. `),
+			document.getElementById("output-text"));
 
-		selectedCharacterClass = this.props.characterClassName;
+		//selectedCharacterClass = this.props.characterClassName;
 
 		// Render Text
 		ReactDOM.render(
 			React.createElement(
-				'p',null,`Select your starting level`),
-			document.getElementById('level-selection')
-			);
+				"p", null, "Select your starting level"),
+			document.getElementById("level-selection")
+		);
 
 		// Render Level Input Form
 		ReactDOM.render(
 			React.createElement(
-				'input',{type: 'number', min: '1', max: '20', step: '1'},null),
-			document.getElementById('level-input')
-			);
+				"input",{id: "level-input-area", type: "number", min: "1", max: "20", step: "1"},null),
+			document.getElementById("level-input")
+		);
 
 		// Render Level Form Submission Button
 		ReactDOM.render(
 			React.createElement(levelSelection,null,null),
-			document.getElementById('level-submission')
-			);
+			document.getElementById("level-submission")
+		);
 	}
 }
 
 const dndListItems = dndClasses.map((dndClass) =>
 	React.createElement(classButton, {characterClassName: `${dndClass}`},null)
-	);
+);
 
-const startButton = document.querySelector('#startButton');
+const startButton = document.querySelector("#startButton");
 
 const startContent = React.createElement(
-	'p', null, `Select a Character Class`
-	);
+	"p", null, "Select a Character Class"
+);
 
-startButton.addEventListener('click', () => {
+startButton.addEventListener("click", () => {
 	ReactDOM.render(
 		startContent,
-		document.getElementById('output-text')
-		);
+		document.getElementById("output-text")
+	);
 
 	ReactDOM.render(
 		dndListItems,
-		document.getElementById('output-classes')
-		);
+		document.getElementById("output-classes")
+	);
 });
 
 // character level
 class levelSelection extends React.Component {
 	render() {
-		return 	React.createElement('button',{onClick: this.submitLevel}, `Submit Level`);
+		return React.createElement("button",{onClick: this.submitLevel}, "Submit Level");
 	}
 
 	constructor(props) {
@@ -88,7 +97,11 @@ class levelSelection extends React.Component {
 	}
 
 	submitLevel() {
-
+		let selectedLevel = document.getElementById("level-input-area").value;
+		ReactDOM.render(
+			React.createElement("p", null, `Selected Level: ${selectedLevel}`),
+			document.getElementById("level-selection")
+		);
 	}
 }
 
@@ -101,3 +114,5 @@ class levelSelection extends React.Component {
 // Explain class features?
 
 // Explain what will need to be picked (feats)
+
+// Name Character

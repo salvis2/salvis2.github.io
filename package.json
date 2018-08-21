@@ -1,0 +1,19 @@
+{
+  "name": "sebastianalvisdotcom",
+  "version": "1.0.0",
+  "description": "My Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salvis2/sebastianalvisdotcom.git"
+  },
+  "author": "Sebastian Alvis <sebialvis@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salvis2/sebastianalvisdotcom/issues"
+  },
+  "homepage": "https://github.com/salvis2/sebastianalvisdotcom#readme"
+}
