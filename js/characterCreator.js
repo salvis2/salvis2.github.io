@@ -19,6 +19,11 @@ ReactDOM.render(
 		"p", null, `${testThingy.attrib}`),
 	document.getElementById("test")
 );
+ReactDOM.render(
+	React.createElement(
+		"p", null, `hello`),
+	document.getElementById("test2")
+);
 
 // Character Class Selection
 class classButton extends React.Component {
