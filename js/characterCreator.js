@@ -11,7 +11,7 @@ var selectedCharacterLevel;
 var selectedCharacterRace;
 */
 const dndClasses = ["Barbarian","Bard","Cleric","Druid","Fighter","Monk","Paladin","Ranger","Rogue","Sorcerer","Wizard"];
-
+/*
 const testThingy = new BaseClassTest();
 
 ReactDOM.render(
@@ -19,6 +19,7 @@ ReactDOM.render(
 		"p", null, `${testThingy.attrib}`),
 	document.getElementById("test")
 );
+*/
 ReactDOM.render(
 	React.createElement(
 		"p", null, `hello`),
