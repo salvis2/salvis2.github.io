@@ -1,5 +1,5 @@
 /*jshint esversion: 6*/
-//import { BaseClassTest } from "./test.js";
+import { BaseClassTest } from "./test.js";
 //import { Barbarian } from "./DnDClasses.js";
 //import React from "react";
 //import ReactDOM from "react-dom";
@@ -11,14 +11,14 @@ var selectedCharacterLevel;
 var selectedCharacterRace;
 */
 const dndClasses = ["Barbarian","Bard","Cleric","Druid","Fighter","Monk","Paladin","Ranger","Rogue","Sorcerer","Wizard"];
-/*
+
 const testThingy = new BaseClassTest();
 
 ReactDOM.render(
 	React.createElement(
-		"p", null, `${testThingy.name}`),
+		"p", null, `${testThingy.attrib}`),
 	document.getElementById("test")
-);*/
+);
 
 // Character Class Selection
 class classButton extends React.Component {
