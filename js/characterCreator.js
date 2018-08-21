@@ -1,5 +1,5 @@
 /*jshint esversion: 6*/
-import { BaseClassTest } from "./test.js";
+//import { BaseClassTest } from "./test.js";
 //import { Barbarian } from "./DnDClasses.js";
 //import React from "react";
 //import ReactDOM from "react-dom";
