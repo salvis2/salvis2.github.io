@@ -1,8 +1,8 @@
 /*jshint esversion: 6*/
 //import { BaseClassTest } from "./test.js";
 //import { Barbarian } from "./DnDClasses.js";
-//import React from "react";
-//import ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
 // Listen for character class, then render new things as options are selected
 // Do I even have character class options?
 /*
