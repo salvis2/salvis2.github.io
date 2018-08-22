@@ -6,7 +6,7 @@
  * hit die and skill points are integers
  * classFeaturesMap and classBonusFeatsMap are Maps
  */
-/*jshint esversion: 6*/
+/* jshint esversion: 6 */
 
 
 class BaseClass {
@@ -52,12 +52,70 @@ class BaseClass {
 	get classBonusFeatsMap() {
 		return this._classBonusFeatsMap;
 	}
+	skillListAsArray() {
+		let skillList = this.skillList;
+		let skillListArray = [];
 
+		for (let i = 0; i < skillList.length; i++) {
+			if (skillList[i] === 1) {
+				skillListArray.push(skillNames[i]);
+			}
+		}
+
+		return skillListArray;
+	}
+
+	classFeaturesToArray(level) {
+		let classFeatures = this.classFeaturesMap;
+		if (classFeatures !== null) {
+			let classFeaturesArray = [];
+			for (let i = 0; i < classFeatures.length; i++) {
+				if (level >= classFeatures[i][0]) {
+					classFeaturesArray.push(classFeatures[i][1]);
+				}	else {
+					break;
+				}
+			}
+			return classFeaturesArray;
+		}
+		return ["None"];
+	}
+
+	classBonusFeatsToArray(level) {
+		let classBonusFeats = this.classBonusFeatsMap;
+		if (classBonusFeats !== null) {
+			let classBonusFeatsArray = [];
+			for (let i = 0; i < classBonusFeats.length; i++) {
+				if (level >= classBonusFeats[i][0]) {
+					classBonusFeatsArray.push(classBonusFeats[i][1]);
+				} else {
+					break;
+				}
+			}
+			return classBonusFeatsArray;
+		}
+		return ["None"];
+	}
+	// Will need to add additional class features for spellcasters and then class-specific ones
+	classStatstoArray(level) {
+		let classData = [];
+		classData.push(`Class Name: ${this.className}`);
+		classData.push(`Hit Die: d${this.hitDie}`);
+		classData.push(`Skill Points Per Level: ${this.baseSkillPointsPerLevel}`);
+		classData.push(`Base Attack Bonus: ${this.babScaling}`);
+		classData.push(`Fortitude Base Save: ${this.fortScaling}`);
+		classData.push(`Reflex Base Save: ${this.refScaling}`);
+		classData.push(`Will Base Save: ${this.willScaling}`);
+		classData.push(`Skill List: ${this.skillListAsArray()}`);
+		classData.push(`Class Features At Level ${level}: ${this.classFeaturesToArray(level)}`);
+		classData.push(`Bonus Feats Given By Level ${level}: ${this.classBonusFeatsToArray(level)}`);
+		return classData;
+	}
 }
 
 class Spellcaster extends BaseClass {
 	constructor (className, hitDie, baseSkillPointsPerLevel, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap, primarySpellAttribute, spellsPerDay, spellsKnown) {
-		super(className, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap);
+		super(className, hitDie, baseSkillPointsPerLevel, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap);
 		this._primarySpellAttribute = primarySpellAttribute;
 		this._spellsPerDay = spellsPerDay;
 		this._spellsKnown = spellsKnown;
@@ -66,14 +124,18 @@ class Spellcaster extends BaseClass {
 	get primarySpellAttribute() {
 		return this._primarySpellAttribute;
 	}
-	spellsPerDay(casterLevel, spellLevel) { // All spellcasters have this
+	spellsPerDay(casterLevel, spellLevel) {
+		// All spellcasters have this
+		// Out of bounds gives undefined
 		return this._spellsPerDay[casterLevel - 1][spellLevel];
 	}
-	spellsKnown(casterLevel, spellLevel) { // Not all spellcasters have this. null should mean that the caster knows all spells that they can cast for their level. 
+	spellsKnown(casterLevel, spellLevel) {
+		// Not all spellcasters have this. null should mean that the caster knows all spells that they can cast for their level. 
+		// out of bounds gives undefined
 		if (this._spellsKnown === null) {
 			return null;
 		}
-		else {	
+		else {
 			return this._spellsKnown[casterLevel - 1][spellLevel];
 		}
 	}
@@ -88,6 +150,8 @@ class Spellcaster extends BaseClass {
  */
 
 /* Declare skill lists */
+var skillNames = ["appraise", "autohypnosis", "balance", "bluff", "climb", "concentration", "craft", "craft", "craft", "decipher script", "diplomacy", "disable device", "disguise", "escape artist", "forgery", "gather information", "handle animal", "heal", "hide", "intimidate", "jump", "knowledge(arcana)", "knowledge (arch/eng)", "knowledge (dungeoneering)", "knowledge (geography)", "knowledge (history)", "knowledge (local)", "knowledge (nature)", "knowledge (nobility/royalty)", "knowledge (the planes)", "knowledge (psionics)", "knowledge (religion)", "listen", "move silently", "open lock", "perform (act)", "perform (comedy)", "perform (dance)", "perform (keyboard)", "perform (oratory)", "perform (percussion)", "perform (string intrument)", "perform (wind instrument)", "perform (sing)", "profession", "profession", "psicraft", "ride", "search", "sense motive", "sleight of hand", "spellcraft", "spot", "survival", "swim", "tumble", "use magic device", "use psionic device", "use rope"];
+
 const barbarianSkillList = [0,0,0,0,1,0,1,1,1,0,0,0,0,0,0,0,1,0,0,1,1, 0,0,0,0,0,0,0,0,0,0,0, 1,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,1,0,0,0,0,1,1,0,0,0,0];
 const bardSkillList      = [1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,0,0,1,0,1, 1,1,1,1,1,1,1,1,1,1,1, 1,1,0, 1,1,1,1,1,1,1,1,1,1,1, 1,0,0,1,1,1,1,0,0,1,1,1,1];
 const clericSkillList    = [0,1,0,0,0,1,1,1,1,0,1,0,0,0,0,0,0,1,0,0,0, 1,0,0,0,1,0,0,0,1,1,1, 0,0,0, 0,0,0,0,0,0,0,0,0,1,1, 1,0,0,0,0,0,1,0,0,0,0,0,0];
@@ -520,7 +584,7 @@ export class Barbarian extends BaseClass {
 	}
 }
 
-class Bard extends Spellcaster {
+export class Bard extends Spellcaster {
 	constructor() {
 		super("Bard",6,6,"avg","poor","good","good",bardSkillList, bardClassFeaturesMap, bardBonusFeatMap,bardPrimarySpellAttribute,bardSpellsPerDay,bardSpellsKnown);
 	}
@@ -533,14 +597,14 @@ class Bard extends Spellcaster {
 	}
 }
 
-class Cleric extends Spellcaster {
+export class Cleric extends Spellcaster {
 	constructor() {
 		super("Cleric",8,2,"avg","good","poor","good",clericSkillList,clericClassFeaturesMap,clericBonusFeatMap,clericPrimarySpellAttribute,clericSpellsPerDay,clericSpellsKnown);
 	}
 	// Get turn/rebuke undead numbers in app
 }
 
-class Druid extends Spellcaster {
+export class Druid extends Spellcaster {
 	constructor() {
 		super("Druid",8,4,"avg","good","poor","good",druidSkillList,druidClassFeaturesMap,druidBonusFeatMap,druidPrimarySpellAttribute,druidSpellsPerDay,druidSpellsKnown);
 	}
@@ -610,12 +674,14 @@ class Druid extends Spellcaster {
 		}
 	}
 }
-class Fighter extends BaseClass {
+
+export class Fighter extends BaseClass {
 	constructor() {
 		super("Fighter",10,2,"good","good","poor","poor",fighterSkillList,fighterClassFeaturesMap,fighterBonusFeatMap);
 	}
 }
-class Monk extends BaseClass {
+
+export class Monk extends BaseClass {
 	constructor() {
 		super("Monk",8,4,"avg","good","good","good",monkSkillList,monkClassFeaturesMap,monkBonusFeatMap);
 	}
@@ -699,7 +765,7 @@ class Monk extends BaseClass {
 		return flurryOfBlowsAdjustments;
 	}
 }
-class Paladin extends Spellcaster {
+export class Paladin extends Spellcaster {
 	constructor() {
 		super("Paladin",10,2,"good","good","poor","poor",paladinSkillList,paladinClassFeaturesMap,paladinBonusFeatMap,paladinPrimarySpellAttribute,paladinSpellsPerDay,paladinSpellsKnown);
 	}
@@ -716,7 +782,8 @@ class Paladin extends Spellcaster {
 		}
 	}
 }
-class Ranger extends Spellcaster {
+
+export class Ranger extends Spellcaster {
 	constructor() {
 		super("Ranger",8,6,"good","good","good","poor",rangerSkillList,rangerClassFeaturesMap,rangerBonusFeatMap,rangerPrimarySpellAttribute,rangerSpellsPerDay,rangerSpellsKnown);
 	}
@@ -724,7 +791,8 @@ class Ranger extends Spellcaster {
 	// Set favored enemies and bonus?
 
 }
-class Rogue extends BaseClass {
+
+export class Rogue extends BaseClass {
 	constructor() {
 		super("Rogue",6,8,"avg","poor","good","poor",rogueSkillList,rogueClassFeaturesMap,rogueBonusFeatMap);
 	}
@@ -736,12 +804,14 @@ class Rogue extends BaseClass {
 		return Math.floor(level/3);
 	}
 }
-class Sorcerer extends Spellcaster {
+
+export class Sorcerer extends Spellcaster {
 	constructor() {
 		super("Sorcerer",4,2,"poor","poor","poor","good",sorcererSkillList,sorcererClassFeaturesMap,sorcererBonusFeatMap,sorcererPrimarySpellAttribute,sorcererSpellsPerDay,sorcererSpellsKnown);
 	}
 }
-class Wizard extends Spellcaster {
+
+export class Wizard extends Spellcaster {
 	constructor() {
 		super("Wizard",4,2,"poor","poor","poor","good",wizardSkillList,wizardClassFeaturesMap,wizardBonusFeatMap,wizardPrimarySpellAttribute,wizardSpellsPerDay,wizardSpellsKnown);
 	}
