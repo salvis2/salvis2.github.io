@@ -1,10 +1,13 @@
 /* jshint esversion:6 */
 const path = require("path");
+const webpack = require("webpack");
 
-var config = {
-	entry: ".\\js\\characterCreator.js",
+module.exports = {
+	entry: path.resolve(__dirname,".\\js\\characterCreator.js"),
+	mode: "development",
 	output: {
 		path: path.resolve(__dirname, "dndTools\\characterCreator\\"),
+		publicPath: "dndTools/characterCreator/",
 		filename: "index.js",
 	},
 	devServer: {
@@ -14,16 +17,20 @@ var config = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
+				test: /\.(.js|jsx)$/,
 				exclude: /node_modules/,
 				loader: "babel-loader",
-				query: {
-					presets: ["es2015", "react"]
+				options: {
+					presets: ["env", "es2015", "react"]
 				}
+			},
+			{
+				test: /].css$/,
+				use: [ "style-loader", "css-loader" ]
 			}
 		]
 	},
+	resolve: { extensions: ["*", ".js", ".jsx"] },
 	devtool: "source-map",
-	mode: "development"
-}
-module.exports = config;
+	plugins: [ new webpack.HotModuleReplacementPlugin() ]
+};
