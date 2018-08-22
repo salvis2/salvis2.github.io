@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 // Menu Bar Functionality
 const $homeButton = $('.home-page-button');
 const $dndButton = $('.dnd-page-button');

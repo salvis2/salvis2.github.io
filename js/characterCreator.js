@@ -22,10 +22,10 @@ ReactDOM.render(
 
 ReactDOM.render(
 	React.createElement(
-		"p", null, `hello`),
+		"p", null, "hello"),
 	document.getElementById("test2")
-);
-*/
+);*/
+
 // Character Class Selection
 class classButton extends React.Component {
 	render() {
