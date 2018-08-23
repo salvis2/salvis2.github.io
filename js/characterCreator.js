@@ -26,7 +26,7 @@ ReactDOM.render(
 );
 
 // Display character stats for selected class and level
-class characterResults extends React.Component {
+class CharacterResults extends React.Component {
 	render() {
 		// Using this.state.usedCharacterClass
 		let characterClass;
@@ -89,8 +89,8 @@ class characterResults extends React.Component {
 		super(props);
 
 		this.state = {
-			usedCharacterClass: this.props.characterClass,
-			usedLevel: this.props.characterLevel
+			usedCharacterClass: selectedCharacterClass,
+			usedLevel: selectedCharacterLevel
 		};
 	}
 }
@@ -115,7 +115,7 @@ class levelSelection extends React.Component {
 		);
 
 		ReactDOM.render(
-			React.createElement(characterResults,
+			React.createElement(CharacterResults,
 				{ characterClass: selectedCharacterClass, characterLevel: selectedCharacterLevel },
 				null),
 			document.getElementById("character-output")
@@ -142,6 +142,8 @@ class classButton extends React.Component {
 		// Highlight the button?
 		// Reset the form?
 		selectedCharacterClass = this.props.characterClassName;
+
+		ReactDOM
 
 		ReactDOM.render(
 			React.createElement(
