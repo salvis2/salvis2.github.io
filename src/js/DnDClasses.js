@@ -1,4 +1,4 @@
-/* 
+/*
  * className is a string
  * babScaling can be "good", "avg", or "poor"
  * fort/ref/willScaling can be "good", "poor"

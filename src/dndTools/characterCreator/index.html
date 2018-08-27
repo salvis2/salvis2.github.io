@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Using Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  
+    <!-- My CSS File -->
+    <link rel="stylesheet" href="../../css/main.css" type="text/css">
+    <link rel="stylesheet" href="../../css/characterCreator.css" type="text/css">
+
+    <title>Character Creator</title>
+
+  </head>
+
+  <body>
+  
+    <header class="container-fluid">
+        	<!-- Header -->
+      <nav class="navbar-fixed-top">
+        <div class="home-page-button">
+          Sebastian Alvis
+        </div>
+  
+        <div class="dnd-page-button">
+          D&amp;D Applications
+        </div>
+  
+         <!-- Nice Picture of You -->
+        <div>
+          <img src="../../img/Seb_dece_pic.jpg" alt="Sebastian Alvis" id="main_img" width="72" height="96"/>
+        </div>
+      </nav>
+  
+      <!-- Bootstrap Navbars -->
+      <nav class="navbar-fixed-top hide">
+        <div class="btn-group">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+            <a href="http://sebastianalvis.com/">Sebastian Alvis</a>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="../../index.html#about_me">About Me</a>
+            <a class="dropdown-item" href="../../index.html#research_exp">Research Experience</a>
+            <a class="dropdown-item" href="../../index.html#coding_exp">Coding Experience</a>
+            <a class="dropdown-item" href="../../index.html#resume_cv">Resume / CV</a>
+            <a class="dropdown-item" href="../../index.html#dnd_apps">D&amp;D Applications</a>
+          </div>
+  
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+            D&amp;D Applications
+          </button>
+          <div class="dropdown-manu">
+            <a class="dropdown-item" href="http://sebastianalvis.com/dndTools/index.html">Dice / Stat Roller</a>
+          </div>
+        </div>
+      </nav>
+  
+    </header>
+     
+    <!-- Dropdown Menus --> 
+    <nav class="">
+      <div class="home-page-menu hide">
+        <ul>
+          <li><a href="../../index.html#about_me">About Me</a></li>
+          <li><a href="../../index.html#research_exp">Research Experience</a></li>
+          <li><a href="../../index.html#coding_exp">Coding Experience</a></li>
+          <li><a href="../../index.html#resume_cv">Resume / CV</a></li>
+          <li><a href="../../index.html#dnd_apps">D&amp;D Applications</a></li>
+        </ul>
+      </div>
+      
+      <div class="dnd-page-menu hide">
+        <ul>
+          <li><a href="../index.html">Basic Dice Roller</a></li>
+          <li><a href="#">Speed Comparison Tool</a></li>
+          <li><a href="#">Ability Score Generator</a></li>
+          <li><a href="./index.html">Character Creation</a></li>
+        </ul>
+      </div>
+    </nav>
+  
+    <!-- Main Body of Page -->
+    <section class="container">
+  
+      <h2>Interactive Character Creator</h2>
+      <div>
+        <p>This character creator currently only supports the Dungeons and Dragons v3.5 Player's Handbook classes. Races are not yet supported. Multiclassing is not yet supported.</p>
+      </div>
+      <div id="test2"></div>
+      <div id="startCharacter"></div>
+      <button id="startButton">Create a New Character</button>
+      <div id="output-text"></div>
+      <div id="output-classes"></div>
+      <div id="class-submit-button"></div>
+      <div class="container">
+        <div id="level-selection"></div>
+        <div id="level-input"></div>
+        <div id="level-submission"></div>
+      </div>
+      <div id="character-output"></div>
+
+    </section>
+  
+    <footer class="container-fluid">  
+      <p class="row">Contact Information</p>
+      <ul class="row">
+        <li>sebialvis@gmail.com</li>
+        <li>719-510-4685</li>
+        <li><a href="https://www.linkedin.com/in/sebastian-alvis-1809ab14b/" target="_blank">
+          <img src="../../img/Logo-2C-21px-TM.png" alt="LinkedIn Logo"/>
+        </a></li>
+        <li><a href="https://github.com/salvis2" target="_blank"><img src="../../img/GitHub-Mark-32px.png" alt="GitHub Logo"/></a></li>
+      </ul>
+    </footer>
+
+    <!-- jQuery, PopperJS, Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <!-- React
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>  -->
+
+    <!-- JSX 
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+
+    <!-- My JS -->
+    <script src="../../js/main.js"></script>
+    <!-- <script src="../../js/DnDClasses.js" type="application/javascript"></script>
+    <script src="../../js/characterCreator.js" type="application/javascript"></script> -->
+    <script src="../../js/index.js"></script>
+
+  </body>
+</html>

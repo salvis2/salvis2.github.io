@@ -1,14 +1,17 @@
 /* jshint esversion:6 */
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const htmlWebpackPlugin = new HtmlWebpackPlugin({
+	template: path.join(__dirname, "\\src\\dndTools\\characterCreator\\index.html"),
+	filename: "./index.html"
+});
 
 module.exports = {
-	entry: path.resolve(__dirname,".\\js\\characterCreator.js"),
-	mode: "development",
+	entry: path.join(__dirname, "\\src\\js\\characterCreator.js"),
 	output: {
-		path: path.resolve(__dirname, "dndTools\\characterCreator\\"),
-		publicPath: "dndTools/characterCreator/",
-		filename: "index.js",
+		path: path.join(__dirname, "\\src\\js\\"),
+		filename: "index.js"
 	},
 	devServer: {
 		inline: true,
@@ -17,7 +20,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(.js|jsx)$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				loader: "babel-loader",
 				options: {
@@ -25,12 +28,14 @@ module.exports = {
 				}
 			},
 			{
-				test: /].css$/,
+				test: /\.css$/,
 				use: [ "style-loader", "css-loader" ]
 			}
 		]
 	},
 	resolve: { extensions: ["*", ".js", ".jsx"] },
-	devtool: "source-map",
-	plugins: [ new webpack.HotModuleReplacementPlugin() ]
+	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
+		htmlWebpackPlugin
+	]
 };
