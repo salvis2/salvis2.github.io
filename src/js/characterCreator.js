@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import * as dnd from "./DnDClasses.js";
-import { ClassButtonList } from "./ClassButton.js";
+import { ClassButtonList, ClassButton } from "./ClassButton.js";
 import CharacterResults from "./CharacterResults.js";
 import "../css/characterCreator.css";
 import "../css/main.css";
