@@ -3,14 +3,14 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
-	template: path.join(__dirname, "/src/dndTools/characterCreator/index.html"),
+	template: path.join(__dirname, "\\src\\dndTools\\characterCreator\\index.html"),
 	filename: "./index.html"
 });
 
 module.exports = {
-	entry: path.join(__dirname, "/src/js/characterCreator.js"),
+	entry: path.join(__dirname, "\\src\\js\\characterCreator.js"),
 	output: {
-		path: path.join(__dirname, "/src/js/"),
+		path: path.join(__dirname, "\\src\\js\\"),
 		filename: "index.js"
 	},
 	devServer: {

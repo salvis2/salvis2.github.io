@@ -21,7 +21,7 @@ export class ClassButton extends React.Component {
 
 	beginCharacterCreation() {
 		// Highlight the button?
-		//this.addClass("active");
+		// this.addClass("active");
 		// Remove other selection
 
 		// Add name to parent state
@@ -41,7 +41,7 @@ export class ClassButtonList extends React.Component {
 				React.createElement(ClassButton, { characterClassName: `${dndClass}` }, null)
 			)
 		);
-		return React.createElement("ul", null, { classButtonList });
+		return React.createElement("ul", null, classButtonList);
 	}
 
 	constructor(props) {
