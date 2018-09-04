@@ -8,6 +8,11 @@ button.character-selection {
 	margin: 0rem 0.1rem;
 }
 
+li {
+	margin: 0rem;
+	padding: 0rem;
+}
+
 section div {
 	margin-top: 1rem;
 }

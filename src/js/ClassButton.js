@@ -25,30 +25,13 @@ export class ClassButton extends React.Component {
 		// Remove other selection
 
 		// Add name to parent state
+		const newClass = this.props.characterClassName;
+		this.props.changeClass(newClass);
 
 		// Display Selection
 		ReactDOM.render(
 			React.createElement(
-				"p", null, `${this.props.characterClassName} Selected. `),
+				"p", null, `${newClass} Selected.`),
 			document.getElementById("output-text"));
-	}
-}
-
-export class ClassButtonList extends React.Component {
-	render() {
-		const classButtonList = this.props.characterClasses.map((dndClass) =>
-			React.createElement("li", null,
-				React.createElement(ClassButton, { characterClassName: `${dndClass}` }, null)
-			)
-		);
-		return React.createElement("ul", null, classButtonList);
-	}
-
-	constructor(props) {
-		// Takes in an array called characterClasses of what to make ClassButtons for
-		super(props);
-		this.state = {
-			selectedClass: null
-		};
 	}
 }

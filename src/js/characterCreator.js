@@ -2,8 +2,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import * as dnd from "./DnDClasses.js";
-import { ClassButtonList, ClassButton } from "./ClassButton.js";
-import CharacterResults from "./CharacterResults.js";
+import { ClassButtonList } from "./ClassButtonList.js";
+import { CharacterResults } from "./CharacterResults.js";
 import "../css/characterCreator.css";
 import "../css/main.css";
 // Listen for character class, then render new things as options are selected
@@ -13,15 +13,6 @@ var selectedCharacterClass;
 var selectedCharacterLevel;
 // let selectedCharacterRace;
 
-/*
-const testThingy = new dnd.Bard();
-
-ReactDOM.render(
-	React.createElement(
-		"p", null, `${testThingy.classFeaturesMap}`),
-	document.getElementById("test")
-);
-*/
 // Is the script working at all?
 ReactDOM.render(
 	React.createElement(
@@ -50,10 +41,6 @@ startButton.addEventListener("click", () => {
 	ReactDOM.render(
 		React.createElement(ClassButtonList, { characterClasses: displayedDndClasses }, null),
 		document.getElementById("output-classes")
-	);
-
-	ReactDOM.render(
-		submitClass, document.getElementById("class-submit-button")
 	);
 });
 
