@@ -7,6 +7,16 @@ import * as dnd from "./DnDClasses.js";
 
 // Display character stats for selected class and level
 export class CharacterResults extends React.Component {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			usedCharacterClass: this.props.characterClass,
+			usedLevel: this.props.characterLevel
+		};
+	}
+
 	render() {
 		// Using this.state.usedCharacterClass
 		let characterClass;
@@ -48,11 +58,11 @@ export class CharacterResults extends React.Component {
 			characterClass = null;
 		}
 
+		// Base Class Options
 		let classData = characterClass.classStatstoArray(this.state.usedLevel);
 		let classDataMap = classData.map((data) =>
 			React.createElement("p", null, data)
 		);
-		// Base Class Options
 
 		// Spellcaster Options
 
@@ -62,14 +72,5 @@ export class CharacterResults extends React.Component {
 
 		// Return Statement
 		return React.createElement("p", null, classDataMap);
-	}
-
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			usedCharacterClass: this.props.selectedCharacterClass,
-			usedLevel: this.props.selectedCharacterLevel
-		};
 	}
 }

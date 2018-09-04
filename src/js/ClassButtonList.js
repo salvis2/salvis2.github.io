@@ -20,12 +20,17 @@ export class ClassButtonList extends React.Component {
 		super(props);
 		this.changeClass = this.changeClass.bind(this);
 		this.state = {
-			selectedClass: null
+			selectedClass: "yeet you don't have a class yet"
 		};
 	}
-	changeClass(newClass){
+	
+	changeClass(newClass) {
 		this.setState({
 			selectedClass: newClass
 		});
+	}
+
+	get selectedClass() {
+		return this.state.selectedClass;
 	}
 }

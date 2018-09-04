@@ -1,8 +1,7 @@
 /* jshint esversion: 6 */
-import React from "react";
-import ReactDOM from "react-dom";
-import * as dnd from "./DnDClasses.js";
-import { ClassButtonList } from "./ClassButtonList.js";
+import React 				from "react";
+import ReactDOM 			from "react-dom";
+import { ClassButtonList }  from "./ClassButtonList.js";
 import { CharacterResults } from "./CharacterResults.js";
 import "../css/characterCreator.css";
 import "../css/main.css";
@@ -31,6 +30,8 @@ const startContent =
 	React.createElement(
 		"p", null, "Select a Character Class");
 
+let classButtonList = React.createElement(ClassButtonList, { characterClasses: displayedDndClasses }, null);
+
 // Start Character Creation Function
 startButton.addEventListener("click", () => {
 	ReactDOM.render(
@@ -39,17 +40,25 @@ startButton.addEventListener("click", () => {
 	);
 
 	ReactDOM.render(
-		React.createElement(ClassButtonList, { characterClasses: displayedDndClasses }, null),
+		classButtonList,
 		document.getElementById("output-classes")
+	);
+
+	ReactDOM.render(
+		submitClass,
+		document.getElementById("class-submit-button")
 	);
 });
 
 // Character Selection Submission Button
 const submitClass =
-	React.createElement("button", { onClick: submitCharacterClass() }, "Submit Class Selection");
+	React.createElement("button", { onClick: submitCharacterClass }, "Submit Class Selection");
 
 // Character Selection Submission Function
 function submitCharacterClass() {
+
+	selectedCharacterClass = document.getElementById("output-classes").selectedClass;
+
 	// Render Text
 	ReactDOM.render(
 		React.createElement(
@@ -66,17 +75,17 @@ function submitCharacterClass() {
 
 	// Render Level Form Submission Button
 	ReactDOM.render(
-		React.createElement("button", { onClick: submitLevel() }, "Submit Level Selection"),
+		React.createElement("button", { onClick: submitLevel }, "Submit Level Selection"),
 		document.getElementById("level-submission")
 	);
-}
+};
 
 // Level Selection Submission
 function submitLevel() {
 	selectedCharacterLevel = document.getElementById("level-input-area").value;
 
 	ReactDOM.render(
-		React.createElement("p", null, `Selected Level: ${selectedCharacterLevel}`),
+		React.createElement("p", null, `Selected Character: Level ${selectedCharacterLevel} ${selectedCharacterClass}`),
 		document.getElementById("level-selection")
 	);
 
