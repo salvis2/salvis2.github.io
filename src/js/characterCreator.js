@@ -1,16 +1,12 @@
 /* jshint esversion: 6 */
 import React 				from "react";
 import ReactDOM 			from "react-dom";
-import { ClassButtonList }  from "./ClassButtonList.js";
+import { ClassButtonList } 	from "./ClassButtonList.js";
 import { CharacterResults } from "./CharacterResults.js";
 import "../css/characterCreator.css";
 import "../css/main.css";
 // Listen for character class, then render new things as options are selected
 // Do I even have character class options?
-
-var selectedCharacterClass;
-var selectedCharacterLevel;
-// let selectedCharacterRace;
 
 // Is the script working at all?
 ReactDOM.render(
@@ -23,92 +19,132 @@ ReactDOM.render(
 const displayedDndClasses = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter",
 	"Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Wizard"];
 
+let classButtonList =
+	React.createElement(ClassButtonList,
+		{ characterClasses: displayedDndClasses },
+		null);
+
 // Start Character Creation Button
-const startButton = document.querySelector("#startButton");
+// const startButton = document.querySelector("#startButton");
 
-const startContent =
-	React.createElement(
-		"p", null, "Select a Character Class");
+export class CharacterCreator extends React.Component {
+	constructor(props) {
+		super(props);
 
-let classButtonList = React.createElement(ClassButtonList, { characterClasses: displayedDndClasses }, null);
+		this.submitCharacterClass = this.submitCharacterClass.bind(this);
+		this.submitLevel = this.submitLevel.bind(this);
+		this.startCharacterCreation = this.startCharacterCreation.bind(this);
 
-// Start Character Creation Function
-startButton.addEventListener("click", () => {
-	ReactDOM.render(
-		startContent,
-		document.getElementById("output-text")
-	);
+		this.state = {
+			selectedCharacterClass: null,
+			selectedCharacterLevel: null,
+			selectedCharacterRace: null
+		};
+	}
+	// var selectedCharacterClass;
+	// var selectedCharacterLevel;
+	// let selectedCharacterRace;
+	render() {
+		let startButton = React.createElement("button",
+			{ onClick: this.startCharacterCreation },
+			"Begin Character Creation");
 
-	ReactDOM.render(
-		classButtonList,
-		document.getElementById("output-classes")
-	);
+		return React.createElement("div",
+			null,
+			startButton);
+		// 7630
+	}
 
-	ReactDOM.render(
-		submitClass,
-		document.getElementById("class-submit-button")
-	);
-});
+	// Start Character Creation Function
+	startCharacterCreation() {
+		const startContent =
+			React.createElement(
+				"p", null, "Select a Character Class");
 
-// Character Selection Submission Button
-const submitClass =
-	React.createElement("button", { onClick: submitCharacterClass }, "Submit Class Selection");
+		// Character Selection Submission Button
+		const submitClass =
+			React.createElement("button",
+				{ onClick: this.submitCharacterClass },
+				"Submit Class Selection");
 
-// Character Selection Submission Function
-function submitCharacterClass() {
+		ReactDOM.render(
+			startContent,
+			document.getElementById("output-text")
+		);
 
-	selectedCharacterClass = document.getElementById("output-classes").selectedClass;
+		ReactDOM.render(
+			classButtonList,
+			document.getElementById("output-classes")
+		);
 
-	// Render Text
-	ReactDOM.render(
-		React.createElement(
-			"p", null, "Select your starting level"),
-		document.getElementById("level-selection")
-	);
+		ReactDOM.render(
+			submitClass,
+			document.getElementById("class-submit-button")
+		);
+	};
 
-	// Render Level Input Form
-	ReactDOM.render(
-		React.createElement(
-			"input", { id: "level-input-area", type: "number", min: "1", max: "20", step: "1" }, null),
-		document.getElementById("level-input")
-	);
+	// Character Selection Submission Function
+	submitCharacterClass() {
+		// selectedCharacterClass = document.getElementById("output-classes").getSelectedClass;
+		this.state.selectedCharacterClass = classButtonList.getSelectedClass;
 
-	// Render Level Form Submission Button
-	ReactDOM.render(
-		React.createElement("button", { onClick: submitLevel }, "Submit Level Selection"),
-		document.getElementById("level-submission")
-	);
-};
+		// Render Text
+		ReactDOM.render(
+			React.createElement(
+				"p", null, "Select your starting level"),
+			document.getElementById("level-selection")
+		);
 
-// Level Selection Submission
-function submitLevel() {
-	selectedCharacterLevel = document.getElementById("level-input-area").value;
+		// Render Level Input Form
+		ReactDOM.render(
+			React.createElement(
+				"input", { id: "level-input-area", type: "number", min: "1", max: "20", step: "1" }, null),
+			document.getElementById("level-input")
+		);
 
-	ReactDOM.render(
-		React.createElement("p", null, `Selected Character: Level ${selectedCharacterLevel} ${selectedCharacterClass}`),
-		document.getElementById("level-selection")
-	);
+		// Render Level Form Submission Button
+		ReactDOM.render(
+			React.createElement("button", { onClick: this.submitLevel }, "Submit Level Selection"),
+			document.getElementById("level-submission")
+		);
+	}
 
-	ReactDOM.render(
-		React.createElement(CharacterResults,
-			{ characterClass: selectedCharacterClass, characterLevel: selectedCharacterLevel },
-			null),
-		document.getElementById("character-output")
-	);
+	// Level Selection Submission
+	submitLevel() {
+		this.state.selectedCharacterLevel = document.getElementById("level-input-area").value;
+
+		ReactDOM.render(
+			React.createElement("p", null,
+				`Selected Character: Level ${this.state.selectedCharacterLevel} ${this.state.selectedCharacterClass}`),
+			document.getElementById("level-selection")
+		);
+
+		ReactDOM.render(
+			React.createElement(CharacterResults,
+				{ characterClass: this.state.selectedCharacterClass, characterLevel: this.state.selectedCharacterLevel },
+				null),
+			document.getElementById("character-output")
+		);
+	}
+
+	// Display Selection Results
+
+	// Roll or input ability scores
+
+	// Assign skill points
+
+	// Pick bonus feats?
+
+	// Explain class features?
+
+	// Explain what will need to be picked (feats)
+
+	// Name Character
 }
 
-// Display Selection Results
-
-
-
-// Roll or input ability scores
-
-// Assign skill points
-
-// Pick bonus feats?
-
-// Explain class features?
-
-// Explain what will need to be picked (feats)
-
-// Name Character
+ReactDOM.render(
+	React.createElement(
+		CharacterCreator, null, null
+	),
+	document.getElementById("start-character")
+);
