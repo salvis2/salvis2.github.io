@@ -19,11 +19,6 @@ ReactDOM.render(
 const displayedDndClasses = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter",
 	"Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Wizard"];
 
-let classButtonList =
-	React.createElement(ClassButtonList,
-		{ characterClasses: displayedDndClasses },
-		null);
-
 // Start Character Creation Button
 // const startButton = document.querySelector("#startButton");
 
@@ -34,6 +29,8 @@ export class CharacterCreator extends React.Component {
 		this.submitCharacterClass = this.submitCharacterClass.bind(this);
 		this.submitLevel = this.submitLevel.bind(this);
 		this.startCharacterCreation = this.startCharacterCreation.bind(this);
+		this.changeSelectedCharacterClass = this.changeSelectedCharacterClass.bind(this);
+		this.displaySelectionResults = this.displaySelectionResults.bind(this);
 
 		this.state = {
 			selectedCharacterClass: null,
@@ -41,9 +38,7 @@ export class CharacterCreator extends React.Component {
 			selectedCharacterRace: null
 		};
 	}
-	// var selectedCharacterClass;
-	// var selectedCharacterLevel;
-	// let selectedCharacterRace;
+
 	render() {
 		let startButton = React.createElement("button",
 			{ onClick: this.startCharacterCreation },
@@ -53,6 +48,13 @@ export class CharacterCreator extends React.Component {
 			null,
 			startButton);
 		// 7630
+	}
+
+	// Change state.selectedCharacterClass
+	changeSelectedCharacterClass(newClass) {
+		this.setState({
+			selectedCharacterClass: newClass
+		});
 	}
 
 	// Start Character Creation Function
@@ -66,6 +68,13 @@ export class CharacterCreator extends React.Component {
 			React.createElement("button",
 				{ onClick: this.submitCharacterClass },
 				"Submit Class Selection");
+
+		// Class Button List
+		let classButtonList =
+			React.createElement(ClassButtonList,
+				{ characterClasses: displayedDndClasses,
+					changeSelectedCharacterClass: this.changeSelectedCharacterClass },
+				null);
 
 		ReactDOM.render(
 			startContent,
@@ -85,9 +94,6 @@ export class CharacterCreator extends React.Component {
 
 	// Character Selection Submission Function
 	submitCharacterClass() {
-		// selectedCharacterClass = document.getElementById("output-classes").getSelectedClass;
-		this.state.selectedCharacterClass = classButtonList.getSelectedClass;
-
 		// Render Text
 		ReactDOM.render(
 			React.createElement(
@@ -115,19 +121,28 @@ export class CharacterCreator extends React.Component {
 
 		ReactDOM.render(
 			React.createElement("p", null,
-				`Selected Character: Level ${this.state.selectedCharacterLevel} ${this.state.selectedCharacterClass}`),
+				`Selected Character: Level ${this.state.selectedCharacterLevel}
+				${this.state.selectedCharacterClass}`),
 			document.getElementById("level-selection")
 		);
 
 		ReactDOM.render(
-			React.createElement(CharacterResults,
-				{ characterClass: this.state.selectedCharacterClass, characterLevel: this.state.selectedCharacterLevel },
-				null),
-			document.getElementById("character-output")
+			React.createElement(
+				"button", { onClick: this.displaySelectionResults }, "Display Results"),
+			document.getElementById("display-results")
 		);
 	}
 
 	// Display Selection Results
+	displaySelectionResults() {
+		ReactDOM.render(
+			React.createElement(CharacterResults,
+				{ characterClass: this.state.selectedCharacterClass,
+					characterLevel: this.state.selectedCharacterLevel },
+				null),
+			document.getElementById("character-output")
+		);
+	}
 
 	// Roll or input ability scores
 

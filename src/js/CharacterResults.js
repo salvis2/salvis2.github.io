@@ -2,12 +2,11 @@
 // CharacterResults Component for the Character Creator Page
 
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import * as dnd from "./DnDClasses.js";
 
 // Display character stats for selected class and level
 export class CharacterResults extends React.Component {
-
 	constructor(props) {
 		super(props);
 

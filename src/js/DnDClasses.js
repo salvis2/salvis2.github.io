@@ -10,7 +10,7 @@
 
 
 class BaseClass {
-	constructor (className, hitDie, baseSkillPointsPerLevel, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap) {
+	constructor(className, hitDie, baseSkillPointsPerLevel, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap) {
 		this._className = className;
 		this._hitDie = hitDie;
 		this._baseSkillPointsPerLevel = baseSkillPointsPerLevel;
@@ -58,7 +58,7 @@ class BaseClass {
 
 		for (let i = 0; i < skillList.length; i++) {
 			if (skillList[i] === 1) {
-				skillListArray.push(skillNames[i]);
+				skillListArray.push(` ${skillNames[i]}`);
 			}
 		}
 
@@ -71,7 +71,7 @@ class BaseClass {
 			let classFeaturesArray = [];
 			for (let i = 0; i < classFeatures.length; i++) {
 				if (level >= classFeatures[i][0]) {
-					classFeaturesArray.push(classFeatures[i][1]);
+					classFeaturesArray.push(` ${classFeatures[i][1]}`);
 				}	else {
 					break;
 				}
@@ -87,7 +87,7 @@ class BaseClass {
 			let classBonusFeatsArray = [];
 			for (let i = 0; i < classBonusFeats.length; i++) {
 				if (level >= classBonusFeats[i][0]) {
-					classBonusFeatsArray.push(classBonusFeats[i][1]);
+					classBonusFeatsArray.push(` ${classBonusFeats[i][1]}`);
 				} else {
 					break;
 				}
@@ -114,7 +114,7 @@ class BaseClass {
 }
 
 class Spellcaster extends BaseClass {
-	constructor (className, hitDie, baseSkillPointsPerLevel, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap, primarySpellAttribute, spellsPerDay, spellsKnown) {
+	constructor(className, hitDie, baseSkillPointsPerLevel, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap, primarySpellAttribute, spellsPerDay, spellsKnown) {
 		super(className, hitDie, baseSkillPointsPerLevel, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap);
 		this._primarySpellAttribute = primarySpellAttribute;
 		this._spellsPerDay = spellsPerDay;
@@ -559,7 +559,8 @@ export class Barbarian extends BaseClass {
 		else if (level >= 20) {
 			rageBonuses = ["Mighty",8,8,4,-2];
 		}
-		else { // Barbarian levels 1 - 10
+		else { 
+			// Barbarian levels 1 - 10
 			rageBonuses = ["Normal",4,4,2,-2];
 		}
 
@@ -578,9 +579,7 @@ export class Barbarian extends BaseClass {
 		if (level >= 7) {
 			return Math.floor((level - 4)/3);
 		}
-		else {
-			return 0;
-		}
+		return 0;
 	}
 }
 
@@ -593,7 +592,7 @@ export class Bard extends Spellcaster {
 		if (level < 8) {
 			return 1;
 		}
-		else return 1 + Math.floor((level - 2)/6);
+		return 1 + Math.floor((level - 2) / 6);
 	}
 }
 
@@ -709,9 +708,8 @@ export class Monk extends BaseClass {
 		else if (level < 20) {
 			return 10 * Math.floor(level / 2);
 		}
-		else { // level >= 20
-			return Infinity;
-		}
+		// level >= 20
+		return Infinity;
 	}
 
 	unarmedDamage(level) { 
@@ -736,7 +734,6 @@ export class Monk extends BaseClass {
 		else {
 			unarmedDamage = [2,10];
 		}
-
 		return unarmedDamage;
 	}
 
@@ -777,9 +774,7 @@ export class Paladin extends Spellcaster {
 		if (level < 6) {
 			return 0;
 		}
-		else {
-			return Math.floor((level - 3)/3);
-		}
+		return Math.floor((level - 3) / 3);
 	}
 }
 
@@ -789,7 +784,6 @@ export class Ranger extends Spellcaster {
 	}
 	// Get favored enemies, favored enemies" bonuses, combat style?
 	// Set favored enemies and bonus?
-
 }
 
 export class Rogue extends BaseClass {
@@ -798,10 +792,10 @@ export class Rogue extends BaseClass {
 	}
 	// Get sneak attack, trap sense 
 	sneakAttackBonus(level) {
-		return Math.floor((level + 1)/2);
+		return Math.floor((level + 1) / 2);
 	}
 	trapSenseBonus(level) {
-		return Math.floor(level/3);
+		return Math.floor(level / 3);
 	}
 }
 
@@ -817,14 +811,14 @@ export class Wizard extends Spellcaster {
 	}
 }
 
-/* Declare character object 
+/* Declare character object
  * Save all of the info for these objects into database
  * Except the character object, just save the name
  * How will I work with the races? Race object
  */
 
 export class BaseRace {
-	constructor(raceName ) {
+	constructor(raceName) {
 		this._raceName = raceName;
 	}
 }
@@ -878,7 +872,7 @@ export class Character {
 			break;
 		default:
 			this._characterClass = null;
-		} //switch
+		} // switch
 	}
 
 	get characterName() {
@@ -913,22 +907,22 @@ export class Character {
 
 	// Get Ability Modifiers
 	get strMod() {
-		return Math.floor((this._str - 10)/2);
+		return Math.floor((this._str - 10) / 2);
 	}
 	get dexMod() {
-		return Math.floor((this._dex - 10)/2);
+		return Math.floor((this._dex - 10) / 2);
 	}
 	get conMod() {
-		return Math.floor((this._con - 10)/2);
+		return Math.floor((this._con - 10) / 2);
 	}
 	get intMod() {
-		return Math.floor((this._int - 10)/2);
+		return Math.floor((this._int - 10) / 2);
 	}
 	get wisMod() {
-		return Math.floor((this._wis - 10)/2);
+		return Math.floor((this._wis - 10) / 2);
 	}
 	get chaMod() {
-		return Math.floor((this._cha - 10)/2);
+		return Math.floor((this._cha - 10) / 2);
 	}
 
 	// Get BAB and Saves
@@ -941,6 +935,8 @@ export class Character {
 			return Math.floor(level * 0.75);
 		case "poor":
 			return Math.floor(level * 0.5);
+		default:
+			return -1;
 		}
 	}
 	fortSave(level) {
@@ -950,6 +946,8 @@ export class Character {
 			return 2 + Math.floor(level / 2);
 		case "poor":
 			return Math.floor(level / 3);
+		default:
+			return -1;
 		}
 	}
 	refSave(level) {
@@ -959,6 +957,8 @@ export class Character {
 			return 2 + Math.floor(level / 2);
 		case "poor":
 			return Math.floor(level / 3);
+		default:
+			return -1;
 		}
 	}
 	willSave(level) {
@@ -968,6 +968,8 @@ export class Character {
 			return 2 + Math.floor(level / 2);
 		case "poor":
 			return Math.floor(level / 3);
+		default:
+			return -1;
 		}
 	}
 
@@ -979,7 +981,7 @@ export class Character {
 		if (this._characterClass instanceof Spellcaster) {
 			return this._characterClass.primarySpellAttribute;
 		}
-		else return null;
+		return null;
 	}
 	// Get Spells Per Day and Spells Known
 	spellsPerDay(spellLevel) {

@@ -19,7 +19,6 @@ export class ClassButtonList extends React.Component {
 	}
 
 	constructor(props) {
-		// Takes in an array called characterClasses of what to make ClassButtons for
 		super(props);
 		this.changeClass = this.changeClass.bind(this);
 		this.getSelectedClass = this.getSelectedClass.bind(this);
@@ -32,6 +31,7 @@ export class ClassButtonList extends React.Component {
 		this.setState({
 			selectedClass: newClass
 		});
+		this.props.changeSelectedCharacterClass(newClass);
 	}
 
 	getSelectedClass() {
