@@ -78,6 +78,9 @@ div.nav {
   border: black 0.2rem solid;
   border-bottom: none;*/
 }
+.inactive {
+  color: gray;
+}
 
 .home-page-menu, .dnd-page-menu {
   z-index: 10;

@@ -64,8 +64,8 @@ class BaseClass {
 
 		return skillListArray;
 	}
-
-	classFeaturesToArray(level) {
+	// Make this the base function, implement class-specific addition.
+	baseClassFeaturesToArray(level) {
 		let classFeatures = this.classFeaturesMap;
 		if (classFeatures !== null) {
 			let classFeaturesArray = [];
@@ -107,8 +107,17 @@ class BaseClass {
 		classData.push(`Reflex Base Save: ${this.refScaling}`);
 		classData.push(`Will Base Save: ${this.willScaling}`);
 		classData.push(`Skill List: ${this.skillListAsArray()}`);
-		classData.push(`Class Features At Level ${level}: ${this.classFeaturesToArray(level)}`);
+		// classData.push(`Class Features At Level ${level}: ${this.classFeaturesToArray(level)}`);
 		classData.push(`Bonus Feats Given By Level ${level}: ${this.classBonusFeatsToArray(level)}`);
+
+		// Format Class Features More Nicely
+		// Make title more prominent?
+		classData.push(`Class Features at Level ${level}:`);
+		let classFeaturesArray = this.classFeaturesToArray(level);
+		for (let i = 0; i < classFeaturesArray.length; i++) {
+			classData.push(`${classFeaturesArray[i]}`);
+		}
+
 		return classData;
 	}
 }
@@ -174,7 +183,7 @@ const wizardSkillList    = [0,1,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0, 1,1,1,1,1
  * Check array length every time, since the 2d arrays aren"t rectangular
  */
 /* Declare Spells Per Day Arrays */
-const bardSpellsPerDay = 
+const bardSpellsPerDay =
 	[ [2],
 		[3,0],
 		[3,1],
@@ -196,7 +205,7 @@ const bardSpellsPerDay =
 		[4,4,4,4,4,4,3],
 		[4,4,4,4,4,4,4]];
 
-const clericSpellsPerDay = 
+const clericSpellsPerDay =
 	[ [3,1],
 		[4,2],
 		[4,2,1],
@@ -218,7 +227,7 @@ const clericSpellsPerDay =
 		[6,5,5,5,5,5,4,4,3,3],
 		[6,5,5,5,5,5,4,4,4,4]];
 
-const druidSpellsPerDay = 
+const druidSpellsPerDay =
 	[ [3,1],
 		[4,2],
 		[4,2,1],
@@ -240,7 +249,7 @@ const druidSpellsPerDay =
 		[6,5,5,5,5,5,4,4,3,3,],
 		[6,5,5,5,5,5,4,4,4,4]];
 
-const paladinSpellsPerDay = 
+const paladinSpellsPerDay =
 	[ [],
 		[],
 		[],
@@ -262,7 +271,7 @@ const paladinSpellsPerDay =
 		[3,3,3,2],
 		[3,3,3,3]];
 
-const rangerSpellsPerDay = 
+const rangerSpellsPerDay =
 	[ [],
 		[],
 		[],
@@ -284,7 +293,7 @@ const rangerSpellsPerDay =
 		[3,3,3,2],
 		[3,3,3,3]];
 
-const sorcererSpellsPerDay = 
+const sorcererSpellsPerDay =
 	[ [5,3],
 		[6,4],
 		[6,5],
@@ -310,7 +319,7 @@ const sorcererSpellsPerDay =
 		[6,6,6,6,6,6,6,6,6,4],
 		[6,6,6,6,6,6,6,6,6,6]];
 
-const wizardSpellsPerDay = 
+const wizardSpellsPerDay =
 	[ [3,1],
 		[4,2],
 		[4,2,1],
@@ -331,7 +340,7 @@ const wizardSpellsPerDay =
 		[4,4,4,4,4,4,4,4,4,4]];
 
 /* Declare Spells Known Arrays */
-const bardSpellsKnown = 
+const bardSpellsKnown =
 	[ [4],
 		[5,2],
 		[6,3],
@@ -357,7 +366,7 @@ const druidSpellsKnown = null;
 const paladinSpellsKnown = null;
 const rangerSpellsKnown = null;
 
-const sorcererSpellsKnown = 
+const sorcererSpellsKnown =
 	[ [4,2],
 		[5,2],
 		[5,3],
@@ -422,7 +431,7 @@ const druidClassFeaturesMap = (
 	[ [1, ["Animal Companion","Nature Sense","Wild Empathy"]],
 		[2, ["Woodland Stride"]],
 		[3, ["Trackless Step"]],
-		[4, ["Resist Nature\"s Lure"]],
+		[4, ["Resist Nature\'s Lure"]],
 		[9, ["Venom Immunity"]],
 		[13,["A Thousand Faces"]],
 		[15,["Timeless Body"]]]
@@ -549,7 +558,22 @@ export class Barbarian extends BaseClass {
 	constructor() {
 		super("Barbarian",12,4,"good","good","poor","poor",barbarianSkillList, barbarianClassFeaturesMap, barbarianBonusFeatMap);
 	}
+	classFeaturesToArray(level) {
+		let baseClassFeatures = this.baseClassFeaturesToArray(level);
+		let barbClassFeatures = [];
 
+		barbClassFeatures.push(
+			`${this.ragesPerDay(level)} 
+			${this.rageBonuses(level)[0]} 
+			Rages Per Day`);
+		barbClassFeatures.push(`Trap Sense Bonus +${this.trapSenseBonus(level)}`);
+		if (this.damageReduction(level) > 0) {
+			barbClassFeatures.push(`Damage Reduction ${this.damageReduction(level)}/-`);
+		}
+
+		barbClassFeatures = barbClassFeatures.concat(baseClassFeatures);
+		return barbClassFeatures;
+	}
 	rageBonuses(level) {
 		// format as ["rageType","strBonus","conBonus","willBonus","acPenalty"]
 		let rageBonuses;
@@ -587,6 +611,15 @@ export class Bard extends Spellcaster {
 	constructor() {
 		super("Bard",6,6,"avg","poor","good","good",bardSkillList, bardClassFeaturesMap, bardBonusFeatMap,bardPrimarySpellAttribute,bardSpellsPerDay,bardSpellsKnown);
 	}
+	classFeaturesToArray(level) {
+		let baseClassFeatures = this.baseClassFeaturesToArray(level);
+		let bardClassFeatures = [];
+
+		bardClassFeatures.push(`Inspire Courage +${this.inspireCourageBonus(level)}`);
+
+		bardClassFeatures = bardClassFeatures.concat(baseClassFeatures);
+		return bardClassFeatures;
+	}
 	// Get inspire courage +
 	inspireCourageBonus(level) {
 		if (level < 8) {
@@ -600,12 +633,34 @@ export class Cleric extends Spellcaster {
 	constructor() {
 		super("Cleric",8,2,"avg","good","poor","good",clericSkillList,clericClassFeaturesMap,clericBonusFeatMap,clericPrimarySpellAttribute,clericSpellsPerDay,clericSpellsKnown);
 	}
+	classFeaturesToArray(level) {
+		return this.baseClassFeaturesToArray(level);
+	}
 	// Get turn/rebuke undead numbers in app
 }
 
 export class Druid extends Spellcaster {
 	constructor() {
 		super("Druid",8,4,"avg","good","poor","good",druidSkillList,druidClassFeaturesMap,druidBonusFeatMap,druidPrimarySpellAttribute,druidSpellsPerDay,druidSpellsKnown);
+	}
+	classFeaturesToArray(level) {
+		let baseClassFeatures = this.baseClassFeaturesToArray(level);
+		let druidClassFeatures = [];
+
+		if (level >= 5) {
+			druidClassFeatures.push(`${this.wildShapesPerDay(level)} Wild Shapes Per Day`);
+			druidClassFeatures.push(`Wild Shape Options: ${this.wildShapeOptions(level)}`);
+
+			if (level >= 16) {
+				druidClassFeatures.push(
+					`${this.elementalWildShapesPerDay(level)} Elemental Wild Shapes Per Day`);
+				druidClassFeatures.push(
+					`Elemental Wild Shape Options: ${this.elementalWildShapeOptions(level)}`);
+			}
+		}
+
+		druidClassFeatures = druidClassFeatures.concat(baseClassFeatures);
+		return druidClassFeatures;
 	}
 	// Get wild shape / day, wild shape options
 	wildShapesPerDay(level) {
@@ -665,12 +720,18 @@ export class Druid extends Spellcaster {
 		if (level >= 12) {
 			wildShapeOptions.push("Plant");
 		}
+		return wildShapeOptions;
+	}
+
+	elementalWildShapeOptions(level) {
+		let elementalWildShapeOptions = [];
 		if (level >= 16) {
-			wildShapeOptions.push("Small, Medium, or Large Elemental");
+			elementalWildShapeOptions.push("Small, Medium, or Large Elemental");
 		}
 		if (level >= 20) {
-			wildShapeOptions.push("Huge Elemental");
+			elementalWildShapeOptions.push("Huge Elemental");
 		}
+		return elementalWildShapeOptions;
 	}
 }
 
@@ -678,11 +739,28 @@ export class Fighter extends BaseClass {
 	constructor() {
 		super("Fighter",10,2,"good","good","poor","poor",fighterSkillList,fighterClassFeaturesMap,fighterBonusFeatMap);
 	}
+	classFeaturesToArray(level) {
+		return this.baseClassFeaturesToArray(level);
+	}
 }
 
 export class Monk extends BaseClass {
 	constructor() {
 		super("Monk",8,4,"avg","good","good","good",monkSkillList,monkClassFeaturesMap,monkBonusFeatMap);
+	}
+	classFeaturesToArray(level) {
+		let baseClassFeatures = this.baseClassFeaturesToArray(level);
+		let monkClassFeatures = [];
+
+		monkClassFeatures.push(`Ki Strike Types: ${this.kiStrikeTypes(level)}`);
+		monkClassFeatures.push(`Slow Fall Distance: ${this.slowFallDistance}\'`);
+		monkClassFeatures.push(
+			`Unarmed Damage: ${this.unarmedDamage(level)[0]}d${this.unarmedDamage(level)[1]}`);
+		monkClassFeatures.push(`AC Bonus: ${this.monkACBonus(level)}`);
+		monkClassFeatures.push(`Speed Bonus: ${this.monkSpeedBonus}\'`);
+
+		monkClassFeatures = monkClassFeatures.concat(baseClassFeatures);
+		return monkClassFeatures;
 	}
 	// Get speed bonus, ac bonus, unarmed damage, flurry of blows, slow fall
 	kiStrikeTypes(level) {
@@ -766,6 +844,16 @@ export class Paladin extends Spellcaster {
 	constructor() {
 		super("Paladin",10,2,"good","good","poor","poor",paladinSkillList,paladinClassFeaturesMap,paladinBonusFeatMap,paladinPrimarySpellAttribute,paladinSpellsPerDay,paladinSpellsKnown);
 	}
+	classFeaturesToArray(level) {
+		let baseClassFeatures = this.baseClassFeaturesToArray(level);
+		let paladinClassFeatures = [];
+
+		paladinClassFeatures.push(`Smite Evil: ${this.smiteEvilPerDay(level)} per Day`);
+		paladinClassFeatures.push(`Remove Disease: ${this.removeDiseasePerWeek(level)} per Week`);
+
+		paladinClassFeatures = paladinClassFeatures.concat(baseClassFeatures);
+		return paladinClassFeatures;
+	}
 	// Get smite evil / day, remove disease / day, lay on hands
 	smiteEvilPerDay(level) {
 		return 1 + Math.floor(level/5);
@@ -782,7 +870,24 @@ export class Ranger extends Spellcaster {
 	constructor() {
 		super("Ranger",8,6,"good","good","good","poor",rangerSkillList,rangerClassFeaturesMap,rangerBonusFeatMap,rangerPrimarySpellAttribute,rangerSpellsPerDay,rangerSpellsKnown);
 	}
+	classFeaturesToArray(level) {
+		let baseClassFeatures = this.baseClassFeaturesToArray(level);
+		let rangerClassFeatures = [];
+
+		rangerClassFeatures.push(`${this.numFavoredEnemies(level)} Favored Enemies`);
+		rangerClassFeatures.push(
+			`Total Bonus vs Favored Enemies: ${this.totalFavoredEnemyBonus(level)}`);
+
+		rangerClassFeatures = rangerClassFeatures.concat(baseClassFeatures);
+		return rangerClassFeatures;
+	}
 	// Get favored enemies, favored enemies" bonuses, combat style?
+	numFavoredEnemies(level) {
+		return 1 + Math.floor(level / 5);
+	}
+	totalFavoredEnemyBonus(level) {
+		return 2 + 4 * Math.floor(level / 5);
+	}
 	// Set favored enemies and bonus?
 }
 
@@ -790,9 +895,19 @@ export class Rogue extends BaseClass {
 	constructor() {
 		super("Rogue",6,8,"avg","poor","good","poor",rogueSkillList,rogueClassFeaturesMap,rogueBonusFeatMap);
 	}
-	// Get sneak attack, trap sense 
+	classFeaturesToArray(level) {
+		let baseClassFeatures = this.baseClassFeaturesToArray(level);
+		let rogueClassFeatures = [];
+
+		rogueClassFeatures.push(`Sneak Attack +${this.sneakAttackBonus(level)}`);
+		rogueClassFeatures.push(`Trap Sense +${this.trapSenseBonus(level)}`);
+
+		rogueClassFeatures = rogueClassFeatures.concat(baseClassFeatures);
+		return rogueClassFeatures;
+	}
+	// Get sneak attack, trap sense
 	sneakAttackBonus(level) {
-		return Math.floor((level + 1) / 2);
+		return Math.floor((1 + Number(level)) / 2);
 	}
 	trapSenseBonus(level) {
 		return Math.floor(level / 3);
@@ -803,11 +918,17 @@ export class Sorcerer extends Spellcaster {
 	constructor() {
 		super("Sorcerer",4,2,"poor","poor","poor","good",sorcererSkillList,sorcererClassFeaturesMap,sorcererBonusFeatMap,sorcererPrimarySpellAttribute,sorcererSpellsPerDay,sorcererSpellsKnown);
 	}
+	classFeaturesToArray(level) {
+		return this.baseClassFeaturesToArray(level);
+	}
 }
 
 export class Wizard extends Spellcaster {
 	constructor() {
 		super("Wizard",4,2,"poor","poor","poor","good",wizardSkillList,wizardClassFeaturesMap,wizardBonusFeatMap,wizardPrimarySpellAttribute,wizardSpellsPerDay,wizardSpellsKnown);
+	}
+	classFeaturesToArray(level) {
+		return this.baseClassFeaturesToArray(level);
 	}
 }
 
