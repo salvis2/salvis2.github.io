@@ -90,7 +90,7 @@ export class CharacterCreator extends React.Component {
 			submitClass,
 			document.getElementById("class-submit-button")
 		);
-	};
+	}
 
 	// Character Selection Submission Function
 	submitCharacterClass() {

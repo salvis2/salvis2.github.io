@@ -10,7 +10,9 @@
 
 
 class BaseClass {
-	constructor(className, hitDie, baseSkillPointsPerLevel, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap) {
+	constructor(className, hitDie, baseSkillPointsPerLevel,
+		babScaling, fortScaling, refScaling, willScaling, skillList,
+		classFeaturesMap, classBonusFeatsMap) {
 		this._className = className;
 		this._hitDie = hitDie;
 		this._baseSkillPointsPerLevel = baseSkillPointsPerLevel;
@@ -56,7 +58,7 @@ class BaseClass {
 		let skillList = this.skillList;
 		let skillListArray = [];
 
-		for (let i = 0; i < skillList.length; i++) {
+		for (let i = 0; i < skillList.length; i += 1) {
 			if (skillList[i] === 1) {
 				skillListArray.push(` ${skillNames[i]}`);
 			}
@@ -69,7 +71,7 @@ class BaseClass {
 		let classFeatures = this.classFeaturesMap;
 		if (classFeatures !== null) {
 			let classFeaturesArray = [];
-			for (let i = 0; i < classFeatures.length; i++) {
+			for (let i = 0; i < classFeatures.length; i += 1) {
 				if (level >= classFeatures[i][0]) {
 					classFeaturesArray.push(` ${classFeatures[i][1]}`);
 				}	else {
@@ -85,7 +87,7 @@ class BaseClass {
 		let classBonusFeats = this.classBonusFeatsMap;
 		if (classBonusFeats !== null) {
 			let classBonusFeatsArray = [];
-			for (let i = 0; i < classBonusFeats.length; i++) {
+			for (let i = 0; i < classBonusFeats.length; i += 1) {
 				if (level >= classBonusFeats[i][0]) {
 					classBonusFeatsArray.push(` ${classBonusFeats[i][1]}`);
 				} else {
@@ -114,7 +116,7 @@ class BaseClass {
 		// Make title more prominent?
 		classData.push(`Class Features at Level ${level}:`);
 		let classFeaturesArray = this.classFeaturesToArray(level);
-		for (let i = 0; i < classFeaturesArray.length; i++) {
+		for (let i = 0; i < classFeaturesArray.length; i += 1) {
 			classData.push(`${classFeaturesArray[i]}`);
 		}
 
@@ -123,8 +125,12 @@ class BaseClass {
 }
 
 class Spellcaster extends BaseClass {
-	constructor(className, hitDie, baseSkillPointsPerLevel, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap, primarySpellAttribute, spellsPerDay, spellsKnown) {
-		super(className, hitDie, baseSkillPointsPerLevel, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap);
+	constructor(className, hitDie, baseSkillPointsPerLevel,
+		babScaling, fortScaling, refScaling, willScaling, skillList,
+		classFeaturesMap, classBonusFeatsMap, primarySpellAttribute, spellsPerDay, spellsKnown) {
+		super(className, hitDie, baseSkillPointsPerLevel,
+			babScaling, fortScaling, refScaling, willScaling, skillList,
+			classFeaturesMap, classBonusFeatsMap);
 		this._primarySpellAttribute = primarySpellAttribute;
 		this._spellsPerDay = spellsPerDay;
 		this._spellsKnown = spellsKnown;
@@ -139,42 +145,103 @@ class Spellcaster extends BaseClass {
 		return this._spellsPerDay[casterLevel - 1][spellLevel];
 	}
 	spellsKnown(casterLevel, spellLevel) {
-		// Not all spellcasters have this. null should mean that the caster knows all spells that they can cast for their level. 
+		// Not all spellcasters have this
+		// null should mean that the caster knows all spells that they can cast for their level.
 		// out of bounds gives undefined
 		if (this._spellsKnown === null) {
 			return null;
 		}
-		else {
-			return this._spellsKnown[casterLevel - 1][spellLevel];
-		}
+		return this._spellsKnown[casterLevel - 1][spellLevel];
 	}
 }
 /*
  * skillList should be formatted as an array of booleans
- * Each entry is 1 for a class skill or 0 for a cross-class skill 
- * The skill order is as follows:
- * [appraise, autohypnosis, balance, bluff, climb, concentration, craft, craft, craft, decipher script, diplomacy, disable device, disguise, escape artist, forgery, gather information, handle animal, heal, hide, intimidate, jump, knowledge(arcana), knowledge (arch/eng), knowledge (dungeoneering), knowledge (geography), knowledge (history), knowledge (local), knowledge (nature), knowledge (nobility/royalty), knowledge (the places), knowledge (psionics), knowledge (religion), listen, move silently, open lock, perform (act), perform (comedy), perform (dance), perform (keyboard), perform (oratory), perform (percussion), perform (string intrument), perform (wind instrument), perform (sing), profession, profession, psicraft, ride, search, sense motive, sleight of hand, spellcraft, spot, survival, swim, tumble, use magic device, use psionic device, use rope]
+ * Each entry is 1 for a class skill or 0 for a cross-class skill
  * the array length is 59
- * [,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,]
  */
 
 /* Declare skill lists */
-var skillNames = ["appraise", "autohypnosis", "balance", "bluff", "climb", "concentration", "craft", "craft", "craft", "decipher script", "diplomacy", "disable device", "disguise", "escape artist", "forgery", "gather information", "handle animal", "heal", "hide", "intimidate", "jump", "knowledge(arcana)", "knowledge (arch/eng)", "knowledge (dungeoneering)", "knowledge (geography)", "knowledge (history)", "knowledge (local)", "knowledge (nature)", "knowledge (nobility/royalty)", "knowledge (the planes)", "knowledge (psionics)", "knowledge (religion)", "listen", "move silently", "open lock", "perform (act)", "perform (comedy)", "perform (dance)", "perform (keyboard)", "perform (oratory)", "perform (percussion)", "perform (string intrument)", "perform (wind instrument)", "perform (sing)", "profession", "profession", "psicraft", "ride", "search", "sense motive", "sleight of hand", "spellcraft", "spot", "survival", "swim", "tumble", "use magic device", "use psionic device", "use rope"];
+let skillNames = ["Appraise", "Autohypnosis", "Balance", "Bluff", "Climb", "Concentration",
+	"Craft", "Craft", "Craft", "Decipher Script", "Diplomacy", "Disable Device", "Disguise",
+	"Escape Artist", "Forgery", "Gather Information", "Handle Animal", "Heal", "Hide",
+	"Intimidate", "Jump", "Knowledge (Arcana)", "Knowledge (Arch/Eng)", "Knowledge (Dungeoneering)",
+	"Knowledge (Geography)", "Knowledge (History)", "Knowledge (Local)", "Knowledge (Nature)",
+	"Knowledge (Nobility/Royalty)", "Knowledge (The Planes)", "Knowledge (Psionics)",
+	"Knowledge (Religion)", "Listen", "Move Silently", "Open Lock", "Perform (Act)",
+	"Perform (Comedy)", "Perform (Dance)", "Perform (Keyboard)", "Perform (Oratory)",
+	"Perform (Percussion)", "Perform (String Intrument)", "Perform (Wind Instrument)",
+	"Perform (Sing)", "Profession", "Profession", "Psicraft", "Ride", "Search", "Sense Motive",
+	"Sleight of Hand", "Spellcraft", "Spot", "Survival", "Swim", "Tumble", "Use Magic Device",
+	"Use Psionic Device", "Use Rope"];
 
-const barbarianSkillList = [0,0,0,0,1,0,1,1,1,0,0,0,0,0,0,0,1,0,0,1,1, 0,0,0,0,0,0,0,0,0,0,0, 1,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,0,1,0,0,0,0,1,1,0,0,0,0];
-const bardSkillList      = [1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,0,0,1,0,1, 1,1,1,1,1,1,1,1,1,1,1, 1,1,0, 1,1,1,1,1,1,1,1,1,1,1, 1,0,0,1,1,1,1,0,0,1,1,1,1];
-const clericSkillList    = [0,1,0,0,0,1,1,1,1,0,1,0,0,0,0,0,0,1,0,0,0, 1,0,0,0,1,0,0,0,1,1,1, 0,0,0, 0,0,0,0,0,0,0,0,0,1,1, 1,0,0,0,0,0,1,0,0,0,0,0,0];
-const druidSkillList     = [0,1,0,0,0,1,1,1,1,0,1,0,0,0,0,0,1,1,0,0,0, 0,0,0,0,0,0,1,0,0,0,0, 1,0,0, 0,0,0,0,0,0,0,0,0,1,1, 1,1,0,0,0,0,1,1,1,1,0,0,0];
-const fighterSkillList   = [0,0,0,0,1,0,1,1,1,0,0,0,0,0,0,0,1,0,0,1,1, 0,0,0,0,0,0,0,0,0,0,0, 0,0,0, 0,0,0,0,0,0,0,0,0,0,0, 0,1,0,0,0,0,0,0,1,0,0,0,0];
-const monkSkillList      = [0,1,1,0,1,1,1,1,1,0,1,0,0,1,0,0,0,0,1,0,1, 1,0,0,0,0,0,0,0,0,0,1, 1,1,0, 1,1,1,1,1,1,1,1,1,1,1, 0,0,0,1,0,0,1,0,1,1,0,0,0];
-const paladinSkillList   = [0,1,0,0,0,1,1,1,1,0,1,0,0,0,0,0,1,1,0,0,0, 0,0,0,0,0,0,0,1,0,0,1, 0,0,0, 0,0,0,0,0,0,0,0,0,1,1, 0,1,0,1,0,0,0,0,0,0,0,0,0];
-const rangerSkillList    = [0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,1,1,1,0,1, 0,0,1,1,0,0,1,0,0,0,0, 1,1,0, 0,0,0,0,0,0,0,0,0,1,1, 0,1,1,0,0,0,1,1,1,0,0,0,1];
-const rogueSkillList     = [1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1, 0,0,0,0,0,1,0,0,0,0,0, 1,1,1, 1,1,1,1,1,1,1,1,1,1,1, 0,0,1,1,1,0,1,0,1,1,1,1,1];
-const sorcererSkillList  = [0,1,0,1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0, 1,0,0,0,0,0,0,0,0,1,0, 0,0,0, 0,0,0,0,0,0,0,0,0,1,1, 1,0,0,0,0,1,0,0,0,0,0,0,0];
-const wizardSkillList    = [0,1,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0, 1,1,1,1,1,1,1,1,1,1,1, 0,0,0, 0,0,0,0,0,0,0,0,0,1,1, 1,0,0,0,0,1,0,0,0,0,0,0,0];
+const barbarianSkillList = [0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	1, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0];
+
+const bardSkillList = [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1,
+	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+	1, 1, 0,
+	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+	1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1];
+
+const clericSkillList = [0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+	1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1,
+	0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+	1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0];
+
+const druidSkillList = [0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+	1, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+	1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0];
+
+const fighterSkillList = [0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0];
+
+const monkSkillList = [0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1,
+	1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+	1, 1, 0,
+	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+	0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0];
+
+const paladinSkillList = [0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1,
+	0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+	0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+const rangerSkillList = [0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1,
+	0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0,
+	1, 1, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+	0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1];
+
+const rogueSkillList = [1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1,
+	0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+	1, 1, 1,
+	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+	0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1];
+
+const sorcererSkillList = [0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+	0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+	1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0];
+
+const wizardSkillList = [0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+	0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+	1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0];
 
 /*
- * primarySpellAttribute is the ability nickname that determines the strength of the class"s spellcasting
+ * primarySpellAttribute is the ability shorthand that determines the strength of spellcasting
  * spellsPerDay is a 2d int array to encapsulate the spells you get at a given level
  * spellsKnown is a 2d int array to encapsultate the spells you know at a given level
  * if a row of the spells per day is empty, the class does not know spells for that class level
@@ -185,69 +252,69 @@ const wizardSkillList    = [0,1,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0, 1,1,1,1,1
 /* Declare Spells Per Day Arrays */
 const bardSpellsPerDay =
 	[ [2],
-		[3,0],
-		[3,1],
-		[3,2,0],
-		[3,3,1],
-		[3,3,2],
-		[3,3,2,0],
-		[3,3,3,1],
-		[3,3,3,2],
-		[3,3,3,2,0],
-		[3,3,3,3,1],
-		[3,3,3,3,2],
-		[3,3,3,3,2,0],
-		[4,3,3,3,3,1],
-		[4,4,3,3,3,2],
-		[4,4,4,3,3,2,0],
-		[4,4,4,4,3,3,1],
-		[4,4,4,4,4,3,2],
-		[4,4,4,4,4,4,3],
-		[4,4,4,4,4,4,4]];
+		[3, 0],
+		[3, 1],
+		[3, 2, 0],
+		[3, 3, 1],
+		[3, 3, 2],
+		[3, 3, 2, 0],
+		[3, 3, 3, 1],
+		[3, 3, 3, 2],
+		[3, 3, 3, 2, 0],
+		[3, 3, 3, 3, 1],
+		[3, 3, 3, 3, 2],
+		[3, 3, 3, 3, 2, 0],
+		[4, 3, 3, 3, 3, 1],
+		[4, 4, 3, 3, 3, 2],
+		[4, 4, 4, 3, 3, 2, 0],
+		[4, 4, 4, 4, 3, 3, 1],
+		[4, 4, 4, 4, 4, 3, 2],
+		[4, 4, 4, 4, 4, 4, 3],
+		[4, 4, 4, 4, 4, 4, 4]];
 
 const clericSpellsPerDay =
-	[ [3,1],
-		[4,2],
-		[4,2,1],
-		[5,3,2],
-		[5,3,2,1],
-		[5,3,3,2],
-		[6,4,3,2,1],
-		[6,4,3,3,2],
-		[6,4,4,3,2,1],
-		[6,4,4,3,3,2],
-		[6,5,4,4,3,2,1],
-		[6,5,4,4,3,3,2],
-		[6,5,5,4,4,3,2,1],
-		[6,5,5,4,4,3,3,2],
-		[6,5,5,5,4,4,3,2,1],
-		[6,5,5,5,4,4,3,3,2],
-		[6,5,5,5,5,4,4,3,2,1],
-		[6,5,5,5,5,4,4,3,3,2],
-		[6,5,5,5,5,5,4,4,3,3],
-		[6,5,5,5,5,5,4,4,4,4]];
+	[ [3, 1],
+		[4, 2],
+		[4, 2, 1],
+		[5, 3, 2],
+		[5, 3, 2, 1],
+		[5, 3, 3, 2],
+		[6, 4, 3, 2, 1],
+		[6, 4, 3, 3, 2],
+		[6, 4, 4, 3, 2, 1],
+		[6, 4, 4, 3, 3, 2],
+		[6, 5, 4, 4, 3, 2, 1],
+		[6, 5, 4, 4, 3, 3, 2],
+		[6, 5, 5, 4, 4, 3, 2, 1],
+		[6, 5, 5, 4, 4, 3, 3, 2],
+		[6, 5, 5, 5, 4, 4, 3, 2, 1],
+		[6, 5, 5, 5, 4, 4, 3, 3, 2],
+		[6, 5, 5, 5, 5, 4, 4, 3, 2, 1],
+		[6, 5, 5, 5, 5, 4, 4, 3, 3, 2],
+		[6, 5, 5, 5, 5, 5, 4, 4, 3, 3],
+		[6, 5, 5, 5, 5, 5, 4, 4, 4, 4]];
 
 const druidSpellsPerDay =
-	[ [3,1],
-		[4,2],
-		[4,2,1],
-		[5,3,2],
-		[5,3,2,1],
-		[5,3,3,2],
-		[6,4,3,2,1],
-		[6,4,3,3,2],
-		[6,4,4,3,2,1],
-		[6,4,4,3,3,2],
-		[6,5,4,4,3,2,1],
-		[6,5,4,4,3,3,2],
-		[6,5,5,4,4,3,2,1],
-		[6,5,5,4,4,3,3,2],
-		[6,5,5,5,4,4,3,2,1],
-		[6,5,5,5,4,4,3,3,2],
-		[6,5,5,5,5,4,4,3,2,1],
-		[6,5,5,5,5,4,4,3,3,2],
-		[6,5,5,5,5,5,4,4,3,3,],
-		[6,5,5,5,5,5,4,4,4,4]];
+	[ [3, 1],
+		[4, 2],
+		[4, 2, 1],
+		[5, 3, 2],
+		[5, 3, 2, 1],
+		[5, 3, 3, 2],
+		[6, 4, 3, 2, 1],
+		[6, 4, 3, 3, 2],
+		[6, 4, 4, 3, 2, 1],
+		[6, 4, 4, 3, 3, 2],
+		[6, 5, 4, 4, 3, 2, 1],
+		[6, 5, 4, 4, 3, 3, 2],
+		[6, 5, 5, 4, 4, 3, 2, 1],
+		[6, 5, 5, 4, 4, 3, 3, 2],
+		[6, 5, 5, 5, 4, 4, 3, 2, 1],
+		[6, 5, 5, 5, 4, 4, 3, 3, 2],
+		[6, 5, 5, 5, 5, 4, 4, 3, 2, 1],
+		[6, 5, 5, 5, 5, 4, 4, 3, 3, 2],
+		[6, 5, 5, 5, 5, 5, 4, 4, 3, 3],
+		[6, 5, 5, 5, 5, 5, 4, 4, 4, 4]];
 
 const paladinSpellsPerDay =
 	[ [],
@@ -257,19 +324,19 @@ const paladinSpellsPerDay =
 		[0],
 		[1],
 		[1],
-		[1,0],
-		[1,0],
-		[1,1],
-		[1,1,0],
-		[1,1,1],
-		[1,1,1],
-		[2,1,1,0],
-		[2,1,1,1],
-		[2,2,1,1],
-		[2,2,2,1],
-		[3,2,2,1],
-		[3,3,3,2],
-		[3,3,3,3]];
+		[1, 0],
+		[1, 0],
+		[1, 1],
+		[1, 1, 0],
+		[1, 1, 1],
+		[1, 1, 1],
+		[2, 1, 1, 0],
+		[2, 1, 1, 1],
+		[2, 2, 1, 1],
+		[2, 2, 2, 1],
+		[3, 2, 2, 1],
+		[3, 3, 3, 2],
+		[3, 3, 3, 3]];
 
 const rangerSpellsPerDay =
 	[ [],
@@ -279,87 +346,83 @@ const rangerSpellsPerDay =
 		[0],
 		[1],
 		[1],
-		[1,0],
-		[1,0],
-		[1,1],
-		[1,1,0],
-		[1,1,1],
-		[1,1,1],
-		[2,1,1,0],
-		[2,1,1,1],
-		[2,2,1,1],
-		[2,2,2,1],
-		[3,2,2,1],
-		[3,3,3,2],
-		[3,3,3,3]];
+		[1, 0],
+		[1, 0],
+		[1, 1],
+		[1, 1, 0],
+		[1, 1, 1],
+		[1, 1, 1],
+		[2, 1, 1, 0],
+		[2, 1, 1, 1],
+		[2, 2, 1, 1],
+		[2, 2, 2, 1],
+		[3, 2, 2, 1],
+		[3, 3, 3, 2],
+		[3, 3, 3, 3]];
 
 const sorcererSpellsPerDay =
-	[ [5,3],
-		[6,4],
-		[6,5],
-		[6,6,3],
-		[6,6,4],
-		[6,6,5,3],
-		[6,6,6,4],
-		[6,6,6,5,3],
-		[6,6,6,6,4],
-		[6,6,6,6,5,3],
-		[6,6,6,6,6,4],
-		[6,6,6,6,6,5,3],
-		[6,6,6,6,6,4],
-		[6,6,6,6,6,5,3],
-		[6,6,6,6,6,6,4],
-		[6,6,6,6,6,5,3],
-		[6,6,6,6,6,6,4],
-		[6,6,6,6,6,6,5,3],
-		[6,6,6,6,6,6,6,4],
-		[6,6,6,6,6,6,6,5,3],
-		[6,6,6,6,6,6,6,6,4],
-		[6,6,6,6,6,6,6,6,5,3],
-		[6,6,6,6,6,6,6,6,6,4],
-		[6,6,6,6,6,6,6,6,6,6]];
+	[ [5, 3],
+		[6, 4],
+		[6, 5],
+		[6, 6, 3],
+		[6, 6, 4],
+		[6, 6, 5, 3],
+		[6, 6, 6, 4],
+		[6, 6, 6, 5, 3],
+		[6, 6, 6, 6, 4],
+		[6, 6, 6, 6, 5, 3],
+		[6, 6, 6, 6, 6, 4],
+		[6, 6, 6, 6, 6, 5, 3],
+		[6, 6, 6, 6, 6, 6, 4],
+		[6, 6, 6, 6, 6, 6, 5, 3],
+		[6, 6, 6, 6, 6, 6, 6, 4],
+		[6, 6, 6, 6, 6, 6, 6, 5, 3],
+		[6, 6, 6, 6, 6, 6, 6, 6, 4],
+		[6, 6, 6, 6, 6, 6, 6, 6, 5, 3],
+		[6, 6, 6, 6, 6, 6, 6, 6, 6, 4],
+		[6, 6, 6, 6, 6, 6, 6, 6, 6, 6]];
 
 const wizardSpellsPerDay =
-	[ [3,1],
-		[4,2],
-		[4,2,1],
-		[4,3,2],
-		[4,3,2,1],
-		[4,3,3,2],
-		[4,4,3,2,1],
-		[4,4,3,3,2],
-		[4,4,4,3,2,1],
-		[4,4,4,3,3,2],
-		[4,4,4,4,3,2,1],
-		[4,4,4,4,3,3,2],
-		[4,4,4,4,4,3,2,1],
-		[4,4,4,4,4,3,3,2],
-		[4,4,4,4,4,4,3,2,1],
-		[4,4,4,4,4,4,4,3,3,2],
-		[4,4,4,4,4,4,4,4,3,3],
-		[4,4,4,4,4,4,4,4,4,4]];
+	[ [3, 1],
+		[4, 2],
+		[4, 2, 1],
+		[4, 3, 2],
+		[4, 3, 2, 1],
+		[4, 3, 3, 2],
+		[4, 4, 3, 2, 1],
+		[4, 4, 3, 3, 2],
+		[4, 4, 4, 3, 2, 1],
+		[4, 4, 4, 3, 3, 2],
+		[4, 4, 4, 4, 3, 2, 1],
+		[4, 4, 4, 4, 3, 3, 2],
+		[4, 4, 4, 4, 4, 3, 2, 1],
+		[4, 4, 4, 4, 4, 3, 3, 2],
+		[4, 4, 4, 4, 4, 4, 3, 2, 1],
+		[4, 4, 4, 4, 4, 4, 4, 3, 3, 2],
+		[4, 4, 4, 4, 4, 4, 4, 4, 3, 3],
+		[4, 4, 4, 4, 4, 4, 4, 4, 4, 4]];
 
 /* Declare Spells Known Arrays */
 const bardSpellsKnown =
 	[ [4],
-		[5,2],
-		[6,3],
-		[6,3,2],
-		[6,4,3],
-		[6,4,4,2],
-		[6,4,4,3],
-		[6,4,4,3],
-		[6,4,4,4,2],
-		[6,4,4,4,3],
-		[6,4,4,4,3],
-		[6,4,4,4,4,2],
-		[6,4,4,4,4,3],
-		[6,4,4,4,4,3],
-		[6,5,4,4,4,4,2],
-		[6,5,5,4,4,4,3],
-		[6,5,5,5,4,4,3],
-		[6,5,5,5,5,4,4],
-		[6,5,5,5,5,5,4]];
+		[5, 2],
+		[6, 3],
+		[6, 3, 2],
+		[6, 4, 3],
+		[6, 4, 4, 2],
+		[6, 4, 4, 3],
+		[6, 4, 4, 3],
+		[6, 4, 4, 4, 2],
+		[6, 4, 4, 4, 3],
+		[6, 4, 4, 4, 3],
+		[6, 4, 4, 4, 4, 2],
+		[6, 4, 4, 4, 4, 3],
+		[6, 4, 4, 4, 4, 3],
+		[6, 5, 4, 4, 4, 4, 2],
+		[6, 5, 5, 4, 4, 4, 3],
+		[6, 5, 5, 5, 4, 4, 3],
+		[6, 5, 5, 5, 5, 4, 4],
+		[6, 5, 5, 5, 5, 5, 4]];
 
 const clericSpellsKnown = null;
 const druidSpellsKnown = null;
@@ -367,26 +430,26 @@ const paladinSpellsKnown = null;
 const rangerSpellsKnown = null;
 
 const sorcererSpellsKnown =
-	[ [4,2],
-		[5,2],
-		[5,3],
-		[6,3,1],
-		[6,4,2],
-		[7,4,2,1],
-		[7,5,3,2],
-		[8,5,3,2,1],
-		[8,5,4,3,2],
-		[9,5,4,3,2,1],
-		[9,5,5,4,3,2],
-		[9,5,5,4,3,2,1],
-		[9,5,5,4,4,3,2],
-		[9,5,5,4,4,3,2,1],
-		[9,5,5,4,4,4,3,2],
-		[9,5,5,4,4,4,3,2,1],
-		[9,5,5,4,4,4,3,3,2],
-		[9,5,5,4,4,4,3,3,2,1],
-		[9,5,5,4,4,4,3,3,3,2],
-		[9,5,5,4,4,4,3,3,3,3]];
+	[ [4, 2],
+		[5, 2],
+		[5, 3],
+		[6, 3, 1],
+		[6, 4, 2],
+		[7, 4, 2, 1],
+		[7, 5, 3, 2],
+		[8, 5, 3, 2, 1],
+		[8, 5, 4, 3, 2],
+		[9, 5, 4, 3, 2, 1],
+		[9, 5, 5, 4, 3, 2],
+		[9, 5, 5, 4, 3, 2, 1],
+		[9, 5, 5, 4, 4, 3, 2],
+		[9, 5, 5, 4, 4, 3, 2, 1],
+		[9, 5, 5, 4, 4, 4, 3, 2],
+		[9, 5, 5, 4, 4, 4, 3, 2, 1],
+		[9, 5, 5, 4, 4, 4, 3, 3, 2],
+		[9, 5, 5, 4, 4, 4, 3, 3, 2, 1],
+		[9, 5, 5, 4, 4, 4, 3, 3, 3, 2],
+		[9, 5, 5, 4, 4, 4, 3, 3, 3, 3]];
 
 const wizardSpellsKnown = null;
 
@@ -403,24 +466,25 @@ const wizardPrimarySpellAttribute = "int";
  * key is the character level
  * value is the array of class features they receive at that level
  * Should I put bonus feats in this? for now...
- * Put normal feats in this? No. Keep a tally of feats in the active character creation app, and output the total.
+ * Put normal feats in this?
+ * No. Keep a tally of feats in the active character creation app, and output the total.
  */
 const barbarianClassFeaturesMap = (
-	[ [1, ["Fast Movement","Illiteracy"]],
+	[ [1, ["Fast Movement", "Illiteracy"]],
 		[2, ["Uncanny Dodge"]],
 		[5, ["Improved Uncanny Dodge"]],
-		[14,["Indomitable Will"]],
-		[17,["Tireless Rage"]]]
+		[14, ["Indomitable Will"]],
+		[17, ["Tireless Rage"]]]
 );
 
 const bardClassFeaturesMap = (
-	[ [1, ["Bardic Music","Bardic Knowledge","Countersong","Fascinate"]],
+	[ [1, ["Bardic Music", "Bardic Knowledge", "Countersong", "Fascinate"]],
 		[3, ["Inspire Competence"]],
 		[6, ["Suggestion"]],
 		[9, ["Inspire Greatness"]],
-		[12,["Song of Freedom"]],
-		[15,["Inspire Heroics"]],
-		[18,["Mass Suggestion"]]]
+		[12, ["Song of Freedom"]],
+		[15, ["Inspire Heroics"]],
+		[18, ["Mass Suggestion"]]]
 );
 
 const clericClassFeaturesMap = (
@@ -428,37 +492,37 @@ const clericClassFeaturesMap = (
 );
 
 const druidClassFeaturesMap = (
-	[ [1, ["Animal Companion","Nature Sense","Wild Empathy"]],
+	[ [1, ["Animal Companion", "Nature Sense", "Wild Empathy"]],
 		[2, ["Woodland Stride"]],
 		[3, ["Trackless Step"]],
 		[4, ["Resist Nature\'s Lure"]],
 		[9, ["Venom Immunity"]],
-		[13,["A Thousand Faces"]],
-		[15,["Timeless Body"]]]
+		[13, ["A Thousand Faces"]],
+		[15, ["Timeless Body"]]]
 );
 
 const fighterClassFeaturesMap = null;
 
 const monkClassFeaturesMap = (
-	[ [1, ["Flurry of Blows","Unarmed Strike"]],
+	[ [1, ["Flurry of Blows", "Unarmed Strike"]],
 		[2, ["Evasion"]],
 		[3, ["Still Mind"]],
 		[5, ["Purity of Body"]],
 		[7, ["Wholeness of Body"]],
 		[9, ["Improved Evasion"]],
-		[11,["Diamond Body"]],
-		[12,["Abundant Step"]],
-		[13,["Diamond Soul"]],
-		[15,["Quivering Palm"]],
-		[17,["Timeless Body","Tongue of the Sun and Moon"]],
-		[19,["Empty Body"]],
-		[20,["Perfect Self"]]]
+		[11, ["Diamond Body"]],
+		[12, ["Abundant Step"]],
+		[13, ["Diamond Soul"]],
+		[15, ["Quivering Palm"]],
+		[17, ["Timeless Body", "Tongue of the Sun and Moon"]],
+		[19, ["Empty Body"]],
+		[20, ["Perfect Self"]]]
 );
 
 const paladinClassFeaturesMap = (
-	[ [1, ["Aura of Good","Detect Evil"]],
-		[2, ["Divine Grace","Lay on Hands"]],
-		[3, ["Aura of Courage","Divine Health"]],
+	[ [1, ["Aura of Good", "Detect Evil"]],
+		[2, ["Divine Grace", "Lay on Hands"]],
+		[3, ["Aura of Courage", "Divine Health"]],
 		[4, ["Turn Undead"]],
 		[5, ["Special Mount"]]]
 );
@@ -469,8 +533,8 @@ const rangerClassFeaturesMap = (
 		[7, ["Woodland Stride"]],
 		[8, ["Swift Tracker"]],
 		[9, ["Evasion"]],
-		[13,["Camouflage"]],
-		[17,["Hide in Plain Sight"]]]
+		[13, ["Camouflage"]],
+		[17, ["Hide in Plain Sight"]]]
 );
 
 const rogueClassFeaturesMap = (
@@ -478,10 +542,10 @@ const rogueClassFeaturesMap = (
 		[2, ["Evasion"]],
 		[4, ["Uncanny Dodge"]],
 		[8, ["Improved Uncanny Dodge"]],
-		[10,["Special Ability"]],
-		[13,["Special Ability"]],
-		[16,["Special Ability"]],
-		[19,["Special Ability"]]]
+		[10, ["Special Ability"]],
+		[13, ["Special Ability"]],
+		[16, ["Special Ability"]],
+		[19, ["Special Ability"]]]
 );
 
 const sorcererClassFeaturesMap = (
@@ -509,16 +573,16 @@ const fighterBonusFeatMap = (
 		[4, ["Bonus Feat"]],
 		[6, ["Bonus Feat"]],
 		[8, ["Bonus Feat"]],
-		[10,["Bonus Feat"]],
-		[12,["Bonus Feat"]],
-		[14,["Bonus Feat"]],
-		[16,["Bonus Feat"]],
-		[18,["Bonus Feat"]],
-		[20,["Bonus Feat"]]]
+		[10, ["Bonus Feat"]],
+		[12, ["Bonus Feat"]],
+		[14, ["Bonus Feat"]],
+		[16, ["Bonus Feat"]],
+		[18, ["Bonus Feat"]],
+		[20, ["Bonus Feat"]]]
 );
 
 const monkBonusFeatMap = (
-	[ [1, ["Bonus Feat","Improved Unarmed Strike"]],
+	[ [1, ["Bonus Feat", "Improved Unarmed Strike"]],
 		[2, ["Bonus Feat"]],
 		[6, ["Bonus Feat"]]]
 );
@@ -530,7 +594,7 @@ const rangerBonusFeatMap = (
 		[2, ["Combat Style"]],
 		[3, ["Endurance"]],
 		[6, ["Improved Combat Style"]],
-		[11,["Combat Style Mastery"]]]
+		[11, ["Combat Style Mastery"]]]
 );
 
 const rogueBonusFeatMap = null;
@@ -540,23 +604,22 @@ const sorcererBonusFeatMap = null;
 const wizardBonusFeatMap = (
 	[ [1, ["Scribe Scroll"]],
 		[5, ["Bonus Feat"]],
-		[10,["Bonus Feat"]],
-		[15,["Bonus Feat"]],
-		[20,["Bonus Feat"]]]
+		[10, ["Bonus Feat"]],
+		[15, ["Bonus Feat"]],
+		[20, ["Bonus Feat"]]]
 );
 
 
 /* Declare Specific DnD Class Objects
- * constructor (className, hitDie, baseSkillPointsPerLevel, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap) 
- * constructor (className, hitDie, baseSkillPointsPerLevel, babScaling, fortScaling, refScaling, willScaling, skillList, classFeaturesMap, classBonusFeatsMap, primarySpellAttribute, spellsPerDay, spellsKnown) 
- * Should base class objects have an array of class features? feats? 
+ * Should base class objects have an array of class features? feats?
  * map. key for level, array of strings for value. reduce clutter.
  * Gonna need a large switch statement to write the character outputs to the pdf
  */
 
 export class Barbarian extends BaseClass {
 	constructor() {
-		super("Barbarian",12,4,"good","good","poor","poor",barbarianSkillList, barbarianClassFeaturesMap, barbarianBonusFeatMap);
+		super("Barbarian", 12, 4, "good", "good", "poor", "poor",
+			barbarianSkillList, barbarianClassFeaturesMap, barbarianBonusFeatMap);
 	}
 	classFeaturesToArray(level) {
 		let baseClassFeatures = this.baseClassFeaturesToArray(level);
@@ -578,30 +641,28 @@ export class Barbarian extends BaseClass {
 		// format as ["rageType","strBonus","conBonus","willBonus","acPenalty"]
 		let rageBonuses;
 		if (level >= 11 && level < 20) {
-			rageBonuses = ["Greater",6,6,3,-2];
-		}
-		else if (level >= 20) {
-			rageBonuses = ["Mighty",8,8,4,-2];
-		}
-		else { 
+			rageBonuses = ["Greater", 6, 6, 3, -2];
+		}	else if (level >= 20) {
+			rageBonuses = ["Mighty", 8, 8, 4, -2];
+		}	else {
 			// Barbarian levels 1 - 10
-			rageBonuses = ["Normal",4,4,2,-2];
+			rageBonuses = ["Normal", 4, 4, 2, -2];
 		}
 
 		return rageBonuses;
 	}
 
 	ragesPerDay(level) {
-		return 1 + Math.floor(level/4);
+		return 1 + Math.floor(level / 4);
 	}
 
 	trapSenseBonus(level) {
-		return Math.floor(level/3);
+		return Math.floor(level / 3);
 	}
 
 	damageReduction(level) {
 		if (level >= 7) {
-			return Math.floor((level - 4)/3);
+			return Math.floor((level - 4) / 3);
 		}
 		return 0;
 	}
@@ -609,7 +670,9 @@ export class Barbarian extends BaseClass {
 
 export class Bard extends Spellcaster {
 	constructor() {
-		super("Bard",6,6,"avg","poor","good","good",bardSkillList, bardClassFeaturesMap, bardBonusFeatMap,bardPrimarySpellAttribute,bardSpellsPerDay,bardSpellsKnown);
+		super("Bard", 6, 6, "avg", "poor", "good", "good",
+			bardSkillList, bardClassFeaturesMap, bardBonusFeatMap,
+			bardPrimarySpellAttribute, bardSpellsPerDay, bardSpellsKnown);
 	}
 	classFeaturesToArray(level) {
 		let baseClassFeatures = this.baseClassFeaturesToArray(level);
@@ -631,7 +694,9 @@ export class Bard extends Spellcaster {
 
 export class Cleric extends Spellcaster {
 	constructor() {
-		super("Cleric",8,2,"avg","good","poor","good",clericSkillList,clericClassFeaturesMap,clericBonusFeatMap,clericPrimarySpellAttribute,clericSpellsPerDay,clericSpellsKnown);
+		super("Cleric", 8, 2, "avg", "good", "poor", "good",
+			clericSkillList, clericClassFeaturesMap, clericBonusFeatMap,
+			clericPrimarySpellAttribute, clericSpellsPerDay, clericSpellsKnown);
 	}
 	classFeaturesToArray(level) {
 		return this.baseClassFeaturesToArray(level);
@@ -641,7 +706,9 @@ export class Cleric extends Spellcaster {
 
 export class Druid extends Spellcaster {
 	constructor() {
-		super("Druid",8,4,"avg","good","poor","good",druidSkillList,druidClassFeaturesMap,druidBonusFeatMap,druidPrimarySpellAttribute,druidSpellsPerDay,druidSpellsKnown);
+		super("Druid", 8, 4, "avg", "good", "poor", "good",
+			druidSkillList, druidClassFeaturesMap, druidBonusFeatMap,
+			druidPrimarySpellAttribute, druidSpellsPerDay, druidSpellsKnown);
 	}
 	classFeaturesToArray(level) {
 		let baseClassFeatures = this.baseClassFeaturesToArray(level);
@@ -667,22 +734,22 @@ export class Druid extends Spellcaster {
 		let total = 0;
 
 		if (level >= 5) {
-			total++;
+			total += 1;
 		}
 		if (level >= 6) {
-			total++;
+			total += 1;
 		}
-		if (level >= 7 ) {
-			total++;
+		if (level >= 7) {
+			total += 1;
 		}
 		if (level >= 10) {
-			total++;
+			total += 1;
 		}
 		if (level >= 14) {
-			total++;
+			total += 1;
 		}
 		if (level >= 18) {
-			total++;
+			total += 1;
 		}
 		return total;
 	}
@@ -690,13 +757,13 @@ export class Druid extends Spellcaster {
 	elementalWildShapesPerDay(level) {
 		let total = 0;
 		if (level >= 16) {
-			total++;
+			total += 1;
 		}
 		if (level >= 18) {
-			total++;
+			total += 1;
 		}
 		if (level >= 20) {
-			total++;
+			total += 1;
 		}
 		return total;
 	}
@@ -737,7 +804,8 @@ export class Druid extends Spellcaster {
 
 export class Fighter extends BaseClass {
 	constructor() {
-		super("Fighter",10,2,"good","good","poor","poor",fighterSkillList,fighterClassFeaturesMap,fighterBonusFeatMap);
+		super("Fighter", 10, 2, "good", "good", "poor", "poor",
+			fighterSkillList, fighterClassFeaturesMap, fighterBonusFeatMap);
 	}
 	classFeaturesToArray(level) {
 		return this.baseClassFeaturesToArray(level);
@@ -746,7 +814,8 @@ export class Fighter extends BaseClass {
 
 export class Monk extends BaseClass {
 	constructor() {
-		super("Monk",8,4,"avg","good","good","good",monkSkillList,monkClassFeaturesMap,monkBonusFeatMap);
+		super("Monk", 8, 4, "avg", "good", "good", "good",
+			monkSkillList, monkClassFeaturesMap, monkBonusFeatMap);
 	}
 	classFeaturesToArray(level) {
 		let baseClassFeatures = this.baseClassFeaturesToArray(level);
@@ -782,35 +851,29 @@ export class Monk extends BaseClass {
 	slowFallDistance(level) {
 		if (level < 4) {
 			return 0;
-		}
-		else if (level < 20) {
+		}	else if (level < 20) {
 			return 10 * Math.floor(level / 2);
 		}
 		// level >= 20
 		return Infinity;
 	}
 
-	unarmedDamage(level) { 
+	unarmedDamage(level) {
 		// unarmedDamage[0] is the number of dice, unarmedDamage[1] is the die size
 		let unarmedDamage;
 
 		if (level < 4) {
-			unarmedDamage = [1,6];
-		}
-		else if (level < 8) {
-			unarmedDamage = [1,8];
-		}
-		else if (level < 12) {
-			unarmedDamage = [1,10];
-		}
-		else if (level < 16) {
-			unarmedDamage = [2,6];
-		}
-		else if (level < 20) {
-			unarmedDamage = [2,8];
-		}
-		else {
-			unarmedDamage = [2,10];
+			unarmedDamage = [1, 6];
+		}	else if (level < 8) {
+			unarmedDamage = [1, 8];
+		}	else if (level < 12) {
+			unarmedDamage = [1, 10];
+		}	else if (level < 16) {
+			unarmedDamage = [2, 6];
+		}	else if (level < 20) {
+			unarmedDamage = [2, 8];
+		}	else {
+			unarmedDamage = [2, 10];
 		}
 		return unarmedDamage;
 	}
@@ -824,17 +887,16 @@ export class Monk extends BaseClass {
 	}
 
 	flurryOfBlowsAdjustments(level) {
-		// Contains the negative offset from base attack bonus [0] and the number of attacks at highest bonus [1]
+		// Contains the negative offset from base attack bonus [0]
+		// and the number of attacks at highest bonus [1]
 		let flurryOfBlowsAdjustments;
 
 		if (level < 5) {
-			flurryOfBlowsAdjustments = [-2,2];
-		}
-		else if (level < 9) {
-			flurryOfBlowsAdjustments = [-1,2];
-		}
-		else {
-			flurryOfBlowsAdjustments = [0,3];
+			flurryOfBlowsAdjustments = [-2, 2];
+		}	else if (level < 9) {
+			flurryOfBlowsAdjustments = [-1, 2];
+		}	else {
+			flurryOfBlowsAdjustments = [0, 3];
 		}
 
 		return flurryOfBlowsAdjustments;
@@ -842,7 +904,9 @@ export class Monk extends BaseClass {
 }
 export class Paladin extends Spellcaster {
 	constructor() {
-		super("Paladin",10,2,"good","good","poor","poor",paladinSkillList,paladinClassFeaturesMap,paladinBonusFeatMap,paladinPrimarySpellAttribute,paladinSpellsPerDay,paladinSpellsKnown);
+		super("Paladin", 10, 2, "good", "good", "poor", "poor",
+			paladinSkillList, paladinClassFeaturesMap, paladinBonusFeatMap,
+			paladinPrimarySpellAttribute, paladinSpellsPerDay, paladinSpellsKnown);
 	}
 	classFeaturesToArray(level) {
 		let baseClassFeatures = this.baseClassFeaturesToArray(level);
@@ -856,7 +920,7 @@ export class Paladin extends Spellcaster {
 	}
 	// Get smite evil / day, remove disease / day, lay on hands
 	smiteEvilPerDay(level) {
-		return 1 + Math.floor(level/5);
+		return 1 + Math.floor(level / 5);
 	}
 	removeDiseasePerWeek(level) {
 		if (level < 6) {
@@ -868,7 +932,9 @@ export class Paladin extends Spellcaster {
 
 export class Ranger extends Spellcaster {
 	constructor() {
-		super("Ranger",8,6,"good","good","good","poor",rangerSkillList,rangerClassFeaturesMap,rangerBonusFeatMap,rangerPrimarySpellAttribute,rangerSpellsPerDay,rangerSpellsKnown);
+		super("Ranger", 8, 6, "good", "good", "good", "poor",
+			rangerSkillList, rangerClassFeaturesMap, rangerBonusFeatMap,
+			rangerPrimarySpellAttribute, rangerSpellsPerDay, rangerSpellsKnown);
 	}
 	classFeaturesToArray(level) {
 		let baseClassFeatures = this.baseClassFeaturesToArray(level);
@@ -893,7 +959,8 @@ export class Ranger extends Spellcaster {
 
 export class Rogue extends BaseClass {
 	constructor() {
-		super("Rogue",6,8,"avg","poor","good","poor",rogueSkillList,rogueClassFeaturesMap,rogueBonusFeatMap);
+		super("Rogue", 6, 8, "avg", "poor", "good", "poor",
+			rogueSkillList, rogueClassFeaturesMap, rogueBonusFeatMap);
 	}
 	classFeaturesToArray(level) {
 		let baseClassFeatures = this.baseClassFeaturesToArray(level);
@@ -916,7 +983,9 @@ export class Rogue extends BaseClass {
 
 export class Sorcerer extends Spellcaster {
 	constructor() {
-		super("Sorcerer",4,2,"poor","poor","poor","good",sorcererSkillList,sorcererClassFeaturesMap,sorcererBonusFeatMap,sorcererPrimarySpellAttribute,sorcererSpellsPerDay,sorcererSpellsKnown);
+		super("Sorcerer", 4, 2, "poor", "poor", "poor", "good",
+			sorcererSkillList, sorcererClassFeaturesMap, sorcererBonusFeatMap,
+			sorcererPrimarySpellAttribute, sorcererSpellsPerDay, sorcererSpellsKnown);
 	}
 	classFeaturesToArray(level) {
 		return this.baseClassFeaturesToArray(level);
@@ -925,7 +994,9 @@ export class Sorcerer extends Spellcaster {
 
 export class Wizard extends Spellcaster {
 	constructor() {
-		super("Wizard",4,2,"poor","poor","poor","good",wizardSkillList,wizardClassFeaturesMap,wizardBonusFeatMap,wizardPrimarySpellAttribute,wizardSpellsPerDay,wizardSpellsKnown);
+		super("Wizard", 4, 2, "poor", "poor", "poor", "good",
+			wizardSkillList, wizardClassFeaturesMap, wizardBonusFeatMap,
+			wizardPrimarySpellAttribute, wizardSpellsPerDay, wizardSpellsKnown);
 	}
 	classFeaturesToArray(level) {
 		return this.baseClassFeaturesToArray(level);
@@ -993,7 +1064,8 @@ export class Character {
 			break;
 		default:
 			this._characterClass = null;
-		} // switch
+		}
+		// switch
 	}
 
 	get characterName() {
