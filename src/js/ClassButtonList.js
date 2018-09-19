@@ -9,13 +9,13 @@ export class ClassButtonList extends React.Component {
 	render() {
 		// Add styles?
 		const classButtonList = this.props.characterClasses.map((dndClass) =>
-			React.createElement("li", null,
-				React.createElement(ClassButton,
-					{ characterClassName: `${dndClass}`, changeClass: this.changeClass },
-					null)
+			(
+				<li>
+					<ClassButton characterClassName={ dndClass } changeClass={ this.changeClass } />
+				</li>
 			)
 		);
-		return React.createElement("ul", null, classButtonList);
+		return <ul>{ classButtonList }</ul>;
 	}
 
 	constructor(props) {
@@ -23,7 +23,7 @@ export class ClassButtonList extends React.Component {
 		this.changeClass = this.changeClass.bind(this);
 		this.getSelectedClass = this.getSelectedClass.bind(this);
 		this.state = {
-			selectedClass: "yeet you don't have a class yet"
+			selectedClass: ""
 		};
 	}
 

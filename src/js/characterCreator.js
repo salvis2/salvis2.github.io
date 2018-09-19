@@ -1,26 +1,19 @@
 /* jshint esversion: 6 */
-import React 				from "react";
-import ReactDOM 			from "react-dom";
+import React 								from "react";
+import ReactDOM 						from "react-dom";
 import { ClassButtonList } 	from "./ClassButtonList.js";
 import { CharacterResults } from "./CharacterResults.js";
+
+// I need these so that my formatting in the local host is familiar
 import "../css/characterCreator.css";
 import "../css/main.css";
+
 // Listen for character class, then render new things as options are selected
 // Do I even have character class options?
-
-// Is the script working at all?
-ReactDOM.render(
-	React.createElement(
-		"p", null, "characterCreator.js is working"),
-	document.getElementById("test2")
-);
 
 // Set up classes, can expand later
 const displayedDndClasses = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter",
 	"Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Wizard"];
-
-// Start Character Creation Button
-// const startButton = document.querySelector("#startButton");
 
 export class CharacterCreator extends React.Component {
 	constructor(props) {
@@ -40,13 +33,13 @@ export class CharacterCreator extends React.Component {
 	}
 
 	render() {
-		let startButton = React.createElement("button",
-			{ onClick: this.startCharacterCreation },
-			"Begin Character Creation");
+		let startButton = (
+			<button onClick={ this.startCharacterCreation }>
+				Begin Character Creation
+			</button>
+		);
 
-		return React.createElement("div",
-			null,
-			startButton);
+		return <div>{startButton}</div>;
 		// 7630
 	}
 
@@ -59,22 +52,18 @@ export class CharacterCreator extends React.Component {
 
 	// Start Character Creation Function
 	startCharacterCreation() {
-		const startContent =
-			React.createElement(
-				"p", null, "Select a Character Class");
+		const startContent = <p>Select a Character Class</p>;
 
 		// Character Selection Submission Button
 		const submitClass =
-			React.createElement("button",
-				{ onClick: this.submitCharacterClass },
-				"Submit Class Selection");
+			<button	onClick={ this.submitCharacterClass } >Submit Class Selection</button>;
 
 		// Class Button List
-		let classButtonList =
-			React.createElement(ClassButtonList,
-				{ characterClasses: displayedDndClasses,
-					changeSelectedCharacterClass: this.changeSelectedCharacterClass },
-				null);
+		let classButtonList = (
+			<ClassButtonList
+				characterClasses= { displayedDndClasses }
+				changeSelectedCharacterClass= { this.changeSelectedCharacterClass }/>
+		);
 
 		ReactDOM.render(
 			startContent,
@@ -96,50 +85,52 @@ export class CharacterCreator extends React.Component {
 	submitCharacterClass() {
 		// Render Text
 		ReactDOM.render(
-			React.createElement(
-				"p", null, "Select your starting level"),
+			<p>Select your starting level</p>,
 			document.getElementById("level-selection")
 		);
 
 		// Render Level Input Form
 		ReactDOM.render(
-			React.createElement(
-				"input", { id: "level-input-area", type: "number", min: "1", max: "20", step: "1" }, null),
+			<input id="level-input-area" type="number" min="1" max="20" step="1" />,
 			document.getElementById("level-input")
 		);
 
 		// Render Level Form Submission Button
 		ReactDOM.render(
-			React.createElement("button", { onClick: this.submitLevel }, "Submit Level Selection"),
+			<button onClick={ this.submitLevel }>Submit Level Selection</button>,
 			document.getElementById("level-submission")
 		);
 	}
 
 	// Level Selection Submission
 	submitLevel() {
+		// Error for level not in 0-20?
 		this.state.selectedCharacterLevel = document.getElementById("level-input-area").value;
 
 		ReactDOM.render(
-			React.createElement("p", null,
-				`Selected Character: Level ${this.state.selectedCharacterLevel}
-				${this.state.selectedCharacterClass}`),
+			(
+				<p>Selected Character:
+				Level {this.state.selectedCharacterLevel} {this.state.selectedCharacterClass}</p>
+			),
 			document.getElementById("level-selection")
 		);
 
 		ReactDOM.render(
-			React.createElement(
-				"button", { onClick: this.displaySelectionResults }, "Display Results"),
+			<button onClick={ this.displaySelectionResults }>Display Results</button>,
 			document.getElementById("display-results")
 		);
 	}
 
 	// Display Selection Results
 	displaySelectionResults() {
+		let characterResults = (
+			<CharacterResults
+				characterClass={ this.state.selectedCharacterClass }
+				characterLevel={ this.state.selectedCharacterLevel } />
+		);
+
 		ReactDOM.render(
-			React.createElement(CharacterResults,
-				{ characterClass: this.state.selectedCharacterClass,
-					characterLevel: this.state.selectedCharacterLevel },
-				null),
+			characterResults,
 			document.getElementById("character-output")
 		);
 	}
@@ -157,9 +148,8 @@ export class CharacterCreator extends React.Component {
 	// Name Character
 }
 
+// Start Character Creation Button
 ReactDOM.render(
-	React.createElement(
-		CharacterCreator, null, null
-	),
+	<CharacterCreator />,
 	document.getElementById("start-character")
 );

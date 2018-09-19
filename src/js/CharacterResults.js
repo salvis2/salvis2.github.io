@@ -60,16 +60,14 @@ export class CharacterResults extends React.Component {
 		// Base Class Options
 		let classData = characterClass.classStatstoArray(this.state.usedLevel);
 		let classDataMap = classData.map((data) =>
-			React.createElement("p", null, data)
+			<p>{ data }</p>
 		);
 
 		// Spellcaster Options
 
-		// Class-Specific Options
-
 		// Character Options
 
 		// Return Statement
-		return React.createElement("p", null, classDataMap);
+		return <p>{ classDataMap }</p>;
 	}
 }

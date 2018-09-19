@@ -822,11 +822,11 @@ export class Monk extends BaseClass {
 		let monkClassFeatures = [];
 
 		monkClassFeatures.push(`Ki Strike Types: ${this.kiStrikeTypes(level)}`);
-		monkClassFeatures.push(`Slow Fall Distance: ${this.slowFallDistance}\'`);
+		monkClassFeatures.push(`Slow Fall Distance: ${this.slowFallDistance(level)}\'`);
 		monkClassFeatures.push(
 			`Unarmed Damage: ${this.unarmedDamage(level)[0]}d${this.unarmedDamage(level)[1]}`);
 		monkClassFeatures.push(`AC Bonus: ${this.monkACBonus(level)}`);
-		monkClassFeatures.push(`Speed Bonus: ${this.monkSpeedBonus}\'`);
+		monkClassFeatures.push(`Speed Bonus: ${this.monkSpeedBonus(level)}\'`);
 
 		monkClassFeatures = monkClassFeatures.concat(baseClassFeatures);
 		return monkClassFeatures;

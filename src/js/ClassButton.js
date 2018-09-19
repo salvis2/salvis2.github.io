@@ -7,10 +7,10 @@ import ReactDOM from "react-dom";
 // Character Class Selection
 export class ClassButton extends React.Component {
 	render() {
-		return React.createElement(
-			"button",
-			{ className: "character-selection", onClick: this.beginCharacterCreation },
-			`${this.props.characterClassName}`
+		return (
+			<button className="character-selection" onClick={ this.beginCharacterCreation }>
+				{this.props.characterClassName}
+			</button>
 		);
 	}
 
@@ -30,8 +30,7 @@ export class ClassButton extends React.Component {
 
 		// Display Selection
 		ReactDOM.render(
-			React.createElement(
-				"p", null, `${newClass} Selected.`),
+			<p>{newClass} Selected</p>,
 			document.getElementById("output-text"));
 	}
 }
