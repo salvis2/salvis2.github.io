@@ -2,7 +2,7 @@
 import React 								from "react";
 import ReactDOM 						from "react-dom";
 import { ClassButtonList } 	from "./ClassButtonList.js";
-import { CharacterResults } from "./CharacterResults.js";
+import { ClassResults } from "./ClassResults.js";
 
 // I need these so that my formatting in the local host is familiar
 import "../css/characterCreator.css";
@@ -123,21 +123,27 @@ export class CharacterCreator extends React.Component {
 
 	// Display Selection Results
 	displaySelectionResults() {
-		let characterOutputSection = document.getElementById("character-output");
-
-		let characterResults = (
-			<CharacterResults
+		let classResults = (
+			<ClassResults
 				characterClass={ this.state.selectedCharacterClass }
 				characterLevel={ this.state.selectedCharacterLevel } />
 		);
 
 		ReactDOM.render(
-			characterResults,
-			characterOutputSection
+			classResults,
+			document.getElementById("character-output")
 		);
+
+		ReactDOM.render(
+			<button onClick={ this.selectCharacterOptions }>Set Character Options</button>,
+			document.getElementById("character-option-button"));
 	}
 
+	selectCharacterOptions() {
+
+	}
 	// Roll or input ability scores
+  // Make a component for this, can use race input?
 
 	// Assign skill points
 
