@@ -2,24 +2,30 @@
 // CharacterResults Component for the Character Creator Page
 
 import React from "react";
-// import ReactDOM from "react-dom";
+import ReactDOM from "react-dom";
 import * as dnd from "./DnDClasses.js";
 
 // Display character stats for selected class and level
 export class CharacterResults extends React.Component {
 	constructor(props) {
 		super(props);
+		// this.generateCharacterSheet = this.generateCharacterSheet.bind(this);
+		this.toggleHidden = this.toggleHidden.bind(this);
 
 		this.state = {
-			usedCharacterClass: this.props.characterClass,
-			usedLevel: this.props.characterLevel
+			isHidden: false
 		};
 	}
 
+	toggleHidden() {
+		this.setState({
+			isHidden: !this.state.isHidden
+		});
+	}
 	render() {
-		// Using this.state.usedCharacterClass
 		let characterClass;
-		switch (this.state.usedCharacterClass) {
+		console.log(`Making New ${this.props.characterClass}`);
+		switch (this.props.characterClass) {
 		case "Barbarian":
 			characterClass = new dnd.Barbarian();
 			break;
@@ -57,8 +63,10 @@ export class CharacterResults extends React.Component {
 			characterClass = null;
 		}
 
+		// Should return entry titles (ex. Base Attack Bonus) and the data (ex. good)
+		// with different inline styles / components
 		// Base Class Options
-		let classData = characterClass.classStatstoArray(this.state.usedLevel);
+		let classData = characterClass.classStatstoArray(this.props.characterLevel);
 		let classDataMap = classData.map((data) =>
 			<p>{ data }</p>
 		);
@@ -68,6 +76,13 @@ export class CharacterResults extends React.Component {
 		// Character Options
 
 		// Return Statement
-		return <p>{ classDataMap }</p>;
+		return (
+			<div>
+				<button onClick={ this.toggleHidden }>
+					Toggle Class Details
+				</button>
+				{ !this.state.isHidden && <div>{ classDataMap }</div> }
+			</div>
+		);
 	}
 }

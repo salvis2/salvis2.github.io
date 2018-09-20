@@ -123,6 +123,8 @@ export class CharacterCreator extends React.Component {
 
 	// Display Selection Results
 	displaySelectionResults() {
+		let characterOutputSection = document.getElementById("character-output");
+
 		let characterResults = (
 			<CharacterResults
 				characterClass={ this.state.selectedCharacterClass }
@@ -131,7 +133,7 @@ export class CharacterCreator extends React.Component {
 
 		ReactDOM.render(
 			characterResults,
-			document.getElementById("character-output")
+			characterOutputSection
 		);
 	}
 

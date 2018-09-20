@@ -30,6 +30,14 @@ module.exports = {
 			{
 				test: /\.css$/,
 				use: [ "style-loader", "css-loader" ]
+			},
+			{
+				test: /node_modules\/(pdfkit|fontkit|png-js|linebreak|unicode-properties|brotli)\//,
+				loader: "transform-loader?brfs"
+			},
+			{
+				test: /node_modules\/unicode-properties.*\.json$/,
+				use: "json-loader"
 			}
 		]
 	},
@@ -37,5 +45,9 @@ module.exports = {
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
 		htmlWebpackPlugin
-	]
+	],
+	node: {
+		fs: "empty",
+		child_process: "empty"
+	}
 };
