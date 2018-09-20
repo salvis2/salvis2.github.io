@@ -109,7 +109,6 @@ class BaseClass {
 		classData.push(`Reflex Base Save: ${this.refScaling}`);
 		classData.push(`Will Base Save: ${this.willScaling}`);
 		classData.push(`Skill List: ${this.skillListAsArray()}`);
-		// classData.push(`Class Features At Level ${level}: ${this.classFeaturesToArray(level)}`);
 		classData.push(`Bonus Feats Given By Level ${level}: ${this.classBonusFeatsToArray(level)}`);
 
 		// Format Class Features More Nicely
@@ -139,19 +138,43 @@ class Spellcaster extends BaseClass {
 	get primarySpellAttribute() {
 		return this._primarySpellAttribute;
 	}
-	spellsPerDay(casterLevel, spellLevel) {
+	spellsPerDay(casterLevel) {
 		// All spellcasters have this
 		// Out of bounds gives undefined
-		return this._spellsPerDay[casterLevel - 1][spellLevel];
+		return this._spellsPerDay[casterLevel - 1];
 	}
-	spellsKnown(casterLevel, spellLevel) {
+	spellsKnown(casterLevel) {
 		// Not all spellcasters have this
 		// null should mean that the caster knows all spells that they can cast for their level.
 		// out of bounds gives undefined
 		if (this._spellsKnown === null) {
 			return null;
 		}
-		return this._spellsKnown[casterLevel - 1][spellLevel];
+		return this._spellsKnown[casterLevel - 1];
+	}
+	spellcastingInfoToArray(level) {
+		let spellcastingData = [];
+
+		spellcastingData.push(`Primary Spellcasting Attribute: ${this.primarySpellAttribute}`);
+
+		// Format the spells per day info consisely
+		let spellsPerDay = `Spells Per Day: `;
+		for (let i = 0; i < this.spellsPerDay(level).length; i += 1) {
+			spellsPerDay += `${this.spellsPerDay(level)[i]}\/`;
+		}
+		spellsPerDay = spellsPerDay.slice(0, -1);
+		spellcastingData.push(spellsPerDay);
+
+		// Format the spells known info consisely
+		if (this.spellsKnown(level, 1) !== null) {
+			let spellsKnown = `Spells Known: `;
+			for (let i = 0; i < this.spellsKnown(level).length; i += 1) {
+				spellsKnown += `${this.spellsKnown(level)[i]}\/`;
+			}
+			spellsKnown = spellsKnown.slice(0, -1);
+			spellcastingData.push(spellsKnown);
+		}
+		return spellcastingData;
 	}
 }
 /*
@@ -454,13 +477,13 @@ const sorcererSpellsKnown =
 const wizardSpellsKnown = null;
 
 /* Declare Primary Spellcasting Attributes */
-const bardPrimarySpellAttribute = "cha";
-const clericPrimarySpellAttribute = "wis";
-const druidPrimarySpellAttribute = "wis";
-const paladinPrimarySpellAttribute = "cha";
-const rangerPrimarySpellAttribute = "wis";
-const sorcererPrimarySpellAttribute = "cha";
-const wizardPrimarySpellAttribute = "int";
+const bardPrimarySpellAttribute = "Charisma";
+const clericPrimarySpellAttribute = "Wisdom";
+const druidPrimarySpellAttribute = "Wisdom";
+const paladinPrimarySpellAttribute = "Charisma";
+const rangerPrimarySpellAttribute = "Wisdom";
+const sorcererPrimarySpellAttribute = "Charisma";
+const wizardPrimarySpellAttribute = "Intelligence";
 
 /* Declare Class Feature Maps
  * key is the character level

@@ -24,19 +24,22 @@ export class CharacterResults extends React.Component {
 	}
 	render() {
 		let characterClass;
-		console.log(`Making New ${this.props.characterClass}`);
+		let spellcaster = false;
 		switch (this.props.characterClass) {
 		case "Barbarian":
 			characterClass = new dnd.Barbarian();
 			break;
 		case "Bard":
 			characterClass = new dnd.Bard();
+			spellcaster = true;
 			break;
 		case "Cleric":
 			characterClass = new dnd.Cleric();
+			spellcaster = true;
 			break;
 		case "Druid":
 			characterClass = new dnd.Druid();
+			spellcaster = true;
 			break;
 		case "Fighter":
 			characterClass = new dnd.Fighter();
@@ -46,18 +49,22 @@ export class CharacterResults extends React.Component {
 			break;
 		case "Paladin":
 			characterClass = new dnd.Paladin();
+			spellcaster = true;
 			break;
 		case "Ranger":
 			characterClass = new dnd.Ranger();
+			spellcaster = true;
 			break;
 		case "Rogue":
 			characterClass = new dnd.Rogue();
 			break;
 		case "Sorcerer":
 			characterClass = new dnd.Sorcerer();
+			spellcaster = true;
 			break;
 		case "Wizard":
 			characterClass = new dnd.Wizard();
+			spellcaster = true;
 			break;
 		default:
 			characterClass = null;
@@ -67,13 +74,19 @@ export class CharacterResults extends React.Component {
 		// with different inline styles / components
 		// Base Class Options
 		let classData = characterClass.classStatstoArray(this.props.characterLevel);
+
+		// Spellcaster Options
+		if (spellcaster) {
+			let spellcasterData = characterClass.spellcastingInfoToArray(this.props.characterLevel);
+			classData = classData.concat(spellcasterData);
+		}
+
+		// Character Options
+
+		// make html elements from data array
 		let classDataMap = classData.map((data) =>
 			<p>{ data }</p>
 		);
-
-		// Spellcaster Options
-
-		// Character Options
 
 		// Return Statement
 		return (
