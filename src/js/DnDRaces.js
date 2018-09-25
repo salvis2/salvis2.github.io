@@ -1,5 +1,5 @@
 // Dungeons and Dragons Races
-// add languages
+// add bonus languages
 // add save bonuses, conditional
 // add visions?
 // How much do I just put under Racial Features?

@@ -6,14 +6,14 @@ import { Human, Dwarf, Elf, Gnome, Half_Elf, Half_Orc, Halfling }
 
 export class Character {
 	constructor(characterName, characterClass, characterRace,
-		level, race, str, dex, con, int0, wis, cha) {
+		level, race, str, dex, con, inte, wis, cha) {
 		this._characterName = characterName;
 		this._level = level;
 		this._race = race;
 		this._str = str;
 		this._dex = dex;
 		this._con = con;
-		this._int = int0;
+		this._int = inte;
 		this._wis = wis;
 		this._cha = cha;
 
@@ -106,7 +106,7 @@ export class Character {
 	get con() {
 		return this._con;
 	}
-	get int0() {
+	get inte() {
 		return this._int;
 	}
 	get wis() {

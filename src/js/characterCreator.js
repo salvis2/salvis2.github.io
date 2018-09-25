@@ -3,6 +3,7 @@ import React 								from "react";
 import ReactDOM 						from "react-dom";
 import { ClassButtonList } 	from "./ClassButtonList.js";
 import { ClassResults } from "./ClassResults.js";
+import { AbilityScores } from "./AbilityScores.jsx";
 
 // I need these so that my formatting in the local host is familiar
 import "../css/characterCreator.css";
@@ -140,10 +141,13 @@ export class CharacterCreator extends React.Component {
 	}
 
 	selectCharacterOptions() {
-
+		ReactDOM.render(
+			<AbilityScores />,
+			document.getElementById("ability-scores")
+		);
 	}
 	// Roll or input ability scores
-  // Make a component for this, can use race input?
+	// Make a component for this, can use race input?
 
 	// Assign skill points
 
