@@ -1,16 +1,17 @@
 /* jshint esversion:6 */
 const path = require("path");
 const webpack = require("webpack");
+/*
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
 	template: path.join(__dirname, "/src/dndTools/characterCreator/index.html"),
 	filename: "./index.html"
 });
-
+*/
 module.exports = {
-	entry: path.join(__dirname, "/src/js/characterCreator.js"),
+	entry: path.join(__dirname, "/public/javascripts/characterCreator.js"),
 	output: {
-		path: path.join(__dirname, "/src/js/"),
+		path: path.join(__dirname, "/public/javascripts/"),
 		filename: "index.js"
 	},
 	devServer: {
@@ -42,10 +43,12 @@ module.exports = {
 		]
 	},
 	resolve: { extensions: ["*", ".js", ".jsx"] },
+	/*
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
 		htmlWebpackPlugin
 	],
+	*/
 	node: {
 		fs: "empty",
 		child_process: "empty"
