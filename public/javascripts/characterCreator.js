@@ -6,8 +6,8 @@ import { ClassResults } from "./ClassResults.js";
 import { AbilityScores } from "./AbilityScores.jsx";
 
 // I need these so that my formatting in the local host is familiar
-import "../css/characterCreator.css";
-import "../css/main.css";
+import "../stylesheets/characterCreator.css";
+import "../stylesheets/main.css";
 
 // Listen for character class, then render new things as options are selected
 // Do I even have character class options?
