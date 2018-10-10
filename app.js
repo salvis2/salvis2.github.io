@@ -44,4 +44,4 @@ app.use(function(err, req, res, next) {
 	res.render('error');
 });
 
-module.export = app;
+module.exports = app;
