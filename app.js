@@ -6,13 +6,13 @@ var path = require('path');
 
 // Routers
 var homeRouter = require('./routes/homeRouter');
-var dndToolsRouter = require('./routes/dndToolsRouter');
-var characterCreatorRouter = require('./routes/characterCreatorRouter');
+//var dndToolsRouter = require('./routes/dndToolsRouter');
+//var characterCreatorRouter = require('./routes/characterCreatorRouter');
 
 // Specify paths
 app.use('/', homeRouter);
-app.use('/dndTools', dndToolsRouter);
-app.use('/dndTools/characterCreator', characterCreatorRouter);
+//app.use('/dndTools', dndToolsRouter);
+//app.use('/dndTools/characterCreator', characterCreatorRouter);
 
 
 // view engine setup
@@ -23,10 +23,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Test
+/*
+app.get('/', (req, res) => {
+	res.send('Server Upgrades in Progress');
+});
+*/
+
 // Use Routers
-app.use('/', homeRouter);
+//app.use('/', homeRouter);
 
 // catch 404 and forward to error handles
+/*
 app.use(function(req, res, next) {
 	var err = new Error('Not Found');
 	err.status = 404;
@@ -43,5 +51,5 @@ app.use(function(err, req, res, next) {
 	res.status(err.status || 500);
 	res.render('error');
 });
-
+*/
 module.exports = app;
