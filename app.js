@@ -16,6 +16,7 @@ app.use(serveStatic('public/html'));
 app.use(serveStatic('public/stylesheets'));
 app.use(serveStatic('public/javascripts'));
 app.use(serveStatic('public/images'));
+app.use(serveStatic('public/other'));
 
 app.get('/', (req, res, next) => {
 	res.sendFile(__dirname + '/public/html/homepage.html');
