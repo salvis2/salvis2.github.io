@@ -6,10 +6,9 @@ import { Human, Dwarf, Elf, Gnome, Half_Elf, Half_Orc, Halfling }
 
 export class Character {
 	constructor(characterName, characterClass, characterRace,
-		level, race, str, dex, con, inte, wis, cha) {
+		level, str, dex, con, inte, wis, cha) {
 		this._characterName = characterName;
 		this._level = level;
-		this._race = race;
 		this._str = str;
 		this._dex = dex;
 		this._con = con;
@@ -200,5 +199,11 @@ export class Character {
 	}
 	spellsKnown(spellLevel) {
 		return this._characterClass.spellsKnown(this._level)[spellLevel];
+	}
+
+	createBodyData() {
+		let bodyData = {};
+
+		return bodyData;
 	}
 }

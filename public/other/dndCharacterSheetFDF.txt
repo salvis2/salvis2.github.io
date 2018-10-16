@@ -1,0 +1,2916 @@
+%FDF-1.2
+%‚„œ”
+1 0 obj 
+<<
+/FDF 
+<<
+/Fields [
+<<
+/T (bab)
+/V (0)
+>> 
+<<
+/T (companionSkill9_bonus)
+/V ()
+>> 
+<<
+/T (knowArcanaRanks)
+/V ()
+>> 
+<<
+/T (craft1MiscMods)
+/V (0)
+>> 
+<<
+/T (profession0Type)
+/V ()
+>> 
+<<
+/T (bodyGearName)
+/V ()
+>> 
+<<
+/T (intimidateTotal)
+/V (-5)
+>> 
+<<
+/T (knowHistoryAbilityMod)
+/V (-5)
+>> 
+<<
+/T (strEnhancement)
+/V ()
+>> 
+<<
+/T (disableDeviceCS)
+/V /
+>> 
+<<
+/T (openLockTotal)
+/V (-5)
+>> 
+<<
+/T (useRopeRanks)
+/V ()
+>> 
+<<
+/T (characterName)
+/V ()
+>> 
+<<
+/T (item4_notOnPerson_location)
+/V ()
+>> 
+<<
+/T (companionCon)
+/V ()
+>> 
+<<
+/T (knowArchEngMiscMods)
+/V (0)
+>> 
+<<
+/T (eyeGearName)
+/V ()
+>> 
+<<
+/T (fortBonus)
+/V (-5)
+>> 
+<<
+/T (companionSkill9)
+/V ()
+>> 
+<<
+/T (companionSkill6)
+/V ()
+>> 
+<<
+/T (companionSkill5)
+/V ()
+>> 
+<<
+/T (rageACPenalty)
+/V ()
+>> 
+<<
+/T (companionSkill8)
+/V ()
+>> 
+<<
+/T (tumbleMiscMods)
+/V (0)
+>> 
+<<
+/T (item3_notOnPerson_location)
+/V ()
+>> 
+<<
+/T (companionSkill7)
+/V ()
+>> 
+<<
+/T (knowNobilityCS)
+/V /
+>> 
+<<
+/T (spellDC9)
+/V ()
+>> 
+<<
+/T (companionACSizeMod)
+/V ()
+>> 
+<<
+/T (spellDC7)
+/V ()
+>> 
+<<
+/T (spellDC8)
+/V ()
+>> 
+<<
+/T (craft0Ranks)
+/V ()
+>> 
+<<
+/T (spellDC5)
+/V ()
+>> 
+<<
+/T (performComedyAbilityMod)
+/V (-5)
+>> 
+<<
+/T (swimTotal)
+/V (3)
+>> 
+<<
+/T (spellDC6)
+/V ()
+>> 
+<<
+/T (spellDC3)
+/V ()
+>> 
+<<
+/T (healAbilityMod)
+/V (-5)
+>> 
+<<
+/T (spellDC4)
+/V ()
+>> 
+<<
+/T (size)
+/V ()
+>> 
+<<
+/T (item5_notOnPerson_weight)
+/V ()
+>> 
+<<
+/T (spellDC1)
+/V ()
+>> 
+<<
+/T (autohypnosisMiscMods)
+/V (0)
+>> 
+<<
+/T (spellDC2)
+/V ()
+>> 
+<<
+/T (spellDC0)
+/V ()
+>> 
+<<
+/T (attackBonus3)
+/V ()
+>> 
+<<
+/T (refMiscMod)
+/V ()
+>> 
+<<
+/T (companionSkill2)
+/V ()
+>> 
+<<
+/T (willTempMod)
+/V ()
+>> 
+<<
+/T (companionSkill1)
+/V ()
+>> 
+<<
+/T (companionSkill4)
+/V ()
+>> 
+<<
+/T (companionSkill3)
+/V ()
+>> 
+<<
+/T (craft1Total)
+/V (-5)
+>> 
+<<
+/T (attackBonus0)
+/V ()
+>> 
+<<
+/T (attackBonus1)
+/V ()
+>> 
+<<
+/T (companionSkill0)
+/V ()
+>> 
+<<
+/T (attackBonus2)
+/V ()
+>> 
+<<
+/T (craftType2)
+/V ()
+>> 
+<<
+/T (disableDeviceRanks)
+/V ()
+>> 
+<<
+/T (rideMiscMods)
+/V (0)
+>> 
+<<
+/T (knowReligionCS)
+/V /
+>> 
+<<
+/T (usePsionicDevRanks)
+/V ()
+>> 
+<<
+/T (profession1Total)
+/V (-5)
+>> 
+<<
+/T (item2_notOnPerson_location)
+/V ()
+>> 
+<<
+/T (listenCS)
+/V /
+>> 
+<<
+/T (craftType0)
+/V ()
+>> 
+<<
+/T (concentrationMiscMods)
+/V (0)
+>> 
+<<
+/T (acFF)
+/V (10)
+>> 
+<<
+/T (craftType1)
+/V ()
+>> 
+<<
+/T (prohibitedSchool0)
+/V ()
+>> 
+<<
+/T (survivalTotal)
+/V (-5)
+>> 
+<<
+/T (item19_location)
+/V ()
+>> 
+<<
+/T (prohibitedSchool1)
+/V ()
+>> 
+<<
+/T (strMiscPenalty)
+/V ()
+>> 
+<<
+/T (chaMisc)
+/V ()
+>> 
+<<
+/T (intimidateAbilitiyMod)
+/V (-5)
+>> 
+<<
+/T (companionWeapon1_crit)
+/V ()
+>> 
+<<
+/T (useMagicDevTotal)
+/V (-5)
+>> 
+<<
+/T (knowGeographyRanks)
+/V ()
+>> 
+<<
+/T (knowledgeType)
+/V ()
+>> 
+<<
+/T (performWindRanks)
+/V ()
+>> 
+<<
+/T (tumbleTotal)
+/V (-5)
+>> 
+<<
+/T (item5_location)
+/V ()
+>> 
+<<
+/T (item14_location)
+/V ()
+>> 
+<<
+/T (senseMotiveMiscMods)
+/V (0)
+>> 
+<<
+/T (shieldMaxDex)
+/V ()
+>> 
+<<
+/T (bluffMiscMods)
+/V (0)
+>> 
+<<
+/T (item1_notOnPerson_location)
+/V ()
+>> 
+<<
+/T (item0_location)
+/V ()
+>> 
+<<
+/T (searchAbilityMod)
+/V (-5)
+>> 
+<<
+/T (senseMotiveTotal)
+/V (-5)
+>> 
+<<
+/T (gatherInfoTotal)
+/V (-5)
+>> 
+<<
+/T (diplomacyCS)
+/V /
+>> 
+<<
+/T (knowDungeonRanks)
+/V ()
+>> 
+<<
+/T (climbAbilityMod)
+/V (3)
+>> 
+<<
+/T (decipherScriptAbilityMod)
+/V (-5)
+>> 
+<<
+/T (bluffRanks)
+/V ()
+>> 
+<<
+/T (disguiseCS)
+/V /
+>> 
+<<
+/T (openLockMiscMods)
+/V (0)
+>> 
+<<
+/T (profession0Ranks)
+/V ()
+>> 
+<<
+/T (item19_weight)
+/V ()
+>> 
+<<
+/T (autohypnosisRanks)
+/V ()
+>> 
+<<
+/T (feat6)
+/V ()
+>> 
+<<
+/T (feat7)
+/V ()
+>> 
+<<
+/T (feat8)
+/V ()
+>> 
+<<
+/T (knowLocalMiscMods)
+/V (0)
+>> 
+<<
+/T (feat9)
+/V ()
+>> 
+<<
+/T (specialtySchool)
+/V ()
+>> 
+<<
+/T (feat2)
+/V ()
+>> 
+<<
+/T (psicraftAbilityMod)
+/V (-5)
+>> 
+<<
+/T (feat3)
+/V ()
+>> 
+<<
+/T (feat4)
+/V ()
+>> 
+<<
+/T (feat5)
+/V ()
+>> 
+<<
+/T (autohypnosisAbilityMod)
+/V (-5)
+>> 
+<<
+/T (item9_location)
+/V ()
+>> 
+<<
+/T (performDanceAbilityMod)
+/V (-5)
+>> 
+<<
+/T (moveSilentlyTotal)
+/V (-5)
+>> 
+<<
+/T (sleightOfHandRanks)
+/V ()
+>> 
+<<
+/T (disguiseMiscMods)
+/V (0)
+>> 
+<<
+/T (knowPsionicsMiscMods)
+/V (0)
+>> 
+<<
+/T (openLockAbilityMod)
+/V (-5)
+>> 
+<<
+/T (knowNatureCS)
+/V /
+>> 
+<<
+/T (spotAbilityMod)
+/V (-5)
+>> 
+<<
+/T (item2_notOnPerson_weight)
+/V ()
+>> 
+<<
+/T (sleightOfHandMiscMods)
+/V (0)
+>> 
+<<
+/T (decipherScriptTotal)
+/V (-5)
+>> 
+<<
+/T (rageAbilityBonus)
+/V ()
+>> 
+<<
+/T (armorMaxDex)
+/V ()
+>> 
+<<
+/T (performOratoryRanks)
+/V ()
+>> 
+<<
+/T (dexMisc)
+/V ()
+>> 
+<<
+/T (diplomacyAbilityMod)
+/V (-5)
+>> 
+<<
+/T (item5_weight)
+/V ()
+>> 
+<<
+/T (item14_weight)
+/V ()
+>> 
+<<
+/T (chaScore)
+/V (0)
+>> 
+<<
+/T (item0_notOnPerson_location)
+/V ()
+>> 
+<<
+/T (companionWeapon2_damage)
+/V ()
+>> 
+<<
+/T (listenMiscMods)
+/V (0)
+>> 
+<<
+/T (hideMiscMods)
+/V (0)
+>> 
+<<
+/T (spotTotal)
+/V (-5)
+>> 
+<<
+/T (handleAnimalRanks)
+/V ()
+>> 
+<<
+/T (knowNobilityMiscMods)
+/V (0)
+>> 
+<<
+/T (alignment)
+/V ()
+>> 
+<<
+/T (companionACTouch)
+/V ()
+>> 
+<<
+/T (wisMisc)
+/V ()
+>> 
+<<
+/T (rtcf9)
+/V ()
+>> 
+<<
+/T (hideAbilityMod)
+/V (-5)
+>> 
+<<
+/T (rtcf5)
+/V ()
+>> 
+<<
+/T (rtcf6)
+/V ()
+>> 
+<<
+/T (rtcf7)
+/V ()
+>> 
+<<
+/T (rtcf8)
+/V ()
+>> 
+<<
+/T (performActTotal)
+/V (-5)
+>> 
+<<
+/T (item13_location)
+/V ()
+>> 
+<<
+/T (companionInit)
+/V ()
+>> 
+<<
+/T (rtcf1)
+/V ()
+>> 
+<<
+/T (performWindAbilityMod)
+/V (-5)
+>> 
+<<
+/T (survivalAbilityMod)
+/V (-5)
+>> 
+<<
+/T (rtcf2)
+/V ()
+>> 
+<<
+/T (rtcf3)
+/V ()
+>> 
+<<
+/T (rtcf4)
+/V ()
+>> 
+<<
+/T (concentrationAbilityMod)
+/V (-5)
+>> 
+<<
+/T (healMiscMods)
+/V (0)
+>> 
+<<
+/T (medLoad)
+/V (16)
+>> 
+<<
+/T (companionWeapon2_crit)
+/V ()
+>> 
+<<
+/T (performWindCS)
+/V /
+>> 
+<<
+/T (rtcf0)
+/V ()
+>> 
+<<
+/T (handleAnimalMiscMods)
+/V (0)
+>> 
+<<
+/T (profession0Total)
+/V (-5)
+>> 
+<<
+/T (fortConMod)
+/V (-5)
+>> 
+<<
+/T (performPercussionAbilityMod)
+/V (-5)
+>> 
+<<
+/T (dexScore)
+/V (0)
+>> 
+<<
+/T (willMagicMod)
+/V ()
+>> 
+<<
+/T (searchCS)
+/V /
+>> 
+<<
+/T (companionFortSave)
+/V ()
+>> 
+<<
+/T (item10_location)
+/V ()
+>> 
+<<
+/T (feat0)
+/V ()
+>> 
+<<
+/T (companionAC)
+/V ()
+>> 
+<<
+/T (feat1)
+/V ()
+>> 
+<<
+/T (item11_weight)
+/V ()
+>> 
+<<
+/T (disableDeviceMiscMods)
+/V (0)
+>> 
+<<
+/T (3  CHA  MODIFIER)
+/V ()
+>> 
+<<
+/T (psicraftMiscMods)
+/V (0)
+>> 
+<<
+/T (item5_notOnPerson_location)
+/V ()
+>> 
+<<
+/T (knowHistoryMiscMods)
+/V (0)
+>> 
+<<
+/T (knowLocalAbilityMod)
+/V (-5)
+>> 
+<<
+/T (acDexMod)
+/V (-5)
+>> 
+<<
+/T (totalItemWeight)
+/V (0)
+>> 
+<<
+/T (hp)
+/V ()
+>> 
+<<
+/T (critRange1)
+/V ()
+>> 
+<<
+/T (critRange2)
+/V ()
+>> 
+<<
+/T (performActAbilityMod)
+/V (-5)
+>> 
+<<
+/T (critRange0)
+/V ()
+>> 
+<<
+/T (performStringAbilityMod)
+/V (-5)
+>> 
+<<
+/T (knowPlanesTotal)
+/V (-5)
+>> 
+<<
+/T (profession1CS)
+/V /
+>> 
+<<
+/T (feat19)
+/V ()
+>> 
+<<
+/T (feat18)
+/V ()
+>> 
+<<
+/T (knowOtherMiscMods)
+/V (0)
+>> 
+<<
+/T (feat17)
+/V ()
+>> 
+<<
+/T (willWisMod)
+/V (-5)
+>> 
+<<
+/T (decipherScriptRanks)
+/V ()
+>> 
+<<
+/T (critRange3)
+/V ()
+>> 
+<<
+/T (craft2Total)
+/V (-5)
+>> 
+<<
+/T (feat12)
+/V ()
+>> 
+<<
+/T (feat11)
+/V ()
+>> 
+<<
+/T (ragesPerDay)
+/V ()
+>> 
+<<
+/T (performSingCS)
+/V /
+>> 
+<<
+/T (feat10)
+/V ()
+>> 
+<<
+/T (feat16)
+/V ()
+>> 
+<<
+/T (feat15)
+/V ()
+>> 
+<<
+/T (handGearName)
+/V ()
+>> 
+<<
+/T (feat14)
+/V ()
+>> 
+<<
+/T (conMod)
+/V (-5)
+>> 
+<<
+/T (feat13)
+/V ()
+>> 
+<<
+/T (searchMiscMods)
+/V (0)
+>> 
+<<
+/T (conMisc)
+/V ()
+>> 
+<<
+/T (forgeryCS)
+/V /
+>> 
+<<
+/T (disableDeviceAbilityMod)
+/V (-5)
+>> 
+<<
+/T (profession0MiscMods)
+/V (0)
+>> 
+<<
+/T (senseMotiveRanks)
+/V ()
+>> 
+<<
+/T (item20)
+/V ()
+>> 
+<<
+/T (Text11)
+/V ()
+>> 
+<<
+/T (conMiscPenalty)
+/V ()
+>> 
+<<
+/T (knowArcanaMiscMods)
+/V (0)
+>> 
+<<
+/T (item4_notOnPerson_weight)
+/V ()
+>> 
+<<
+/T (performWindTotal)
+/V (-5)
+>> 
+<<
+/T (acTouch)
+/V (5)
+>> 
+<<
+/T (companionTrick4)
+/V ()
+>> 
+<<
+/T (companionTrick3)
+/V ()
+>> 
+<<
+/T (acTotal)
+/V (5)
+>> 
+<<
+/T (openLockCS)
+/V /
+>> 
+<<
+/T (searchTotal)
+/V (-5)
+>> 
+<<
+/T (fortMiscMod)
+/V ()
+>> 
+<<
+/T (companionTrick5)
+/V ()
+>> 
+<<
+/T (heavyLoad)
+/V (25)
+>> 
+<<
+/T (companionTrick0)
+/V ()
+>> 
+<<
+/T (companionTrick2)
+/V ()
+>> 
+<<
+/T (companionTrick1)
+/V ()
+>> 
+<<
+/T (spellcraftTotal)
+/V (-5)
+>> 
+<<
+/T (companionStr)
+/V ()
+>> 
+<<
+/T (knowOtherAbilityMod)
+/V (-5)
+>> 
+<<
+/T (Text25)
+/V ()
+>> 
+<<
+/T (companionRefSave)
+/V ()
+>> 
+<<
+/T (Text24)
+/V ()
+>> 
+<<
+/T (knowOtherTotal)
+/V (-5)
+>> 
+<<
+/T (item3_notOnPerson)
+/V ()
+>> 
+<<
+/T (decipherScriptMiscMods)
+/V (0)
+>> 
+<<
+/T (useMagicDevAbilityMod)
+/V (-5)
+>> 
+<<
+/T (companionName)
+/V ()
+>> 
+<<
+/T (diplomacyRanks)
+/V ()
+>> 
+<<
+/T (usePsionicDevAbilityMod)
+/V (-5)
+>> 
+<<
+/T (performOtherMiscMods)
+/V (0)
+>> 
+<<
+/T (craft1Ranks)
+/V ()
+>> 
+<<
+/T (item2_notOnPerson)
+/V ()
+>> 
+<<
+/T (companionWillSave)
+/V ()
+>> 
+<<
+/T (performPercussionMiscMods)
+/V (0)
+>> 
+<<
+/T (disguiseAbilityMod)
+/V (-5)
+>> 
+<<
+/T (condSaveMods)
+/V ()
+>> 
+<<
+/T (hideTotal)
+/V (-5)
+>> 
+<<
+/T (performSingMiscMods)
+/V (0)
+>> 
+<<
+/T (spotMiscMods)
+/V (0)
+>> 
+<<
+/T (item6_notOnPerson)
+/V ()
+>> 
+<<
+/T (knowNobilityTotal)
+/V (-5)
+>> 
+<<
+/T (intimidateCS)
+/V /
+>> 
+<<
+/T (item4_weight)
+/V ()
+>> 
+<<
+/T (item8_weight)
+/V ()
+>> 
+<<
+/T (rageDuration)
+/V ()
+>> 
+<<
+/T (ringGearName0)
+/V ()
+>> 
+<<
+/T (craft0AbilityMod)
+/V (-5)
+>> 
+<<
+/T (ringGearName1)
+/V ()
+>> 
+<<
+/T (spellSaveMod)
+/V ()
+>> 
+<<
+/T (powersKnown)
+/V ()
+>> 
+<<
+/T (companionWeapon1_attackBonus)
+/V ()
+>> 
+<<
+/T (companionWeapon2_attackBonus)
+/V ()
+>> 
+<<
+/T (concentrationRanks)
+/V ()
+>> 
+<<
+/T (intimidateRanks)
+/V ()
+>> 
+<<
+/T (strMisc)
+/V ()
+>> 
+<<
+/T (escapeArtistRanks)
+/V ()
+>> 
+<<
+/T (companionWeapon1)
+/V ()
+>> 
+<<
+/T (companionAbility1)
+/V ()
+>> 
+<<
+/T (shieldName)
+/V ()
+>> 
+<<
+/T (maxPowerLevelKnown)
+/V ()
+>> 
+<<
+/T (companionWeapon0)
+/V ()
+>> 
+<<
+/T (companionAbility0)
+/V ()
+>> 
+<<
+/T (performDanceMiscMods)
+/V (0)
+>> 
+<<
+/T (companionWeapon2)
+/V ()
+>> 
+<<
+/T (companionAbility5)
+/V ()
+>> 
+<<
+/T (companionAbility4)
+/V ()
+>> 
+<<
+/T (knowNobilityAbilityMod)
+/V (-5)
+>> 
+<<
+/T (companionAbility3)
+/V ()
+>> 
+<<
+/T (willMiscMod)
+/V ()
+>> 
+<<
+/T (armorBonus)
+/V ()
+>> 
+<<
+/T (companionAbility2)
+/V ()
+>> 
+<<
+/T (bonusSpells7)
+/V ()
+>> 
+<<
+/T (bonusSpells6)
+/V ()
+>> 
+<<
+/T (bonusSpells9)
+/V ()
+>> 
+<<
+/T (bonusSpells8)
+/V ()
+>> 
+<<
+/T (spellsPerDay1)
+/V ()
+>> 
+<<
+/T (bonusSpells3)
+/V ()
+>> 
+<<
+/T (spellsPerDay0)
+/V ()
+>> 
+<<
+/T (bonusSpells2)
+/V ()
+>> 
+<<
+/T (bonusSpells5)
+/V ()
+>> 
+<<
+/T (performType)
+/V ()
+>> 
+<<
+/T (bonusSpells4)
+/V ()
+>> 
+<<
+/T (spellsPerDay5)
+/V ()
+>> 
+<<
+/T (craft2AbilityMod)
+/V (-5)
+>> 
+<<
+/T (spellsPerDay4)
+/V ()
+>> 
+<<
+/T (bonusSpells1)
+/V ()
+>> 
+<<
+/T (spellsPerDay3)
+/V ()
+>> 
+<<
+/T (bonusSpells0)
+/V ()
+>> 
+<<
+/T (spellsPerDay2)
+/V ()
+>> 
+<<
+/T (spellsPerDay9)
+/V ()
+>> 
+<<
+/T (spellsPerDay8)
+/V ()
+>> 
+<<
+/T (performOratoryCS)
+/V /
+>> 
+<<
+/T (performPercussionTotal)
+/V (-5)
+>> 
+<<
+/T (spellsPerDay7)
+/V ()
+>> 
+<<
+/T (classesLevels)
+/V ()
+>> 
+<<
+/T (armGearName)
+/V ()
+>> 
+<<
+/T (spellsPerDay6)
+/V ()
+>> 
+<<
+/T (chaEnhancement)
+/V ()
+>> 
+<<
+/T (profession1MiscMods)
+/V (0)
+>> 
+<<
+/T (headGearName)
+/V ()
+>> 
+<<
+/T (swimRanks)
+/V ()
+>> 
+<<
+/T (performKeyboardCS)
+/V /
+>> 
+<<
+/T (item3_weight)
+/V ()
+>> 
+<<
+/T (language7)
+/V ()
+>> 
+<<
+/T (language6)
+/V ()
+>> 
+<<
+/T (language5)
+/V ()
+>> 
+<<
+/T (language4)
+/V ()
+>> 
+<<
+/T (language3)
+/V ()
+>> 
+<<
+/T (language2)
+/V ()
+>> 
+<<
+/T (language1)
+/V ()
+>> 
+<<
+/T (language0)
+/V ()
+>> 
+<<
+/T (knowPsionicsAbilityMod)
+/V (-5)
+>> 
+<<
+/T (senseMotiveAbilityMod)
+/V (-5)
+>> 
+<<
+/T (item10_weight)
+/V ()
+>> 
+<<
+/T (performComedyRanks)
+/V ()
+>> 
+<<
+/T (performOtherRanks)
+/V ()
+>> 
+<<
+/T (useMagicDevCS)
+/V /
+>> 
+<<
+/T (item9_weight)
+/V ()
+>> 
+<<
+/T (feetGearName)
+/V ()
+>> 
+<<
+/T (knowNatureRanks)
+/V ()
+>> 
+<<
+/T (refBonus)
+/V (-5)
+>> 
+<<
+/T (profession1Ranks)
+/V ()
+>> 
+<<
+/T (companionGrappleMod)
+/V ()
+>> 
+<<
+/T (wisMiscPenalty)
+/V ()
+>> 
+<<
+/T (performStringCS)
+/V /
+>> 
+<<
+/T (performComedyMiscMods)
+/V (0)
+>> 
+<<
+/T (performStringMiscMods)
+/V (0)
+>> 
+<<
+/T (healTotal)
+/V (-5)
+>> 
+<<
+/T (jumpAbilityMod)
+/V (3)
+>> 
+<<
+/T (item19)
+/V ()
+>> 
+<<
+/T (strMod)
+/V (-5)
+>> 
+<<
+/T (item18)
+/V ()
+>> 
+<<
+/T (item17)
+/V ()
+>> 
+<<
+/T (item1_location)
+/V ()
+>> 
+<<
+/T (item16)
+/V ()
+>> 
+<<
+/T (item15)
+/V ()
+>> 
+<<
+/T (item14)
+/V ()
+>> 
+<<
+/T (companionHP)
+/V ()
+>> 
+<<
+/T (item13)
+/V ()
+>> 
+<<
+/T (item12)
+/V ()
+>> 
+<<
+/T (item11)
+/V ()
+>> 
+<<
+/T (item10)
+/V ()
+>> 
+<<
+/T (intMisc)
+/V ()
+>> 
+<<
+/T (performDanceCS)
+/V /
+>> 
+<<
+/T (knowReligionAbilityMod)
+/V (-5)
+>> 
+<<
+/T (useRopeAbilityMod)
+/V (-5)
+>> 
+<<
+/T (craft1AbilityMod)
+/V (-5)
+>> 
+<<
+/T (knowHistoryRanks)
+/V ()
+>> 
+<<
+/T (performOtherAbiltyMod)
+/V (-5)
+>> 
+<<
+/T (deflectMod)
+/V ()
+>> 
+<<
+/T (rideTotal)
+/V (-5)
+>> 
+<<
+/T (item4_location)
+/V ()
+>> 
+<<
+/T (sleightOfHandCS)
+/V /
+>> 
+<<
+/T (intMod)
+/V (-5)
+>> 
+<<
+/T (playerName)
+/V ()
+>> 
+<<
+/T (armorACP)
+/V ()
+>> 
+<<
+/T (usePsionicDevTotal)
+/V (-5)
+>> 
+<<
+/T (psicraftTotal)
+/V (-5)
+>> 
+<<
+/T (companionFeatsArea0)
+/V ()
+>> 
+<<
+/T (companionFeatsArea1)
+/V ()
+>> 
+<<
+/T (performPercussionCS)
+/V /
+>> 
+<<
+/T (companionFeatsArea4)
+/V ()
+>> 
+<<
+/T (useRopeTotal)
+/V (-5)
+>> 
+<<
+/T (companionFeatsArea5)
+/V ()
+>> 
+<<
+/T (knowLocalCS)
+/V /
+>> 
+<<
+/T (useMagicDevMiscMods)
+/V (0)
+>> 
+<<
+/T (neckGearName)
+/V ()
+>> 
+<<
+/T (companionFeatsArea2)
+/V ()
+>> 
+<<
+/T (companionFeatsArea3)
+/V ()
+>> 
+<<
+/T (item15_weight)
+/V ()
+>> 
+<<
+/T (survivalMiscMods)
+/V (0)
+>> 
+<<
+/T (appraiseRanks)
+/V ()
+>> 
+<<
+/T (pp)
+/V ()
+>> 
+<<
+/T (knowPsionicsRanks)
+/V ()
+>> 
+<<
+/T (refDexMod)
+/V (-5)
+>> 
+<<
+/T (swimCS)
+/V /
+>> 
+<<
+/T (acSizeMod)
+/V ()
+>> 
+<<
+/T (knowDungeonAbilityMod)
+/V (-5)
+>> 
+<<
+/T (knowOtherRanks)
+/V ()
+>> 
+<<
+/T (knowArchEngTotal)
+/V (-5)
+>> 
+<<
+/T (knowArchEngAbilityMod)
+/V (-5)
+>> 
+<<
+/T (refMagicMod)
+/V ()
+>> 
+<<
+/T (chaMod)
+/V (-5)
+>> 
+<<
+/T (companionNAMod)
+/V ()
+>> 
+<<
+/T (bluffCS)
+/V /
+>> 
+<<
+/T (performStringRanks)
+/V ()
+>> 
+<<
+/T (spellSaveCondMods)
+/V ()
+>> 
+<<
+/T (knowLocalRanks)
+/V ()
+>> 
+<<
+/T (gatherInfoCS)
+/V /
+>> 
+<<
+/T (exp)
+/V ()
+>> 
+<<
+/T (rtcf11)
+/V ()
+>> 
+<<
+/T (handleAnimalTotal)
+/V (-5)
+>> 
+<<
+/T (rtcf10)
+/V ()
+>> 
+<<
+/T (rtcf13)
+/V ()
+>> 
+<<
+/T (height)
+/V ()
+>> 
+<<
+/T (rtcf12)
+/V ()
+>> 
+<<
+/T (shieldBonus)
+/V ()
+>> 
+<<
+/T (spellsKnown5)
+/V ()
+>> 
+<<
+/T (spellsKnown4)
+/V ()
+>> 
+<<
+/T (item0_notOnPerson_weight)
+/V ()
+>> 
+<<
+/T (spellsKnown7)
+/V ()
+>> 
+<<
+/T (spellsKnown6)
+/V ()
+>> 
+<<
+/T (spellsKnown1)
+/V ()
+>> 
+<<
+/T (spellsKnown0)
+/V ()
+>> 
+<<
+/T (wisScore)
+/V (0)
+>> 
+<<
+/T (spellsKnown3)
+/V ()
+>> 
+<<
+/T (spellsKnown2)
+/V ()
+>> 
+<<
+/T (intEnhancement)
+/V ()
+>> 
+<<
+/T (wpn3)
+/V ()
+>> 
+<<
+/T (wpn2)
+/V ()
+>> 
+<<
+/T (wpn1)
+/V ()
+>> 
+<<
+/T (wpn0)
+/V ()
+>> 
+<<
+/T (balanceRanks)
+/V ()
+>> 
+<<
+/T (forgeryTotal)
+/V (-5)
+>> 
+<<
+/T (jumpRanks)
+/V ()
+>> 
+<<
+/T (handleAnimalAbilityMod)
+/V (-5)
+>> 
+<<
+/T (swimMiscMods)
+/V (0)
+>> 
+<<
+/T (escapeArtistAbilityMod)
+/V (-5)
+>> 
+<<
+/T (companionSkill3_bonus)
+/V ()
+>> 
+<<
+/T (spDef0)
+/V ()
+>> 
+<<
+/T (spDef1)
+/V ()
+>> 
+<<
+/T (knowArchEngCS)
+/V /
+>> 
+<<
+/T (spDef2)
+/V ()
+>> 
+<<
+/T (spDef3)
+/V ()
+>> 
+<<
+/T (spDef4)
+/V ()
+>> 
+<<
+/T (spDef5)
+/V ()
+>> 
+<<
+/T (spDef6)
+/V ()
+>> 
+<<
+/T (spDef7)
+/V ()
+>> 
+<<
+/T (appraiseCS)
+/V /
+>> 
+<<
+/T (appraiseAbilityMod)
+/V (-5)
+>> 
+<<
+/T (moveSilentlyRanks)
+/V ()
+>> 
+<<
+/T (knowArcanaAbilityMod)
+/V (-5)
+>> 
+<<
+/T (item16_location)
+/V ()
+>> 
+<<
+/T (spDef8)
+/V ()
+>> 
+<<
+/T (item7_location)
+/V ()
+>> 
+<<
+/T (psicraftCS)
+/V /
+>> 
+<<
+/T (hideCS)
+/V /
+>> 
+<<
+/T (item11_location)
+/V ()
+>> 
+<<
+/T (spotRanks)
+/V ()
+>> 
+<<
+/T (companionSkill8_bonus)
+/V ()
+>> 
+<<
+/T (grapSizeMod)
+/V ()
+>> 
+<<
+/T (disguiseRanks)
+/V ()
+>> 
+<<
+/T (spotCS)
+/V /
+>> 
+<<
+/T (domain0)
+/V ()
+>> 
+<<
+/T (domain1)
+/V ()
+>> 
+<<
+/T (wisMod)
+/V (-5)
+>> 
+<<
+/T (conScore)
+/V (0)
+>> 
+<<
+/T (handleAnimalCS)
+/V /
+>> 
+<<
+/T (item20_weight)
+/V ()
+>> 
+<<
+/T (item8)
+/V ()
+>> 
+<<
+/T (item7)
+/V ()
+>> 
+<<
+/T (chaBase)
+/V ()
+>> 
+<<
+/T (armorName)
+/V ()
+>> 
+<<
+/T (item9)
+/V ()
+>> 
+<<
+/T (item4)
+/V ()
+>> 
+<<
+/T (performSingRanks)
+/V ()
+>> 
+<<
+/T (item3)
+/V ()
+>> 
+<<
+/T (item6)
+/V ()
+>> 
+<<
+/T (item5)
+/V ()
+>> 
+<<
+/T (item0)
+/V ()
+>> 
+<<
+/T (range0)
+/V ()
+>> 
+<<
+/T (item2)
+/V ()
+>> 
+<<
+/T (item1)
+/V ()
+>> 
+<<
+/T (range3)
+/V ()
+>> 
+<<
+/T (range1)
+/V ()
+>> 
+<<
+/T (climbRanks)
+/V ()
+>> 
+<<
+/T (range2)
+/V ()
+>> 
+<<
+/T (sleightOfHandAbilityMod)
+/V (-5)
+>> 
+<<
+/T (item16_weight)
+/V ()
+>> 
+<<
+/T (item17_weight)
+/V ()
+>> 
+<<
+/T (dexBase)
+/V ()
+>> 
+<<
+/T (performDanceRanks)
+/V ()
+>> 
+<<
+/T (companionType)
+/V ()
+>> 
+<<
+/T (refBase)
+/V ()
+>> 
+<<
+/T (performActMiscMods)
+/V (0)
+>> 
+<<
+/T (jumpCS)
+/V /
+>> 
+<<
+/T (concentrationTotal)
+/V (3)
+>> 
+<<
+/T (type2)
+/V ()
+>> 
+<<
+/T (spellcraftCS)
+/V /
+>> 
+<<
+/T (diplomacyMiscMods)
+/V (0)
+>> 
+<<
+/T (grapMiscMod)
+/V ()
+>> 
+<<
+/T (tumbleCS)
+/V /
+>> 
+<<
+/T (performKeyboardRanks)
+/V ()
+>> 
+<<
+/T (weight)
+/V ()
+>> 
+<<
+/T (fortBase)
+/V ()
+>> 
+<<
+/T (climbCS)
+/V /
+>> 
+<<
+/T (type1)
+/V ()
+>> 
+<<
+/T (item2_location)
+/V ()
+>> 
+<<
+/T (type0)
+/V ()
+>> 
+<<
+/T (survivalCS)
+/V /
+>> 
+<<
+/T (item17_location)
+/V ()
+>> 
+<<
+/T (item7_weight)
+/V ()
+>> 
+<<
+/T (knowDungeonCS)
+/V /
+>> 
+<<
+/T (moveSilentlyMiscMods)
+/V (0)
+>> 
+<<
+/T (performActRanks)
+/V ()
+>> 
+<<
+/T (knowDungeonMiscMods)
+/V (0)
+>> 
+<<
+/T (item3_location)
+/V ()
+>> 
+<<
+/T (item6_notOnPerson_weight)
+/V ()
+>> 
+<<
+/T (shieldWeight)
+/V ()
+>> 
+<<
+/T (campaign)
+/V ()
+>> 
+<<
+/T (item3_notOnPerson_weight)
+/V ()
+>> 
+<<
+/T (dexMiscPenalty)
+/V ()
+>> 
+<<
+/T (performOratoryMiscMods)
+/V (0)
+>> 
+<<
+/T (craft2MiscMods)
+/V (0)
+>> 
+<<
+/T (performOratoryTotal)
+/V (-5)
+>> 
+<<
+/T (sleightOfHandTotal)
+/V (-5)
+>> 
+<<
+/T (speed)
+/V ()
+>> 
+<<
+/T (profession0CS)
+/V /
+>> 
+<<
+/T (craft0Total)
+/V (-5)
+>> 
+<<
+/T (fortTempMod)
+/V ()
+>> 
+<<
+/T (shoulderGearName)
+/V ()
+>> 
+<<
+/T (escapeArtistTotal)
+/V (-5)
+>> 
+<<
+/T (decipherScriptCS)
+/V /
+>> 
+<<
+/T (ppPerDay)
+/V ()
+>> 
+<<
+/T (performKeyboardMiscMods)
+/V (0)
+>> 
+<<
+/T (spellsKnown9)
+/V ()
+>> 
+<<
+/T (listenRanks)
+/V ()
+>> 
+<<
+/T (spellsKnown8)
+/V ()
+>> 
+<<
+/T (concentrationCS)
+/V /
+>> 
+<<
+/T (knowGeographyAbilityMod)
+/V (-5)
+>> 
+<<
+/T (escapeArtistCS)
+/V /
+>> 
+<<
+/T (item2_weight)
+/V ()
+>> 
+<<
+/T (spellcraftMiscMods)
+/V (0)
+>> 
+<<
+/T (conEnhancement)
+/V ()
+>> 
+<<
+/T (wisBase)
+/V ()
+>> 
+<<
+/T (money)
+/V ()
+>> 
+<<
+/T (diplomacyTotal)
+/V (-5)
+>> 
+<<
+/T (appraiseMiscMods)
+/V (0)
+>> 
+<<
+/T (usePsionicDevMiscMods)
+/V (0)
+>> 
+<<
+/T (notesAmmo4)
+/V ()
+>> 
+<<
+/T (knowReligionRanks)
+/V ()
+>> 
+<<
+/T (notesAmmo0)
+/V ()
+>> 
+<<
+/T (dexEnhancement)
+/V ()
+>> 
+<<
+/T (notesAmmo1)
+/V ()
+>> 
+<<
+/T (balanceMiscMods)
+/V (0)
+>> 
+<<
+/T (notesAmmo2)
+/V ()
+>> 
+<<
+/T (dexMod)
+/V (-5)
+>> 
+<<
+/T (damage1)
+/V ()
+>> 
+<<
+/T (willBonus)
+/V (-5)
+>> 
+<<
+/T (damage2)
+/V ()
+>> 
+<<
+/T (gatherInfoAbilityMod)
+/V (-5)
+>> 
+<<
+/T (listenTotal)
+/V (-5)
+>> 
+<<
+/T (damage0)
+/V ()
+>> 
+<<
+/T (damage3)
+/V ()
+>> 
+<<
+/T (performKeyboardTotal)
+/V (-5)
+>> 
+<<
+/T (knowHistoryCS)
+/V /
+>> 
+<<
+/T (item6_location)
+/V ()
+>> 
+<<
+/T (companionACDex)
+/V (0)
+>> 
+<<
+/T (knowOtherCS)
+/V /
+>> 
+<<
+/T (disguiseTotal)
+/V (-5)
+>> 
+<<
+/T (profession1AbilityMod)
+/V (-5)
+>> 
+<<
+/T (rideCS)
+/V /
+>> 
+<<
+/T (intScore)
+/V (0)
+>> 
+<<
+/T (knowGeographyCS)
+/V /
+>> 
+<<
+/T (moveSilentlyCS)
+/V /
+>> 
+<<
+/T (performSingTotal)
+/V (-5)
+>> 
+<<
+/T (bluffTotal)
+/V (-5)
+>> 
+<<
+/T (knowGeographyMiscMods)
+/V (0)
+>> 
+<<
+/T (knowReligionTotal)
+/V (-5)
+>> 
+<<
+/T (gatherInfoRanks)
+/V ()
+>> 
+<<
+/T (performKeyboardAbilityMod)
+/V (-5)
+>> 
+<<
+/T (performOratoryAbilityMod)
+/V (-5)
+>> 
+<<
+/T (usePsionicDevCS)
+/V /
+>> 
+<<
+/T (religionOrDiety)
+/V ()
+>> 
+<<
+/T (strScore)
+/V (0)
+>> 
+<<
+/T (item1_notOnPerson_weight)
+/V ()
+>> 
+<<
+/T (balanceCS)
+/V /
+>> 
+<<
+/T (rageWillBonus)
+/V ()
+>> 
+<<
+/T (autohypnosisTotal)
+/V (-5)
+>> 
+<<
+/T (performPercussionRanks)
+/V ()
+>> 
+<<
+/T (grpBonus)
+/V (3)
+>> 
+<<
+/T (companionSkill0_bonus)
+/V ()
+>> 
+<<
+/T (companionSkill6_bonus)
+/V ()
+>> 
+<<
+/T (bluffAbilityMod)
+/V (-5)
+>> 
+<<
+/T (performDanceTotal)
+/V (-5)
+>> 
+<<
+/T (natAC)
+/V ()
+>> 
+<<
+/T (climbTotal)
+/V (3)
+>> 
+<<
+/T (useRopeMiscMods)
+/V (0)
+>> 
+<<
+/T (companionCha)
+/V ()
+>> 
+<<
+/T (companionACMiscMod)
+/V ()
+>> 
+<<
+/T (grapStrMod)
+/V (3)
+>> 
+<<
+/T (balanceTotal)
+/V (-5)
+>> 
+<<
+/T (performComedyTotal)
+/V (-5)
+>> 
+<<
+/T (gender)
+/V ()
+>> 
+<<
+/T (shieldACP)
+/V ()
+>> 
+<<
+/T (balanceAbilityMod)
+/V (-5)
+>> 
+<<
+/T (armorWeight)
+/V ()
+>> 
+<<
+/T (craft0MiscMods)
+/V (0)
+>> 
+<<
+/T (jumpMiscMods)
+/V (0)
+>> 
+<<
+/T (domainPower0)
+/V ()
+>> 
+<<
+/T (knowPsionicsCS)
+/V /
+>> 
+<<
+/T (item1_notOnPerson)
+/V ()
+>> 
+<<
+/T (knowNatureAbilityMod)
+/V (-5)
+>> 
+<<
+/T (domainPower1)
+/V ()
+>> 
+<<
+/T (chaMiscPenalty)
+/V ()
+>> 
+<<
+/T (item20_location)
+/V ()
+>> 
+<<
+/T (item0_notOnPerson)
+/V ()
+>> 
+<<
+/T (fortMagicMod)
+/V ()
+>> 
+<<
+/T (companionSkill7_bonus)
+/V ()
+>> 
+<<
+/T (spellcraftAbilityMod)
+/V (-5)
+>> 
+<<
+/T (autohypnosisCS)
+/V /
+>> 
+<<
+/T (rideRanks)
+/V ()
+>> 
+<<
+/T (healRanks)
+/V ()
+>> 
+<<
+/T (waistGearName)
+/V ()
+>> 
+<<
+/T (forgeryMiscMods)
+/V (0)
+>> 
+<<
+/T (strBase)
+/V ()
+>> 
+<<
+/T (openLocksRanks)
+/V ()
+>> 
+<<
+/T (rageRoundsUsed)
+/V ()
+>> 
+<<
+/T (knowPlanesAbilityMod)
+/V (-5)
+>> 
+<<
+/T (performComedyCS)
+/V /
+>> 
+<<
+/T (item4_notOnPerson)
+/V ()
+>> 
+<<
+/T (item5_notOnPerson)
+/V ()
+>> 
+<<
+/T (companionSkill1_bonus)
+/V ()
+>> 
+<<
+/T (intimidateMiscMods)
+/V (0)
+>> 
+<<
+/T (healCS)
+/V /
+>> 
+<<
+/T (companionWeapon0_attackBonus)
+/V ()
+>> 
+<<
+/T (item0_weight)
+/V ()
+>> 
+<<
+/T (item13_weight)
+/V ()
+>> 
+<<
+/T (companionPersonality)
+/V ()
+>> 
+<<
+/T (climbMiscMods)
+/V (0)
+>> 
+<<
+/T (craft0CS)
+/V /
+>> 
+<<
+/T (companionWeapon1_damage)
+/V ()
+>> 
+<<
+/T (performActCS)
+/V /
+>> 
+<<
+/T (profession0AbilityMod)
+/V (-5)
+>> 
+<<
+/T (profession1Type)
+/V ()
+>> 
+<<
+/T (item18_location)
+/V ()
+>> 
+<<
+/T (knowArcanaCS)
+/V /
+>> 
+<<
+/T (item18_weight)
+/V ()
+>> 
+<<
+/T (escapeArtistMiscMods)
+/V (0)
+>> 
+<<
+/T (item12_location)
+/V ()
+>> 
+<<
+/T (companionACFF)
+/V ()
+>> 
+<<
+/T (companionSkill2_bonus)
+/V ()
+>> 
+<<
+/T (hideRanks)
+/V ()
+>> 
+<<
+/T (knowDungeonTotal)
+/V (-5)
+>> 
+<<
+/T (intMiscPenalty)
+/V ()
+>> 
+<<
+/T (tumbleRanks)
+/V ()
+>> 
+<<
+/T (companionInt)
+/V ()
+>> 
+<<
+/T (ecl)
+/V ()
+>> 
+<<
+/T (jumpTotal)
+/V (3)
+>> 
+<<
+/T (looks)
+/V ()
+>> 
+<<
+/T (moveSilentlyAbilityMod)
+/V (-5)
+>> 
+<<
+/T (knowReligionMiscMods)
+/V (0)
+>> 
+<<
+/T (appraiseTotal)
+/V (-5)
+>> 
+<<
+/T (knowPlanesCS)
+/V /
+>> 
+<<
+/T (listenAbilityMod)
+/V (-5)
+>> 
+<<
+/T (companionWeapon0_crit)
+/V ()
+>> 
+<<
+/T (raceOrTemplate)
+/V ()
+>> 
+<<
+/T (knowArchEngRanks)
+/V ()
+>> 
+<<
+/T (companionDex)
+/V ()
+>> 
+<<
+/T (companionWeapon0_damage)
+/V ()
+>> 
+<<
+/T (knowPlanesRanks)
+/V ()
+>> 
+<<
+/T (item1_weight)
+/V ()
+>> 
+<<
+/T (knowArcanaTotal)
+/V (-5)
+>> 
+<<
+/T (rideAbilityMod)
+/V (-5)
+>> 
+<<
+/T (knowPsionicsTotal)
+/V (-5)
+>> 
+<<
+/T (item12_weight)
+/V ()
+>> 
+<<
+/T (craft1CS)
+/V /
+>> 
+<<
+/T (psicraftRanks)
+/V ()
+>> 
+<<
+/T (willBase)
+/V ()
+>> 
+<<
+/T (acMiscMods)
+/V ()
+>> 
+<<
+/T (companionSpeed)
+/V ()
+>> 
+<<
+/T (knowHistoryTotal)
+/V (-5)
+>> 
+<<
+/T (performStringTotal)
+/V (-5)
+>> 
+<<
+/T (knowLocalTotal)
+/V (-5)
+>> 
+<<
+/T (item8_location)
+/V ()
+>> 
+<<
+/T (arcaneSpellFailure)
+/V ()
+>> 
+<<
+/T (performSingAbilityMod)
+/V (-5)
+>> 
+<<
+/T (performOtherTotal)
+/V (-5)
+>> 
+<<
+/T (swimAbilityMod)
+/V (3)
+>> 
+<<
+/T (intBase)
+/V ()
+>> 
+<<
+/T (lightLoad)
+/V (8)
+>> 
+<<
+/T (primaryDiscipline)
+/V ()
+>> 
+<<
+/T (useRopeCS)
+/V /
+>> 
+<<
+/T (knowNatureMiscMods)
+/V (0)
+>> 
+<<
+/T (knowPlanesMiscMods)
+/V (0)
+>> 
+<<
+/T (forgeryRanks)
+/V ()
+>> 
+<<
+/T (performOtherCS)
+/V /
+>> 
+<<
+/T (knowNobilityRanks)
+/V ()
+>> 
+<<
+/T (conBase)
+/V ()
+>> 
+<<
+/T (item6_notOnPerson_location)
+/V ()
+>> 
+<<
+/T (knowNatureTotal)
+/V (-5)
+>> 
+<<
+/T (companionSkill4_bonus)
+/V ()
+>> 
+<<
+/T (gatherInfoMiscMods)
+/V (0)
+>> 
+<<
+/T (knowGeographyTotal)
+/V (-5)
+>> 
+<<
+/T (searchRanks)
+/V ()
+>> 
+<<
+/T (forgeryAbilityMod)
+/V (-5)
+>> 
+<<
+/T (performWindMiscMods)
+/V (0)
+>> 
+<<
+/T (spellcraftRanks)
+/V ()
+>> 
+<<
+/T (tumbleAbilityMod)
+/V (-5)
+>> 
+<<
+/T (disableDeviceTotal)
+/V (-5)
+>> 
+<<
+/T (torsoGearName)
+/V ()
+>> 
+<<
+/T (companionSkill5_bonus)
+/V ()
+>> 
+<<
+/T (item6_weight)
+/V ()
+>> 
+<<
+/T (craft2CS)
+/V /
+>> 
+<<
+/T (initMod)
+/V (-5)
+>> 
+<<
+/T (craft2Ranks)
+/V ()
+>> 
+<<
+/T (senseMotiveCS)
+/V /
+>> 
+<<
+/T (useMagicDevRanks)
+/V ()
+>> 
+<<
+/T (survivalRanks)
+/V ()
+>> 
+<<
+/T (companionWis)
+/V ()
+>> 
+<<
+/T (grapBab)
+/V (0)
+>> 
+<<
+/T (wisEnhancement)
+/V ()
+>> 
+<<
+/T (refTempMod)
+/V ()
+>> 
+<<
+/T (item15_location)
+/V ()
+>>]
+>>
+>>
+endobj 
+trailer
+
+<<
+/Root 1 0 R
+>>
+%%EOF
