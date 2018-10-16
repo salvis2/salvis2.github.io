@@ -3,10 +3,6 @@ var characterSheetRouter = express.Router();
 var pdfFiller = require('pdffiller');
 var path = require('path');
 
-const dndCharacterSheetSource = "public/other/dndCharacterSheet.pdf";
-const dndCharacterSheetDestination = "public/other/createdDndCharacterSheet.pdf";
-const shouldFlatten = false;
-
 const data = {
         "strBase": "12",
         "dexBase": "14",
@@ -30,13 +26,24 @@ const data = {
         "domain0": "Good"
 };
 
-characterSheetRouter.get('/', function(req, res, next) {
+characterSheetRouter.post('/', function(req, res, next) {
+	const body = req.body;
+	const dndCharacterSheetSource = "public/other/dndCharacterSheet.pdf";
+	const dndCharacterSheetDestination = "public/other/createdDndCharacterSheet.pdf";
+	const shouldFlatten = false;
+
 	pdfFiller.fillFormWithFlatten(dndCharacterSheetSource, dndCharacterSheetDestination,
-		data, shouldFlatten, function (err) {
+		body, shouldFlatten, function (err) {
 		if (err) {
 			throw err;
 		}
 	});
+	res.download(path.resolve(__dirname + '/../public/other/createdDndCharacterSheet.pdf'));
+	//res.send('A Character Sheet Has Been Created!');
+	res.status(200).send('Character Sheet Created');
+});
+
+characterSheetRouter.get('/', function(req, res, next) {
 	res.sendFile(path.join(__dirname + "/../public/other/createdDndCharacterSheet.pdf"));
 });
 

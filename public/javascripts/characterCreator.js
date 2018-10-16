@@ -4,6 +4,8 @@ import ReactDOM 						from "react-dom";
 import { ClassButtonList } 	from "./ClassButtonList.js";
 import { ClassResults } from "./ClassResults.js";
 import { AbilityScores } from "./AbilityScores.jsx";
+import { Character } from "./DnDCharacter.js";
+// var $ = require("jquery");
 
 // I need these so that my formatting in the local host is familiar
 import "../stylesheets/characterCreator.css";
@@ -25,6 +27,7 @@ export class CharacterCreator extends React.Component {
 		this.startCharacterCreation = this.startCharacterCreation.bind(this);
 		this.changeSelectedCharacterClass = this.changeSelectedCharacterClass.bind(this);
 		this.displaySelectionResults = this.displaySelectionResults.bind(this);
+		this.generateCharacterSheet = this.generateCharacterSheet.bind(this);
 
 		this.state = {
 			selectedCharacterClass: null,
@@ -138,15 +141,20 @@ export class CharacterCreator extends React.Component {
 		ReactDOM.render(
 			<button onClick={ this.selectCharacterOptions }>Set Character Options</button>,
 			document.getElementById("character-option-button"));
+		/*
+		ReactDOM.render(
+			<button onClick={ this.generateCharacterSheet }>Generate Character Sheet</button>,
+			document.getElementById("generate-character-sheet"));
+		*/
 	}
 
+	// Roll or input ability scores
 	selectCharacterOptions() {
 		ReactDOM.render(
 			<AbilityScores />,
 			document.getElementById("ability-scores")
 		);
 	}
-	// Roll or input ability scores
 	// Make a component for this, can use race input?
 
 	// Assign skill points
@@ -158,6 +166,46 @@ export class CharacterCreator extends React.Component {
 	// Explain what will need to be picked (feats)
 
 	// Name Character
+	
+	// Generate Character Sheet
+	generateCharacterSheet() {
+		const path = "/characterSheet/";
+
+		// constructor(characterName, characterClass, characterRace,
+		// level, race, str, dex, con, inte, wis, cha) {
+		let newCharacter = new Character('', this.state.selectedCharacterClass,
+			this.state.selectedCharacterRace, this.state.selectedCharacterLevel,
+			'', '', '', '', '', '');
+		
+		const characterData = newCharacter.createBodyData();
+		fetch('/characterSheet', {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(characterData)
+		}).then(response => {
+			if (response.ok) {
+				return response;
+			}
+			throw new Error('Request failed!');
+		}, networkError => {
+			console.log(networkError.message);
+		}).then(() => {
+			window.open('/characterSheet');
+		});
+		/*
+		.then(fetch('/characterSheet').then(response => {
+				if (response.ok) {
+					return response.json();
+				}
+				throw new Error('Request failed!');
+			}, networkError => {
+				console.log(networkError.message);
+			}).then(response => {
+				window.location.replace('sebastianalvis.com/characterSheet/');
+		}));*/
+	}
 }
 
 // Start Character Creation Button
