@@ -1,3 +1,4 @@
 # exclude node_modules so it doesn't compile READEME.md s
 node_modules
 dist
+public/javascripts/index.js
