@@ -15,7 +15,7 @@ export class ClassResults extends React.Component {
 		this.toggleHidden = this.toggleHidden.bind(this);
 
 		this.state = {
-			isHidden: false
+			isHidden: true
 		};
 	}
 
@@ -94,7 +94,7 @@ export class ClassResults extends React.Component {
 		return (
 			<div>
 				<button onClick={ this.toggleHidden }>
-					Toggle Class Details
+					Toggle { this.props.characterClass } Details
 				</button>
 				{ !this.state.isHidden && <div>{ classDataMap }</div> }
 			</div>

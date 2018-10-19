@@ -2,24 +2,16 @@
 // ClassButton Component for the Character Creator Page
 
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
 // Character Class Selection
 export class ClassButton extends React.Component {
-	render() {
-		return (
-			<button className="character-selection" onClick={ this.beginCharacterCreation }>
-				{this.props.characterClassName}
-			</button>
-		);
-	}
-
 	constructor(props) {
 		super(props);
-		this.beginCharacterCreation = this.beginCharacterCreation.bind(this);
+		this.changeCharacterClass = this.changeCharacterClass.bind(this);
 	}
 
-	beginCharacterCreation() {
+	changeCharacterClass() {
 		// Highlight the button?
 		// this.addClass("active");
 		// Remove other selection
@@ -27,10 +19,13 @@ export class ClassButton extends React.Component {
 		// Add name to parent state
 		const newClass = this.props.characterClassName;
 		this.props.changeClass(newClass);
+	}
 
-		// Display Selection
-		ReactDOM.render(
-			<p>{newClass} Selected</p>,
-			document.getElementById("output-text"));
+	render() {
+		return (
+			<button className="character-selection" onClick={ this.changeCharacterClass }>
+				{this.props.characterClassName}
+			</button>
+		);
 	}
 }
