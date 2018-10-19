@@ -4,8 +4,7 @@ import React from "react";
 export class AbilityScore extends React.Component {
 	constructor(props) {
 		super(props);
-		this.inputId = `${this.props.ability}-input`;
-		this.submitAbilityScore = this.submitAbilityScore.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 		this.state = {
 			score: 0
 		};
@@ -35,21 +34,21 @@ export class AbilityScore extends React.Component {
 		}
 	}
 
-	submitAbilityScore() {
-		let newScore = document.getElementById(this.inputId).value;
+	handleChange(e) {
+		let newScore = e.target.value;
 		this.setState({
 			score: newScore
 		});
+		this.props.changeAbilityScore(this.props.ability, newScore);
 	}
 
 	render() {
 		return (
-			<div>
-				<p>{this.abilityTitle}: {this.state.score}</p>
-				<input id={this.inputId}
-					ability={this.props.ability} type="number" min="3" max="18" step="1" />
-				<button onClick={this.submitAbilityScore}>Submit Score</button>
-			</div>
+			<label>
+				Base {this.abilityTitle}:{" "}
+				<input ability={this.props.ability} type="number" min="3" max="20" step="1"
+					value={this.state.score} onChange={ this.handleChange } />
+			</label>
 		);
 	}
 }
