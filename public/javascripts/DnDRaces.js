@@ -22,8 +22,20 @@ export class BaseRace {
 	get raceName() {
 		return this._raceName;
 	}
-	get size() {
-		return this._size;
+	size() {
+		let raceSize;
+		switch (this._size) {
+		case "M":
+			raceSize = "Medium";
+			break;
+		case "S":
+			raceSize = "Small";
+			break;
+		default:
+			raceSize = null;
+			console.log(`Invalid Size`);
+		}
+		return raceSize;
 	}
 	get speed() {
 		return this._speed;
@@ -37,9 +49,36 @@ export class BaseRace {
 	get languages() {
 		return this._languages;
 	}
+
+	racialTraitsToArray() {
+		let racialTraits = [];
+
+		racialTraits.push(`Size: ${ this.size() }`);
+		racialTraits.push(`Base Land Speed: ${ this.speed }\'`);
+
+		// Ability Score Adjustments
+		for (let i = 0; i < this.abilityScoreAdjustments.length; i += 1) {
+			if (this.abilityScoreAdjustments[i][1] < 0) {
+				racialTraits.push(`${ this.abilityScoreAdjustments[i][0] } Penalty:${" "}
+					${this.abilityScoreAdjustments[i][1]}`);
+			} else {
+				racialTraits.push(`${ this.abilityScoreAdjustments[i][0] } Bonus:${" "}
+					+${this.abilityScoreAdjustments[i][1]}`);
+			}
+		}
+
+		// Skill Bonuses
+		for (let i = 0; i < this.skillModifiers.length; i += 1) {
+			racialTraits.push(`${ this.skillModifiers[i][0] } Bonus: +${ this.skillModifiers[i][1]}`);
+		}
+
+		racialTraits.push(`Automatic Languages: ${ this.languages }`);
+
+		return racialTraits;
+	}
 }
 
-export class Humon extends BaseRace {
+export class Human extends BaseRace {
 	constructor() {
 		super("Humon", "M", 30,
 			[],
@@ -99,7 +138,7 @@ export class Half_Orc extends BaseRace {
 	}
 }
 
-export class Halfing extends BaseRace {
+export class Halfling extends BaseRace {
 	constructor() {
 		super("Halfling", "S", 20,
 			[["Dexterity", -2], ["Strength", -2]],
