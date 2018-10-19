@@ -9,7 +9,7 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 });
 */
 module.exports = {
-	entry: path.join(__dirname, "/public/javascripts/characterCreator.js"),
+	entry: path.join(__dirname, "/public/javascripts/characterCreator.jsx"),
 	output: {
 		path: path.join(__dirname, "/public/javascripts/"),
 		filename: "index.js"
