@@ -156,22 +156,24 @@ export class Spellcaster extends BaseClass {
 
 		spellcastingData.push(`Primary Spellcasting Attribute: ${this.primarySpellAttribute}`);
 
-		// Format the spells per day info consisely
-		let spellsPerDay = `Spells Per Day: `;
-		for (let i = 0; i < this.spellsPerDay(level).length; i += 1) {
-			spellsPerDay += `${this.spellsPerDay(level)[i]}\/`;
-		}
-		spellsPerDay = spellsPerDay.slice(0, -1);
-		spellcastingData.push(spellsPerDay);
-
-		// Format the spells known info consisely
-		if (this.spellsKnown(level, 1) !== null) {
-			let spellsKnown = `Spells Known: `;
-			for (let i = 0; i < this.spellsKnown(level).length; i += 1) {
-				spellsKnown += `${this.spellsKnown(level)[i]}\/`;
+		if (level) {
+			// Format the spells per day info consisely
+			let spellsPerDay = `Spells Per Day: `;
+			for (let i = 0; i < this.spellsPerDay(level).length; i += 1) {
+				spellsPerDay += `${this.spellsPerDay(level)[i]}\/`;
 			}
-			spellsKnown = spellsKnown.slice(0, -1);
-			spellcastingData.push(spellsKnown);
+			spellsPerDay = spellsPerDay.slice(0, -1);
+			spellcastingData.push(spellsPerDay);
+
+			// Format the spells known info consisely
+			if (this.spellsKnown(level, 1) !== null) {
+				let spellsKnown = `Spells Known: `;
+				for (let i = 0; i < this.spellsKnown(level).length; i += 1) {
+					spellsKnown += `${this.spellsKnown(level)[i]}\/`;
+				}
+				spellsKnown = spellsKnown.slice(0, -1);
+				spellcastingData.push(spellsKnown);
+			}
 		}
 		return spellcastingData;
 	}
